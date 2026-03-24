@@ -20,8 +20,18 @@
       background:var(--bg);
       color:var(--text);
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Sans","Noto Sans JP",sans-serif;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
     }
-    .wrap{ max-width:760px; margin:0 auto; padding:16px; padding-bottom: 96px; }
+    .wrap{
+      width:min(100%, 430px);
+      max-width:430px;
+      margin:0 auto;
+      padding:16px 14px;
+      padding-bottom: 96px;
+      box-sizing:border-box;
+    }
 
     .titleRow{
       display:flex;
@@ -120,6 +130,10 @@
       color:#111;
       box-shadow:none;
     }
+    .btn.secondary.active{
+      background:#111;
+      color:#fff;
+    }
     .btn:disabled{ opacity:.45; cursor:not-allowed; box-shadow:none; }
 
     input[type="search"], input[type="number"], input[type="file"]{
@@ -134,6 +148,7 @@
     .list{ display:flex; flex-direction:column; gap:10px; }
     .item{
       width:100%;
+      box-sizing:border-box;
       text-align:left;
       border: 1px solid var(--line);
       background:#fff;
@@ -146,13 +161,20 @@
       display:flex;
       align-items:flex-start;
       justify-content:space-between;
+      flex-wrap:wrap;
       gap:10px;
+    }
+    .itemMain{
+      flex: 1 1 100%;
+      min-width:0;
     }
     .itemTitle{
       font-size:16px;
       line-height:1.4;
       letter-spacing:.2px;
       margin: 0 0 8px;
+      overflow-wrap:anywhere;
+      word-break:break-word;
     }
     .itemSub{
       display:flex;
@@ -161,6 +183,8 @@
       flex-wrap:wrap;
       font-size:12px;
       color: var(--muted);
+      overflow-wrap:anywhere;
+      word-break:break-word;
     }
     .tag{
       font-size:11px;
@@ -180,6 +204,31 @@
       font-weight: 900;
       cursor:pointer;
       white-space: nowrap;
+    }
+    .rowActions{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      justify-content:flex-end;
+      width:100%;
+      min-width:0;
+    }
+    .starBtn{
+      flex: 0 0 auto;
+      min-width: 42px;
+      border: 1px solid var(--line);
+      background: rgba(17,17,17,.04);
+      border-radius: 12px;
+      padding: 8px 10px;
+      font-weight: 900;
+      cursor:pointer;
+      line-height:1;
+      color:#111;
+    }
+    .starBtn.active{
+      background:#111;
+      color:#fff;
+      border-color:#111;
     }
 
     .answerBox{
@@ -233,7 +282,17 @@
       cursor:pointer;
       user-select:none;
     }
-    .ja{ font-size: 22px; line-height:1.5; margin: 0; }
+    .ja{
+      font-size: 22px;
+      line-height:1.5;
+      margin: 0;
+      overflow-wrap:anywhere;
+      word-break:break-word;
+    }
+    .en, .ipa{
+      overflow-wrap:anywhere;
+      word-break:break-word;
+    }
     .tapHint{ font-size: 12px; color: var(--muted); margin-top: 10px; }
 
     .ratings{
@@ -321,7 +380,7 @@
       z-index: 1100;
     }
     .navRow{
-      max-width:760px;
+      max-width:430px;
       margin: 0 auto;
       display:flex;
       gap:10px;
@@ -385,7 +444,7 @@
             </div>
             <button class="btn" id="goMemorizeFromListBtn">今日の問題へ</button>
           </div>
-          <div class="hint">カードを押すと答えが開きます。「▶︎音声」をタップで音声が流れます。</div>
+          <div class="hint">カードを押すと答えが開きます。「🎧」をタップで音声が流れます。</div>
         </div>
         <div class="panelBody">
           <div class="list" id="list"></div>
@@ -396,7 +455,8 @@
         <div class="panelHead">
           <div class="actions">
             <button class="btn secondary" id="backBtn">← 一覧</button>
-            <button class="btn" id="playBtn">▶︎ 音声</button>
+            <button class="btn" id="playBtn">🎧</button>
+            <button class="btn secondary" id="starCurrentBtn">☆</button>
             <button class="btn secondary" id="addToLearningBtn" style="margin-left:auto;">暗記に追加</button>
           </div>
         </div>
@@ -573,7 +633,8 @@
     }
     function setFilterInfo() {
       const d = settings.deck === "all" ? "All" : deckLabel(Number(settings.deck));
-      document.getElementById("filterInfo").textContent = `Deck: ${d} • New/日: ${settings.newPerDay}`;
+      const section = isReviewRoute() ? "☆REVIEW" : "通常";
+      document.getElementById("filterInfo").textContent = `Deck: ${d} • ${section} • New/日: ${settings.newPerDay}`;
     }
 
     const audio = new Audio();
@@ -687,6 +748,7 @@
     let progress = {};
     let current = null;
     let revealed = false;
+    let deckCountCurrent = 1;
     const expanded = new Set();
 
     const statusEl = document.getElementById("status");
@@ -711,6 +773,7 @@
     const metaEl = document.getElementById("meta");
 
     const playBtn = document.getElementById("playBtn");
+    const starCurrentBtn = document.getElementById("starCurrentBtn");
     const addToLearningBtn = document.getElementById("addToLearningBtn");
 
     const againBtn = document.getElementById("againBtn");
@@ -740,7 +803,10 @@
 
     function goList(){ location.hash="#list"; }
     function goMemorize(){ location.hash="#today"; }
+    function goReview(){ location.hash="#review"; }
     function goCard(id){ location.hash=`#card=${encodeURIComponent(id)}`; }
+    function currentHash(){ return location.hash || "#today"; }
+    function isReviewRoute(hash = currentHash()){ return hash === "#review"; }
 
     function showListView(){ listViewEl.style.display="block"; studyViewEl.style.display="none"; }
     function showStudyView(){ listViewEl.style.display="none"; studyViewEl.style.display="block"; }
@@ -771,6 +837,7 @@
           reps: 0,
           intervalDays: 0,
           lapses: 0,
+          starred: false,
           lastReviewedAt: null
         };
         return;
@@ -784,6 +851,7 @@
       p.reps ??= 0;
       p.intervalDays ??= 0;
       p.lapses ??= 0;
+      p.starred ??= false;
       if (p.lastReviewedAt === undefined) p.lastReviewedAt = null;
 
       if (p.introducedOn === undefined) p.introducedOn = "2000-01-01";
@@ -796,14 +864,55 @@
       return unitNum >= start && unitNum <= end;
     }
 
+    function getDeckCards(){
+      return cards.filter(c => inDeck(Number(c.unit)));
+    }
+
     function getFilteredCards(){
       const q = (searchInputEl.value||"").trim().toLowerCase();
-      const base = cards.filter(c => inDeck(Number(c.unit)));
+      const base = getDeckCards();
       if (!q) return base;
       return base.filter(c =>
         (c.ja||"").toLowerCase().includes(q) ||
         (c.en||"").toLowerCase().includes(q)
       );
+    }
+
+    function isStarred(id){
+      return !!progress[id]?.starred;
+    }
+
+    function getStarredCards(scopeCards = getDeckCards()){
+      return scopeCards
+        .filter(c => isStarred(c.id))
+        .slice()
+        .sort((a,b)=>(a.unit-b.unit)||(a.idx-b.idx));
+    }
+
+    function pickNextStarredCard(scopeCards = getDeckCards(), currentId = null){
+      const starred = getStarredCards(scopeCards);
+      if (starred.length === 0) return null;
+      if (!currentId) return starred[0];
+      const idx = starred.findIndex(c => c.id === currentId);
+      if (idx === -1) return starred[0];
+      return starred[(idx + 1) % starred.length];
+    }
+
+    function toggleStar(id){
+      ensureStateForCard(id);
+      progress[id].starred = !progress[id].starred;
+      saveProgress();
+      renderStatus();
+
+      if (current?.id === id) renderCard(current);
+
+      if (isReviewRoute()){
+        renderByHash();
+      } else if (currentHash() === "#list"){
+        renderList();
+      }
+
+      showToast(progress[id].starred ? "☆を追加" : "☆を解除");
     }
 
     function countIntroducedToday(scopeCards){
@@ -866,7 +975,13 @@
     }
 
     function renderStatus(){
-      const scope=getFilteredCards();
+      if (isReviewRoute()){
+        const starred = getStarredCards();
+        statusEl.textContent = `☆ ${starred.length}件`;
+        setFilterInfo();
+        return;
+      }
+      const scope = getFilteredCards();
       const ready = readyList(scope).length;
       const newLeft = remainingNewSlots(scope);
       statusEl.textContent = `Ready ${ready} • New残 ${newLeft}`;
@@ -878,7 +993,8 @@
 
       function addTab(label, value){
         const btn = document.createElement("button");
-        btn.className = "deckTab" + ((settings.deck === value) ? " active" : "");
+        const active = !isReviewRoute() && settings.deck === value;
+        btn.className = "deckTab" + (active ? " active" : "");
         btn.type = "button";
         btn.textContent = label;
         btn.onclick = () => {
@@ -895,7 +1011,19 @@
         deckBarEl.appendChild(btn);
       }
 
+      function addReviewTab(){
+        const btn = document.createElement("button");
+        btn.className = "deckTab" + (isReviewRoute() ? " active" : "");
+        btn.type = "button";
+        btn.textContent = "Review";
+        btn.onclick = () => {
+          goReview();
+        };
+        deckBarEl.appendChild(btn);
+      }
+
       addTab("All", "all");
+      addReviewTab();
       for (let d=1; d<=deckCount; d++){
         addTab(`Deck ${String(d).padStart(2,"0")}`, String(d));
       }
@@ -923,7 +1051,7 @@
         row.className="itemRow";
 
         const left=document.createElement("div");
-        left.style.flex = "1";
+        left.className = "itemMain";
 
         const title=document.createElement("div");
         title.className="itemTitle";
@@ -946,16 +1074,32 @@
         left.appendChild(title);
         left.appendChild(sub);
 
-        const learnBtn=document.createElement("button");
-        learnBtn.className="learnMini";
-        learnBtn.textContent="暗記へ";
-        learnBtn.onclick = (e) => {
+        const rowActions=document.createElement("div");
+        rowActions.className = "rowActions";
+
+        const starBtn=document.createElement("button");
+        starBtn.className = "starBtn" + (isStarred(c.id) ? " active" : "");
+        starBtn.type = "button";
+        starBtn.textContent = isStarred(c.id) ? "★" : "☆";
+        starBtn.onclick = (e) => {
           e.stopPropagation();
-          goCard(c.id);
+          toggleStar(c.id);
         };
 
+        const rowAudioBtn=document.createElement("button");
+        rowAudioBtn.className="learnMini";
+        rowAudioBtn.textContent="🎧";
+        rowAudioBtn.disabled = !c.audioUrl;
+        rowAudioBtn.onclick = (e) => {
+          e.stopPropagation();
+          if (c.audioUrl) safePlayFromUrl(c.audioUrl);
+        };
+
+        rowActions.appendChild(starBtn);
+        rowActions.appendChild(rowAudioBtn);
+
         row.appendChild(left);
-        row.appendChild(learnBtn);
+        row.appendChild(rowActions);
 
         const ans=document.createElement("div");
         ans.className="answerBox";
@@ -968,28 +1112,17 @@
         ipa.className="ipa";
         ipa.textContent=c.ipa || "";
 
-        const actions=document.createElement("div");
-        actions.className="answerActions";
-
-        const audioBtn=document.createElement("button");
-        audioBtn.className="audioMini";
-        audioBtn.textContent="▶︎ 音声";
-        audioBtn.disabled = !c.audioUrl;
-        audioBtn.onclick = (e) => {
-          e.stopPropagation();
-          if (c.audioUrl) safePlayFromUrl(c.audioUrl);
-        };
-
-        actions.appendChild(audioBtn);
-
         ans.appendChild(en);
         ans.appendChild(ipa);
-        ans.appendChild(actions);
 
         item.onclick = () => {
           const isOpen = expanded.has(c.id);
-          if (isOpen) expanded.delete(c.id);
-          else expanded.add(c.id);
+          if (isOpen) {
+            expanded.delete(c.id);
+          } else {
+            expanded.add(c.id);
+            if (c.audioUrl) safePlayFromUrl(c.audioUrl);
+          }
           ans.style.display = expanded.has(c.id) ? "block" : "none";
         };
 
@@ -1032,10 +1165,11 @@
       ratingsEl.style.display="none";
 
       if (!card){
-        jaEl.textContent="今日は暗記がありません 🎉";
+        jaEl.textContent = isReviewRoute() ? "☆REVIEW のカードがありません。" : "今日は暗記がありません 🎉";
         enEl.textContent=""; ipaEl.textContent="";
         metaEl.textContent="";
         playBtn.disabled=true;
+        starCurrentBtn.style.display="none";
         addToLearningBtn.style.display="none";
         updateRatingHints();
         return;
@@ -1048,6 +1182,9 @@
       enEl.textContent=card.en;
       ipaEl.textContent=card.ipa||"";
       playBtn.disabled=!card.audioUrl;
+      starCurrentBtn.style.display="inline-flex";
+      starCurrentBtn.textContent = isStarred(card.id) ? "★" : "☆";
+      starCurrentBtn.classList.toggle("active", isStarred(card.id));
 
       const phase = introduced ? (st.phase || "review") : "preview";
       metaEl.textContent = `UNIT ${String(card.unit).padStart(3,"0")} • ${card.id}` + (introduced ? ` • ${phase}` : " • プレビュー");
@@ -1095,17 +1232,24 @@
 
       renderStatus();
 
-      const scope=getFilteredCards();
-      const next = pickNextReadyCard(scope);
+      const scope = isReviewRoute() ? getDeckCards() : getFilteredCards();
+      const next = isReviewRoute()
+        ? pickNextStarredCard(scope, current.id)
+        : pickNextReadyCard(scope);
       if (next){
         renderCard(next);
       } else {
-        goList();
+        if (isReviewRoute()){
+          renderCard(null);
+        } else {
+          goList();
+        }
       }
     }
 
     function renderByHash(){
       const h = location.hash || "#today";
+      renderDeckTabs(deckCountCurrent);
       renderStatus();
 
       if (h === "#list"){
@@ -1125,6 +1269,13 @@
         }
         showStudyView();
         renderCard(next || null);
+        return;
+      }
+
+      if (h === "#review"){
+        setActiveNav("review");
+        showStudyView();
+        renderCard(pickNextStarredCard(getDeckCards()) || null);
         return;
       }
 
@@ -1151,7 +1302,9 @@
       sheetEl.classList.remove("open");
       document.body.style.overflow="";
       const h = location.hash || "#today";
-      setActiveNav(h==="#list" ? "list" : "today");
+      if (h === "#list") setActiveNav("list");
+      else if (h === "#review") setActiveNav("review");
+      else setActiveNav("today");
     }
 
     async function loadCsv(){
@@ -1176,8 +1329,8 @@
       saveProgress();
 
       const maxUnit = Math.max(1, ...cards.map(c => Number(c.unit) || 1));
-      const deckCount = Math.ceil(maxUnit / 5);
-      renderDeckTabs(deckCount);
+      deckCountCurrent = Math.ceil(maxUnit / 5);
+      renderDeckTabs(deckCountCurrent);
 
       newPerDayInputEl.value = settings.newPerDay;
       autoPlayToggle.checked = !!settings.autoPlayOnFlip;
@@ -1201,6 +1354,12 @@
     playBtn.addEventListener("click", (e)=>{
       e.stopPropagation();
       if (current?.audioUrl) safePlayFromUrl(current.audioUrl);
+    });
+
+    starCurrentBtn.addEventListener("click", (e)=>{
+      e.stopPropagation();
+      if (!current) return;
+      toggleStar(current.id);
     });
 
     addToLearningBtn.addEventListener("click", (e)=>{
@@ -1285,8 +1444,8 @@
         expanded.clear();
 
         const maxUnit = Math.max(1, ...cards.map(c => Number(c.unit) || 1));
-        const deckCount = Math.ceil(maxUnit / 5);
-        renderDeckTabs(deckCount);
+        deckCountCurrent = Math.ceil(maxUnit / 5);
+        renderDeckTabs(deckCountCurrent);
 
         renderByHash();
         showToast("Import完了");
