@@ -616,6 +616,10 @@
       return `${y}-${m}-${dd}`;
     }
 
+    function syncIpaPunctuation(_en, ipaRaw){
+      return (ipaRaw ?? "").trim();
+    }
+
     function downloadText(filename, text){
       const blob=new Blob([text],{type:"application/json;charset=utf-8"});
       const url=URL.createObjectURL(blob);
@@ -1345,7 +1349,7 @@
         theme:(r.theme??"").trim(),
         ja:(r.ja??"").trim(),
         en:(r.en??"").trim(),
-        ipa:(r.ipa??"").trim(),
+        ipa:syncIpaPunctuation((r.en??"").trim(), r.ipa),
         audioUrl:(r.audioUrl??"").trim(),
         id:(r.id??"").trim(),
       })).filter(c=>c.id && c.ja && c.en);
