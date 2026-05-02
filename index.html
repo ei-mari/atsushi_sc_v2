@@ -644,7 +644,8 @@
       return { start, end };
     }
     function deckLabel(deckNum){
-      return `Deck ${String(deckNum).padStart(2,"0")}`;
+      const { start, end } = deckRange(deckNum);
+      return `U${start}-U${end}`;
     }
     function setFilterInfo() {
       const d = settings.deck === "all" ? "All" : deckLabel(Number(settings.deck));
@@ -1034,7 +1035,7 @@
 
         addCard("All", "all");
         addCard("Review", "review");
-        for (let d=1; d<=deckCount; d++) addCard(`Deck ${String(d).padStart(2,"0")}`, String(d));
+        for (let d=1; d<=deckCount; d++) addCard(deckLabel(d), String(d));
         return;
       }
 
@@ -1050,7 +1051,7 @@
 
       addOpt("All", "all");
       addOpt("Review", "review");
-      for (let d=1; d<=deckCount; d++) addOpt(`Deck ${String(d).padStart(2,"0")}`, String(d));
+      for (let d=1; d<=deckCount; d++) addOpt(deckLabel(d), String(d));
 
       sel.value = isReviewRoute() ? "review" : settings.deck;
       sel.onchange = () => activateDeck(sel.value);
