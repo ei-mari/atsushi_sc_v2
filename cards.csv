@@ -98,7 +98,7 @@ unit,idx,theme,ja,en,ipa,audioUrl,id
 33,2,Come back,戻ってくるまでこのカバンを持っていてください。,Hold this bag for me until I come back.,/hoʊld ðɪs bæɡ fɚ mi ənˈtɪl aɪ kʌm bæk/,audio/unit33/U033-02.mp3,U033-02
 33,4,Come back,あの有名歌手は咽喉ガンから再起しました。,That famous singer came back from throat cancer.,/ðæt ˈfeɪməs ˈsɪŋɚ keɪm bæk frəm θroʊt ˈkænsɚ/,audio/unit33/U033-04.mp3,U033-04
 33,5,Come back,ジャイアンツは3点差の劣勢から逆転しました。,The Giants came back from a 3-run deficit.,/ðə ˈdʒaɪənts keɪm bæk frəm ə θri rʌn ˈdɛfəsɪt/,audio/unit33/U033-05.mp3,U033-05
-34,1,Bring up,次のマネージャー会議で残業の問題をもち出すつもりです。,"At the next managers' meeting, I am going to bring up the matter of overtime.","/ət ðə nɛkst ˈmænɪdʒɚz ˈmitɪŋ, aɪ æm ˈɡoʊɪŋ tə brɪŋ ʌp ðə ˈmætɚ əv ˈoʊvɚˌtaɪm/",audio/unit34/U034-01.mp3,U034-01
+34,1,Bring up,次のマネージャー会議で残業の問題をもち出すつもりです。,"At the next managers' meeting, I’m going to bring up the matter of overtime.","/ət ðə nɛkst ˈmænɪdʒɚz ˈmitɪŋ, aɪm ˈɡoʊɪŋ tə brɪŋ ʌp ðə ˈmætɚ əv ˈoʊvɚˌtaɪm/",audio/unit34/U034-01.mp3,U034-01
 34,2,Bring up,年次考課で、上司は私の遅刻傾向の話題をもち出しました。,"During my annual review, the boss brought up the matter of my tendency to be late to work.","/ˈdʊrɪŋ maɪ ˈænjuəl rɪˈvju, ðə bɔs brɔt ʌp ðə ˈmætɚ əv maɪ ˈtɛndənsi tə bi leɪt tə wɝk/",audio/unit34/U034-02.mp3,U034-02
 34,3,Bring up,大阪で育てられましたが、大学に入学するときに東京に引っ越しました。,"I was brought up in Osaka but moved to Tokyo when I entered college.","/aɪ wəz brɔt ʌp ɪn oʊˈsɑkə bət muvd tə ˈtoʊkioʊ wɛn aɪ ˈɛntɚd ˈkɑlɪdʒ/",audio/unit34/U034-03.mp3,U034-03
 34,4,Bring up,人は肌の色の違いで判断されるべきではないと考えるように育てられました。,I was brought up to believe that people shouldn't be judged by their color.,/aɪ wəz brɔt ʌp tə bɪˈliv ðət ˈpipəl ˈʃʊdənt bi dʒʌdʒd baɪ ðɛr ˈkʌlɚ/,audio/unit34/U034-04.mp3,U034-04
@@ -106,3 +106,12 @@ unit,idx,theme,ja,en,ipa,audioUrl,id
 35,1,Wait on,もうこれ以上あなたを待っていられません！,I can't wait on you any longer!,/aɪ kænt weɪt ɑn ju ˈɛni ˈlɔŋɡɚ!/,audio/unit35/U035-01.mp3,U035-01
 35,4,Wait on,私たちを接客してくれたウェイトレスは明るく親切でした。,The waitress who waited on us was cheerful and polite.,/ðə ˈweɪtrəs hu ˈweɪtəd ɑn ʌs wəz ˈtʃɪrfəl ənd pəˈlaɪt/,audio/unit35/U035-04.mp3,U035-04
 35,5,Wait on,給仕係は忙しく一度に4つのテーブルに対応していました。,The server was busy waiting on four tables at once.,/ðə ˈsɝvɚ wəz ˈbɪzi ˈweɪtɪŋ ɑn fɔr ˈteɪbəlz ət wʌns/,audio/unit35/U035-05.mp3,U035-05
+36,1,Make out,音楽がうるさかったので、彼が言ったことが聞こえませんでした。,I couldn't make out what he said due to the loud music.,/aɪ ˈkʊdənt meɪk aʊt wʌt hi sɛd du tə ðə laʊd ˈmjuzɪk/,audio/unit36/U036-01.mp3,U036-01
+36,4,Make out,息子さんの入試はうまくいきましたか？,How did your son make out on his entrance exams?,/haʊ dɪd jʊr sʌn meɪk aʊt ɑn hɪz ˈɛntrəns ɪɡˈzæmz/,audio/unit36/U036-04.mp3,U036-04
+36,5,Make out,タナカ株式会社の名前で領収書を作ってください。,"Please make out a receipt in the name of ""Tanaka Inc.""",/pliz meɪk aʊt ə rɪˈsit ɪn ðə neɪm əv təˈnɑkə ɪŋk/,audio/unit36/U036-05.mp3,U036-05
+37,1,Cut off,その魚は調理する前に皮を切り取るべきです。,You should cut off the skin before cooking that fish.,/ju ʃʊd kʌt ɔf ðə skɪn bɪˈfɔr ˈkʊkɪŋ ðæt fɪʃ/,audio/unit37/U037-01.mp3,U037-01
+37,3,Cut off,ウイルスが広がる前に、彼らはコンピューターを切りました。,They cut off the computer before the virus could spread.,/ðeɪ kʌt ɔf ðə kəmˈpjutɚ bəˈfɔr ðə ˈvaɪrəs kʊd sprɛd/,audio/unit37/U037-03.mp3,U037-03
+37,5,Cut off,レポーターは発言の途中で政治家の言葉を遮りました。,The reporter cut the politician off in mid-sentence.,/ðə rɪˈpɔrtɚ kʌt ðə ˌpɑləˈtɪʃən ɔf ɪn mɪd ˈsɛntəns/,audio/unit37/U037-05.mp3,U037-05
+38,2,Run into,年老いた女性が自動車で電柱に追突しました。,The old woman ran into a telephone pole with her car.,/ði oʊld ˈwʊmən ræn ˈɪntu ə ˈtɛləˌfoʊn poʊl wɪð hɚ kɑr/,audio/unit38/U038-02.mp3,U038-02
+38,4,Run into,今日偶然スーパーであなたのお母さんに会いました。,I ran into your mother at the supermarket today.,/aɪ ræn ˈɪntu jʊr ˈmʌðɚ ət ðə ˈsupɚˌmɑrkɪt təˈdeɪ/,audio/unit38/U038-04.mp3,U038-04
+38,5,Run into,パイロットは嵐の中で着陸しようとしてトラブルに陥りました。,The pilot ran into trouble trying to land in the storm.,/ðə ˈpaɪlət ræn ˈɪntu ˈtrʌbəl ˈtraɪɪŋ tə lænd ɪn ðə stɔrm/,audio/unit38/U038-05.mp3,U038-05
