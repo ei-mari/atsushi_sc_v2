@@ -1,0 +1,3454 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Phrasal Verb Test</title>
+  <style>
+    :root{
+      --bg:#f7f2fa;
+      --card:#fffbfe;
+      --text:#1d1b20;
+      --muted:#625b71;
+      --line:#e7e0ec;
+      --primary:#6750a4;
+      --primary-dark:#4f378b;
+      --primary-soft:#eaddff;
+      --secondary:#006a6a;
+      --secondary-soft:#cce8e7;
+      --tertiary:#7d5260;
+      --tertiary-soft:#ffd8e4;
+      --warning:#7c5800;
+      --warning-soft:#ffdea8;
+      --green-soft:#dff6dd;
+      --bad:#ba1a1a;
+      --bad-soft:#ffdad6;
+      --shadow:0 1px 2px rgba(29,27,32,.16), 0 6px 16px rgba(29,27,32,.08);
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(103,80,164,.12), transparent 34%),
+        radial-gradient(circle at 90% 8%, rgba(0,106,106,.1), transparent 32%),
+        linear-gradient(180deg, #fffbfe 0%, #f7f2fa 100%);
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Sans","Noto Sans JP",sans-serif;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+    }
+    .wrap{
+      width:min(100%, 430px);
+      padding:22px 16px 28px;
+    }
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin:2px 0 14px;
+      position:static;
+    }
+    h1{
+      font-size:26px;
+      line-height:1.2;
+      margin:0;
+      font-weight:900;
+    }
+    .sub{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.45;
+      margin-top:7px;
+    }
+    button{
+      border:0;
+      border-radius:14px;
+      background:var(--primary);
+      color:#fff;
+      font-weight:800;
+      padding:13px 18px;
+      cursor:pointer;
+      min-height:46px;
+      box-shadow:0 2px 4px rgba(29,27,32,.18);
+      transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    }
+    button:hover{
+      transform:translateY(-1px);
+      background:var(--primary-dark);
+    }
+    button:active{
+      transform:translateY(1px);
+      box-shadow:0 1px 2px rgba(29,27,32,.18);
+    }
+    button.secondary{
+      background:var(--primary-soft);
+      color:var(--primary-dark);
+      border:0;
+      box-shadow:none;
+    }
+    button:disabled{
+      opacity:.5;
+      cursor:not-allowed;
+      transform:none;
+    }
+    .hidden{ display:none !important; }
+    .panel{
+      background:var(--card);
+      border:2px solid var(--line);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .panel::before{
+      content:"";
+      display:block;
+      height:6px;
+      background:linear-gradient(90deg, var(--primary), var(--secondary), var(--tertiary));
+    }
+    #modePanel,
+    #setPanel{
+      background:transparent;
+      border:0;
+      border-radius:0;
+      box-shadow:none;
+      overflow:visible;
+    }
+    #modePanel::before,
+    #setPanel::before{
+      display:none;
+    }
+    .modeGrid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+      padding:0;
+    }
+    .setPanel{
+      padding:0 0 22px;
+      --set-content-inset:30px;
+      --set-content-right-inset:22px;
+    }
+    .homeBackBtn{
+      display:none;
+      width:100%;
+      margin-bottom:16px;
+      background:#fff;
+      color:var(--primary-dark);
+      border:1px solid var(--line);
+      box-shadow:0 1px 2px rgba(29,27,32,.08);
+    }
+    .setIntro{
+      display:none;
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.6;
+      font-weight:800;
+    }
+    .setHero{
+      margin-bottom:18px;
+      padding:0;
+      border-radius:0;
+      background:transparent;
+      border:0;
+      box-shadow:none;
+      position:relative;
+    }
+    .setHeroThumb,
+    .modeThumb{
+      display:block;
+      width:100%;
+      aspect-ratio:16 / 10;
+      object-fit:cover;
+      border-radius:18px;
+      border:0;
+      box-shadow:none;
+      background:#f8f3ff;
+    }
+    .setHeroThumb{
+      margin-bottom:0;
+      box-shadow:none;
+    }
+    .setHeroLabel{
+      display:block;
+      border-radius:0;
+      padding:0;
+      margin:14px 0 14px var(--set-content-inset);
+      background:transparent;
+      color:var(--text);
+      font-size:24px;
+      line-height:1.2;
+      font-weight:950;
+      letter-spacing:0;
+      box-shadow:none;
+    }
+    .setHeroTitle{
+      display:none;
+      margin:0;
+      color:var(--text);
+      font-size:22px;
+      line-height:1.25;
+      font-weight:950;
+    }
+    .setGrid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+      width:calc(100% - var(--set-content-inset) - var(--set-content-right-inset));
+      margin-left:var(--set-content-inset);
+    }
+    .setButton{
+      display:grid;
+      place-items:center start;
+      gap:4px;
+      width:100%;
+      min-height:58px;
+      text-align:left;
+      background:var(--card);
+      color:var(--text);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:14px 16px;
+      box-shadow:none;
+    }
+    .setButton:hover{
+      background:#fff;
+      border-color:var(--primary-soft);
+      box-shadow:0 2px 5px rgba(29,27,32,.14), 0 10px 22px rgba(103,80,164,.1);
+    }
+    .setButton strong{
+      display:block;
+      color:var(--primary);
+      font-size:18px;
+      line-height:1.2;
+    }
+    .setButton span{
+      display:block;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.35;
+      margin-top:3px;
+    }
+    .modeCard{
+      width:100%;
+      min-height:160px;
+      text-align:left;
+      background:transparent;
+      color:var(--text);
+      border:0;
+      border-radius:0;
+      padding:0;
+      overflow:visible;
+      box-shadow:none;
+    }
+    .modeThumb{
+      margin-bottom:0;
+      border-radius:20px;
+    }
+    .modeCard strong{
+      display:none;
+      font-size:22px;
+      line-height:1.1;
+      margin:0 18px 10px;
+    }
+    .modeCard span{
+      display:none;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.6;
+      margin:0 18px;
+    }
+    .modeCard:hover{
+      border-color:transparent;
+      background:transparent;
+    }
+    .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:16px 18px;
+      border-bottom:2px solid var(--line);
+      flex-wrap:wrap;
+    }
+    .meter{
+      color:var(--muted);
+      font-size:14px;
+      font-weight:800;
+    }
+    .body{ padding:20px 18px 22px; }
+    .questionMeta{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+    .tag{
+      border-radius:999px;
+      padding:7px 11px;
+      background:var(--primary-soft);
+      color:var(--primary-dark);
+      font-size:13px;
+      font-weight:800;
+    }
+    .audioBox{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin-bottom:18px;
+      padding:18px;
+      border:2px solid var(--line);
+      border-radius:22px;
+      background:
+        linear-gradient(135deg, rgba(103,80,164,.12), rgba(0,106,106,.1)),
+        var(--card);
+      box-shadow:var(--shadow);
+    }
+    .audioBox audio{
+      display:none;
+    }
+    .audioPlay{
+      width:62px;
+      height:62px;
+      min-height:62px;
+      flex:0 0 auto;
+      border-radius:50%;
+      padding:0;
+      display:grid;
+      place-items:center;
+      background:var(--primary);
+      box-shadow:0 3px 8px rgba(103,80,164,.28);
+      font-size:25px;
+    }
+    .audioPlay.playing{
+      background:var(--secondary);
+      box-shadow:0 3px 8px rgba(0,106,106,.26);
+    }
+    .audioMeta{
+      min-width:0;
+      flex:1;
+    }
+    .audioLabel{
+      color:var(--primary-dark);
+      font-size:13px;
+      line-height:1;
+      font-weight:950;
+      margin-bottom:10px;
+      letter-spacing:.04em;
+    }
+    .audioTrack{
+      position:relative;
+      height:14px;
+      border-radius:999px;
+      background:#e7e0ec;
+      overflow:hidden;
+      box-shadow:inset 0 2px 4px rgba(31,41,51,.08);
+    }
+    .audioProgress{
+      width:0%;
+      height:100%;
+      border-radius:999px;
+      background:linear-gradient(90deg, var(--primary), var(--secondary));
+      transition:width .12s linear;
+    }
+    .audioWaves{
+      display:flex;
+      align-items:end;
+      gap:4px;
+      height:22px;
+      margin-top:10px;
+    }
+    .audioWaves span{
+      width:6px;
+      border-radius:999px;
+      background:rgba(103,80,164,.52);
+    }
+    .audioWaves span:nth-child(1){ height:8px; }
+    .audioWaves span:nth-child(2){ height:16px; background:rgba(0,106,106,.48); }
+    .audioWaves span:nth-child(3){ height:11px; }
+    .audioWaves span:nth-child(4){ height:20px; background:rgba(125,82,96,.48); }
+    .audioWaves span:nth-child(5){ height:13px; background:rgba(0,106,106,.42); }
+    .audioWaves span:nth-child(6){ height:18px; }
+    .audioBox.is-playing .audioWaves span{
+      animation:bounceWave .72s ease-in-out infinite alternate;
+    }
+    .audioBox.is-playing .audioWaves span:nth-child(2){ animation-delay:.08s; }
+    .audioBox.is-playing .audioWaves span:nth-child(3){ animation-delay:.16s; }
+    .audioBox.is-playing .audioWaves span:nth-child(4){ animation-delay:.24s; }
+    .audioBox.is-playing .audioWaves span:nth-child(5){ animation-delay:.32s; }
+    .audioBox.is-playing .audioWaves span:nth-child(6){ animation-delay:.4s; }
+    @keyframes bounceWave{
+      from{ transform:scaleY(.72); opacity:.7; }
+      to{ transform:scaleY(1.12); opacity:1; }
+    }
+    .blankSentence{
+      font-size:21px;
+      line-height:1.65;
+      font-weight:900;
+      margin:0 0 18px;
+      padding:18px;
+      border:2px solid var(--line);
+      border-radius:16px;
+      background:var(--card);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.9);
+      overflow-wrap:anywhere;
+    }
+    .promptSentence{
+      display:inline-flex;
+      width:max-content;
+      color:var(--primary-dark);
+      background:var(--primary-soft);
+      border:2px solid transparent;
+      border-radius:999px;
+      font-size:12px;
+      line-height:1;
+      font-weight:900;
+      padding:7px 10px;
+      margin-bottom:14px;
+    }
+    .answerSentence{
+      display:block;
+      letter-spacing:.01em;
+    }
+    .listeningNotice{
+      display:block;
+      margin-top:10px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.65;
+      font-weight:800;
+    }
+    .sentenceJa{
+      display:block;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.6;
+      font-weight:800;
+      margin-top:8px;
+    }
+    .choiceInner{
+      display:grid;
+      grid-template-columns:38px 1fr;
+      gap:12px;
+      align-items:start;
+    }
+    .choiceNumber{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      background:var(--primary-soft);
+      color:var(--primary-dark);
+      font-size:16px;
+      font-weight:950;
+      margin-top:1px;
+    }
+    .choiceEn{
+      display:block;
+      font-size:17px;
+      line-height:1.55;
+      overflow-wrap:anywhere;
+    }
+    .blank{
+      display:inline-block;
+      min-width:110px;
+      border-bottom:3px solid var(--text);
+      transform:translateY(3px);
+    }
+    .choices{
+      display:grid;
+      gap:14px;
+    }
+    .ratings{
+      display:none;
+      gap:14px;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      margin-top:22px;
+    }
+    .ratings.show{ display:grid; }
+    .ratings .choice{
+      text-align:center;
+      padding:17px 8px 16px;
+      min-height:98px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:7px;
+      border-width:0;
+      font-size:15px;
+      letter-spacing:.02em;
+      position:relative;
+      overflow:hidden;
+      text-transform:uppercase;
+    }
+    .ratings .choice::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.2), rgba(255,255,255,0) 48%);
+      pointer-events:none;
+    }
+    .ratings .choice::after{
+      content:"";
+      position:absolute;
+      right:12px;
+      bottom:10px;
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      background:rgba(255,255,255,.16);
+      pointer-events:none;
+    }
+    .rating-mark{
+      display:block;
+      width:auto;
+      height:auto;
+      display:grid;
+      place-items:center;
+      background:transparent;
+      box-shadow:none;
+      font-size:34px;
+      line-height:1;
+      font-weight:950;
+      line-height:1;
+      position:relative;
+      z-index:1;
+    }
+    .ratings .choice span:not(.rating-mark){
+      position:relative;
+      z-index:1;
+      font-size:16px;
+      font-weight:950;
+      color:#fff;
+      text-shadow:0 1px 2px rgba(0,0,0,.16);
+    }
+    .ratings .choice[data-rating="good"]{
+      background:linear-gradient(180deg, #7965b8 0%, var(--primary) 100%);
+      color:#fff;
+      box-shadow:0 6px 0 var(--primary-dark), 0 14px 24px rgba(103,80,164,.24);
+    }
+    .ratings .choice[data-rating="ok"]{
+      background:linear-gradient(180deg, #078080 0%, var(--secondary) 100%);
+      color:#fff;
+      box-shadow:0 6px 0 #005252, 0 14px 24px rgba(0,106,106,.22);
+    }
+    .ratings .choice[data-rating="review"]{
+      background:linear-gradient(180deg, #965f70 0%, var(--tertiary) 100%);
+      color:#fff;
+      box-shadow:0 6px 0 #5f3d49, 0 14px 24px rgba(125,82,96,.22);
+    }
+    .ratings .choice[data-rating="good"] .rating-mark{
+      color:#fff;
+    }
+    .ratings .choice[data-rating="ok"] .rating-mark{
+      color:#fff;
+      font-size:32px;
+    }
+    .ratings .choice[data-rating="review"] .rating-mark{
+      color:#fff;
+      font-size:38px;
+    }
+    .ratings .choice:hover{
+      transform:translateY(-1px);
+    }
+    .ratings .choice[data-rating="good"].correct,
+    .ratings .choice[data-rating="ok"].correct{
+      outline:3px solid rgba(88,204,2,.22);
+    }
+    .ratings .choice[data-rating="review"].wrong{
+      outline:3px solid rgba(255,75,75,.2);
+    }
+    .choice{
+      width:100%;
+      text-align:left;
+      background:var(--card);
+      color:var(--text);
+      border:2px solid #dce8d6;
+      border-radius:16px;
+      padding:17px;
+      font-weight:900;
+      line-height:1.55;
+      box-shadow:0 1px 2px rgba(29,27,32,.14);
+    }
+    .choice:hover{
+      border-color:var(--primary-soft);
+      background:#fff;
+    }
+    .choice.correct{
+      border-color:rgba(10,127,66,.45);
+      background:var(--green-soft);
+      color:#064c2a;
+    }
+    .choice.wrong{
+      border-color:rgba(180,35,24,.45);
+      background:rgba(180,35,24,.08);
+      color:#7a1b13;
+    }
+    .answer{
+      margin-top:20px;
+      padding:18px;
+      border:2px solid #dce8d6;
+      border-radius:16px;
+      background:var(--card);
+      box-shadow:var(--shadow);
+      display:none;
+    }
+    .answer.show{ display:block; }
+    .feedback{
+      display:none;
+      margin-bottom:14px;
+      padding:13px 14px;
+      border-radius:14px;
+      font-size:16px;
+      line-height:1.5;
+      font-weight:900;
+    }
+    .feedback.show{ display:block; }
+    .feedback.correct{
+      color:#3c8700;
+      background:var(--green-soft);
+      border:2px solid #b7e99d;
+    }
+    .feedback.wrong{
+      color:#8f1f16;
+      background:#fff1ee;
+      border:2px solid #ffc7bd;
+    }
+    .answerMeta{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-bottom:12px;
+    }
+    .answerUnit{
+      display:inline-flex;
+      align-items:center;
+      min-height:28px;
+      border-radius:999px;
+      padding:6px 10px;
+      background:var(--primary-soft);
+      color:var(--primary-dark);
+      font-size:12px;
+      line-height:1;
+      font-weight:950;
+      letter-spacing:.03em;
+    }
+    .en{
+      font-size:20px;
+      line-height:1.5;
+      font-weight:900;
+      margin-bottom:10px;
+    }
+    .ipa{
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.55;
+      overflow-wrap:anywhere;
+    }
+    .ja{
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.65;
+      margin-bottom:10px;
+    }
+    .nav{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      margin-top:20px;
+    }
+    #quizPanel.mode-listening .blankSentence{
+      margin-bottom:0;
+    }
+    #quizPanel.mode-listening .answer:not(.show){
+      margin:0;
+      padding:0;
+      border:0;
+    }
+    #quizPanel.mode-listening .nav{
+      margin-top:10px;
+    }
+    .result{
+      padding:22px 18px;
+      display:none;
+    }
+    .result.show{ display:block; }
+    .score{
+      font-size:28px;
+      font-weight:950;
+      margin:0 0 10px;
+    }
+    .resultMessage{
+      display:none;
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.5;
+      font-weight:900;
+    }
+    .resultMessage.show{ display:block; }
+    .copyBox{
+      display:none;
+      margin:14px 0 16px;
+      padding:14px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#fff;
+    }
+    .copyBox.show{ display:block; }
+    .copyBox label{
+      display:block;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.4;
+      font-weight:900;
+      margin-bottom:8px;
+    }
+    .copyBox textarea{
+      width:100%;
+      min-height:90px;
+      resize:vertical;
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:10px;
+      color:var(--text);
+      background:#fffbfe;
+      font:700 14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Sans","Noto Sans JP",sans-serif;
+    }
+    .copyBox button{
+      width:100%;
+      margin-top:10px;
+    }
+    .review{
+      display:grid;
+      gap:10px;
+      margin-top:16px;
+    }
+    .reviewItem{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:14px;
+      background:#fff;
+    }
+    .reviewItem strong{ display:block; margin-bottom:5px; }
+    .bottomSetNav{
+      position:static;
+      width:100%;
+      transform:none;
+      display:grid;
+      grid-template-columns:repeat(6, minmax(0, 1fr));
+      gap:8px;
+      margin-top:18px;
+      padding:10px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:rgba(255,251,254,.94);
+      box-shadow:0 4px 14px rgba(29,27,32,.1);
+      backdrop-filter:blur(12px);
+    }
+    .bottomSetBtn{
+      grid-column:span 2;
+      min-height:46px;
+      padding:8px 4px;
+      border-radius:16px;
+      background:var(--primary-soft);
+      color:var(--primary-dark);
+      box-shadow:none;
+      font-size:13px;
+      line-height:1.1;
+      font-weight:950;
+    }
+    .bottomSetBtn.compact{
+      grid-column:span 2;
+    }
+    .bottomSetBtn.wide{
+      grid-column:span 3;
+    }
+    .bottomSetBtn:disabled{
+      opacity:.45;
+    }
+    .bottomSetBtn.active{
+      background:var(--primary);
+      color:#fff;
+      box-shadow:0 3px 8px rgba(103,80,164,.24);
+    }
+    .bottomSetNav.paraphraseNav{
+      grid-template-columns:repeat(5, minmax(0, 1fr));
+    }
+    .bottomSetNav.paraphraseNav .bottomSetBtn{
+      grid-column:span 1;
+      padding:8px 2px;
+    }
+    @media (max-width:520px){
+      header{ align-items:flex-start; flex-direction:column; }
+      .top{ align-items:flex-start; }
+      .wrap{ padding:18px 12px 28px; }
+      h1{ font-size:23px; }
+      .body{ padding:17px 14px 20px; }
+      .blankSentence{ font-size:18px; padding:16px; }
+      .choice{ padding:15px; }
+      .choiceEn{ font-size:16px; }
+      .en{ font-size:18px; }
+      .ratings{ grid-template-columns:1fr; }
+      .nav button{ flex:1; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div>
+        <h1>Phrasal Verb Test</h1>
+        <div class="sub" id="pageSub">モードを選んで挑戦してください！</div>
+      </div>
+    </header>
+
+    <section class="panel" id="modePanel">
+      <div class="modeGrid">
+        <button class="modeCard" id="listeningModeBtn" type="button">
+          <img class="modeThumb" src="assets/thumb-listening.png" alt="">
+          <strong>LISTENING MODE</strong>
+          <span>リスニングをして理解度を３段階評価しよう</span>
+        </button>
+        <button class="modeCard" id="paraphraseModeBtn" type="button">
+          <img class="modeThumb" src="assets/thumb-paraphrase.png" alt="">
+          <strong>PARAPHRASE MODE</strong>
+          <span>与えられた英文をphrasal verbで言い換えよう</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="panel hidden" id="setPanel">
+      <div class="setPanel">
+        <button class="homeBackBtn" id="backToModeBtn" type="button">ホームに戻る</button>
+        <div class="setHero">
+          <img class="setHeroThumb" id="setHeroThumb" src="assets/thumb-listening.png" alt="">
+          <span class="setHeroLabel" id="setHeroLabel">UNIT 1 - 20</span>
+          <p class="setHeroTitle" id="setHeroTitle"></p>
+        </div>
+        <p class="setIntro">練習するセットを選んでください。</p>
+        <div class="setGrid" id="setGrid"></div>
+      </div>
+    </section>
+
+    <section class="panel hidden" id="quizPanel">
+      <div class="top">
+        <div class="meter" id="meter">Loading...</div>
+        <button class="secondary" id="replayBtn" type="button">Play</button>
+      </div>
+      <div class="body">
+        <div class="questionMeta">
+          <span class="tag" id="unitTag">Unit --</span>
+          <span class="tag" id="themeTag">Choose one</span>
+        </div>
+        <div class="audioBox">
+          <button class="audioPlay" id="audioPlayBtn" type="button" aria-label="Play audio">▶</button>
+          <div class="audioMeta">
+            <div class="audioLabel">LISTEN AND CATCH IT</div>
+            <div class="audioTrack" aria-hidden="true">
+              <div class="audioProgress" id="audioProgress"></div>
+            </div>
+            <div class="audioWaves" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <audio id="audio" controls preload="auto"></audio>
+        </div>
+        <div class="blankSentence" id="blankSentence"></div>
+        <div class="choices" id="choices"></div>
+        <div class="answer" id="answer">
+          <div class="feedback" id="feedback"></div>
+          <div class="answerMeta">
+            <span class="answerUnit" id="answerUnit">UNIT --</span>
+          </div>
+          <div class="en" id="answerEn"></div>
+          <div class="ja" id="answerJa"></div>
+          <div class="ipa" id="answerIpa"></div>
+        </div>
+        <div class="ratings" id="ratings">
+          <button class="choice" data-rating="good" type="button"><span class="rating-mark">○</span><span>GREAT</span></button>
+          <button class="choice" data-rating="ok" type="button"><span class="rating-mark">△</span><span>OK</span></button>
+          <button class="choice" data-rating="review" type="button"><span class="rating-mark">×</span><span>Not yet</span></button>
+        </div>
+        <div class="nav">
+          <button class="secondary" id="prevBtn" type="button">Prev</button>
+          <button class="secondary" id="showBtn" type="button">答えを確認</button>
+          <button id="nextBtn" type="button">Next</button>
+        </div>
+      </div>
+      <div class="result" id="result">
+        <p class="score" id="score"></p>
+        <p class="resultMessage" id="resultMessage">受験お疲れ様でした：）</p>
+        <div class="copyBox" id="copyBox">
+          <label for="copyText">コピーを押して、結果のまとめにご活用ください！</label>
+          <textarea id="copyText" readonly></textarea>
+          <button class="secondary" id="copyBtn" type="button">コピー</button>
+        </div>
+        <button id="againBtn" type="button">Try Again</button>
+        <div class="review" id="review"></div>
+      </div>
+    </section>
+    <nav class="bottomSetNav hidden" id="bottomSetNav" aria-label="Set selector"></nav>
+  </main>
+
+  <script>
+    const CSV_URL = "./cards.csv";
+    const QUESTION_COUNT = 5;
+    const DISTRACTOR_THEMES = [
+      "Wear off",
+      "Work out",
+      "Turn out",
+      "Look up",
+      "Put down",
+      "Give up",
+      "Go over",
+      "Take off"
+    ];
+    const PARAPHRASE_SETS = [
+      {
+        unit: "1",
+        set: 1,
+        theme: "Wear out",
+        prompt: "This old TV is broken and won't even turn on anymore.",
+        ja: "この古いテレビは壊れていて、もう電源さえ入りません。",
+        en: "This old TV is worn out and won't even turn on anymore.",
+        ipa: "",
+        audioUrl: "",
+        id: "P001-01"
+      },
+      {
+        unit: "1",
+        set: 2,
+        theme: "Wear out",
+        prompt: "These gloves are so threadbare they are not worth wearing.",
+        ja: "この手袋はあまりにも傷んでいて、着ける価値もありません。",
+        en: "These gloves are so worn out they are not worth wearing.",
+        ipa: "",
+        audioUrl: "",
+        id: "P001-02"
+      },
+      {
+        unit: "1",
+        set: 3,
+        theme: "Wear out",
+        prompt: "I'm too exhausted to do anything but go to bed.",
+        ja: "あまりにも疲れていてベッドに入る以外なにもできません。",
+        en: "I'm too worn out to do anything but go to bed.",
+        ipa: "",
+        audioUrl: "",
+        id: "P001-03"
+      },
+      {
+        unit: "1",
+        set: 4,
+        theme: "Wear out",
+        prompt: "I worked 70 hours this week. I am spent!",
+        ja: "今週は70時間働きました。ヘトヘトです！",
+        en: "I worked 70 hours this week. I am worn out!",
+        ipa: "",
+        audioUrl: "",
+        id: "P001-04"
+      },
+      {
+        unit: "1",
+        set: 5,
+        theme: "Wear out",
+        prompt: "Working two weeks straight without a day off exhausted me.",
+        ja: "休みなしで2週間続けて働いて、私は疲れ果てました。",
+        en: "Working two weeks straight without a day off wore me out.",
+        ipa: "",
+        audioUrl: "",
+        id: "P001-05"
+      },
+      {
+        unit: "2",
+        set: 1,
+        theme: "Wear off",
+        prompt: "It took a long time for the sense of fear to disappear.",
+        ja: "恐怖の感情がなくなるまでに長い時間がかかりました。",
+        en: "It took a long time for the sense of fear to wear off.",
+        ipa: "",
+        audioUrl: "",
+        id: "P002-01"
+      },
+      {
+        unit: "2",
+        set: 2,
+        theme: "Wear off",
+        prompt: "The excitement of owning a new house fades in a few years.",
+        ja: "新しい家を所有したよろこびは数年で消えていきます。",
+        en: "The excitement of owning a new house wears off in a few years.",
+        ipa: "",
+        audioUrl: "",
+        id: "P002-02"
+      },
+      {
+        unit: "2",
+        set: 3,
+        theme: "Wear off",
+        prompt: "The buttons on my microwave are disappearing from use.",
+        ja: "使いすぎて電子レンジのボタンが消えてきています。",
+        en: "The buttons on my microwave are wearing off from use.",
+        ipa: "",
+        audioUrl: "",
+        id: "P002-03"
+      },
+      {
+        unit: "2",
+        set: 4,
+        theme: "Wear off",
+        prompt: "His sense of humor tends to spread to the people around him.",
+        ja: "彼のユーモアセンスはよく周りの人に伝染します。",
+        en: "His sense of humor tends to wear off on the people around him.",
+        ipa: "",
+        audioUrl: "",
+        id: "P002-04"
+      },
+      {
+        unit: "2",
+        set: 5,
+        theme: "Wear off",
+        prompt: "At first he was shy but then her bubbly attitude spread to him.",
+        ja: "最初、彼は内気でしたが、彼女の陽気な態度が彼に伝染しました。",
+        en: "At first he was shy but then her bubbly attitude wore off on him.",
+        ipa: "",
+        audioUrl: "",
+        id: "P002-05"
+      },
+      {
+        unit: "3",
+        set: 1,
+        theme: "Wrap up",
+        prompt: "We swaddled the kitten with a blanket and fed it some milk.",
+        ja: "私たちは子ネコを毛布で包んで、ミルクを飲ませました。",
+        en: "We wrapped up the kitten with a blanket and fed it some milk.",
+        ipa: "",
+        audioUrl: "",
+        id: "P003-01"
+      },
+      {
+        unit: "3",
+        set: 2,
+        theme: "Wrap up",
+        prompt: "I packed the leftovers and put them in the fridge.",
+        ja: "私は残り物をラップして、冷蔵庫に入れました。",
+        en: "I wrapped up the leftovers and put them in the fridge.",
+        ipa: "",
+        audioUrl: "",
+        id: "P003-02"
+      },
+      {
+        unit: "3",
+        set: 3,
+        theme: "Wrap up",
+        prompt: "The waiter suggested that we finish the meal with a cappuccino.",
+        ja: "ウェイターは食事をカプチーノで締めくくるよう提案しました。",
+        en: "The waiter suggested that we wrap up the meal with a cappuccino.",
+        ipa: "",
+        audioUrl: "",
+        id: "P003-03"
+      },
+      {
+        unit: "3",
+        set: 4,
+        theme: "Wrap up",
+        prompt: "The movie star had to end the interview so he could catch a flight.",
+        ja: "その映画スターは飛行機に間に合わせるために、インタビューを打ち切らなければなりませんでした。",
+        en: "The movie star had to wrap up the interview so he could catch a flight.",
+        ipa: "",
+        audioUrl: "",
+        id: "P003-04"
+      },
+      {
+        unit: "4",
+        set: 1,
+        theme: "Work out",
+        prompt: "Our vacation didn't happen as planned, due to the hurricane.",
+        ja: "ハリケーンのせいで、私たちの休暇は実現しませんでした。",
+        en: "Our vacation didn't work out as planned, due to the hurricane.",
+        ipa: "",
+        audioUrl: "",
+        id: "P004-01"
+      },
+      {
+        unit: "4",
+        set: 2,
+        theme: "Work out",
+        prompt: "Things are going to end successfully; I am confident of that.",
+        ja: "うまくいきますよ。それには自信があります。",
+        en: "Things are going to work out successfully; I am confident of that.",
+        ipa: "",
+        audioUrl: "",
+        id: "P004-02"
+      },
+      {
+        unit: "4",
+        set: 3,
+        theme: "Work out",
+        prompt: "The doctor recommended that I exercise more and quit smoking.",
+        ja: "もっと運動して禁煙するようにと医者に勧められました。",
+        en: "The doctor recommended that I work out more and quit smoking.",
+        ipa: "",
+        audioUrl: "",
+        id: "P004-03"
+      },
+      {
+        unit: "4",
+        set: 4,
+        theme: "Work out",
+        prompt: "We need to devise a new, more efficient filing system.",
+        ja: "もっと効率的な新しい文書管理システムを考え出す必要があります。",
+        en: "We need to work out a new, more efficient filing system.",
+        ipa: "",
+        audioUrl: "",
+        id: "P004-04"
+      },
+      {
+        unit: "5",
+        set: 1,
+        theme: "Turn in",
+        prompt: "You have to submit a lot of paperwork when buying a car.",
+        ja: "車を購入するときには、多くの書類を提出する必要があります。",
+        en: "You have to turn in a lot of paperwork when buying a car.",
+        ipa: "",
+        audioUrl: "",
+        id: "P005-01"
+      },
+      {
+        unit: "5",
+        set: 2,
+        theme: "Turn in",
+        prompt: "I submitted three different applications for college.",
+        ja: "大学に3つの申込書を提出しました。",
+        en: "I turned in three different applications for college.",
+        ipa: "",
+        audioUrl: "",
+        id: "P005-02"
+      },
+      {
+        unit: "5",
+        set: 3,
+        theme: "Turn in",
+        prompt: "Older people generally go to sleep earlier than young people.",
+        ja: "年配の人たちは多くの場合、若者よりも早く寝ます。",
+        en: "Older people generally turn in earlier than young people.",
+        ipa: "",
+        audioUrl: "",
+        id: "P005-03"
+      },
+      {
+        unit: "5",
+        set: 4,
+        theme: "Turn in",
+        prompt: "We should give this iPhone to the lost and found.",
+        ja: "このiPhoneは遺失物取扱所に持っていくべきです。",
+        en: "We should turn this iPhone in to the lost and found.",
+        ipa: "",
+        audioUrl: "",
+        id: "P005-04"
+      },
+      {
+        unit: "6",
+        set: 1,
+        theme: "Turn out",
+        prompt: "People from far and wide showed up for the election.",
+        ja: "選挙のため至るところから人々が集まりました。",
+        en: "People from far and wide turned out for the election.",
+        ipa: "",
+        audioUrl: "",
+        id: "P006-01"
+      },
+      {
+        unit: "6",
+        set: 2,
+        theme: "Turn out",
+        prompt: "Fewer people than we expected attended our wedding.",
+        ja: "私たちの結婚式には、予想よりも少ない人が集まりました。",
+        en: "Fewer people than we expected turned out for our wedding.",
+        ipa: "",
+        audioUrl: "",
+        id: "P006-02"
+      },
+      {
+        unit: "6",
+        set: 3,
+        theme: "Turn out",
+        prompt: "That country is famous for producing many kinds of counterfeits.",
+        ja: "あの国は多様な偽造品を大量に作ることで有名です。",
+        en: "That country is famous for turning out many kinds of counterfeits.",
+        ipa: "",
+        audioUrl: "",
+        id: "P006-03"
+      },
+      {
+        unit: "6",
+        set: 4,
+        theme: "Turn out",
+        prompt: "His test results came back negative.",
+        ja: "彼の検査結果は陰性であることが判明しました。",
+        en: "His test results turned out negative.",
+        ipa: "",
+        audioUrl: "",
+        id: "P006-04"
+      },
+      {
+        unit: "7",
+        set: 1,
+        theme: "Call off",
+        prompt: "We canceled our dinner party due to the bad weather.",
+        ja: "悪天候のせいで食事会をキャンセルしました。",
+        en: "We called off our dinner party due to the bad weather.",
+        ipa: "",
+        audioUrl: "",
+        id: "P007-01"
+      },
+      {
+        unit: "7",
+        set: 2,
+        theme: "Call off",
+        prompt: "The event was scrapped because not enough people signed up.",
+        ja: "参加登録者が少なかったため、そのイベントは中止となりました。",
+        en: "The event was called off because not enough people signed up.",
+        ipa: "",
+        audioUrl: "",
+        id: "P007-02"
+      },
+      {
+        unit: "7",
+        set: 3,
+        theme: "Call off",
+        prompt: "The play was nixed after the lead actor got sick.",
+        ja: "主役が病気になって、芝居が中止されました。",
+        en: "The play was called off after the lead actor got sick.",
+        ipa: "",
+        audioUrl: "",
+        id: "P007-03"
+      },
+      {
+        unit: "7",
+        set: 4,
+        theme: "Call off",
+        prompt: "The concert was scrapped due to the terrorism threat.",
+        ja: "テロの脅しによってコンサートが中止されました。",
+        en: "The concert was called off due to the terrorism threat.",
+        ipa: "",
+        audioUrl: "",
+        id: "P007-04"
+      },
+      {
+        unit: "8",
+        set: 1,
+        theme: "Pass out",
+        prompt: "My mother always faints at the sight of blood.",
+        ja: "母は血を見ると必ず気絶します。",
+        en: "My mother always passes out at the sight of blood.",
+        ipa: "",
+        audioUrl: "",
+        id: "P008-01"
+      },
+      {
+        unit: "8",
+        set: 2,
+        theme: "Pass out",
+        prompt: "The tour guide distributed name badges to everyone in the group.",
+        ja: "ツアーガイドが名入りバッジをグループのみんなに配布しました。",
+        en: "The tour guide passed out name badges to everyone in the group.",
+        ipa: "",
+        audioUrl: "",
+        id: "P008-02"
+      },
+      {
+        unit: "8",
+        set: 3,
+        theme: "Pass out",
+        prompt: "The mountain climber lost consciousness and had to be rescued.",
+        ja: "その登山者は気を失ってしまい、救助されなければなりませんでした。",
+        en: "The mountain climber passed out and had to be rescued.",
+        ipa: "",
+        audioUrl: "",
+        id: "P008-03"
+      },
+      {
+        unit: "8",
+        set: 4,
+        theme: "Pass out",
+        prompt: "Local governments now hand out hazard maps to residents in case of natural disasters.",
+        ja: "自然災害に備えて、いま地方自治体は住民にハザードマップを配布しています。",
+        en: "Local governments now pass out hazard maps to residents in case of natural disasters.",
+        ipa: "",
+        audioUrl: "",
+        id: "P008-04"
+      },
+      {
+        unit: "9",
+        set: 1,
+        theme: "Run across",
+        prompt: "I bumped into your mother at the supermarket this evening.",
+        ja: "今日の夕方、たまたまスーパーであなたのお母さんに出会いましたよ。",
+        en: "I ran across your mother at the supermarket this evening.",
+        ipa: "",
+        audioUrl: "",
+        id: "P009-01"
+      },
+      {
+        unit: "9",
+        set: 2,
+        theme: "Run across",
+        prompt: "I happened to find some old pictures from elementary school in an old box.",
+        ja: "偶然、古い箱の中に小学校時代の古い写真を何枚か見つけました。",
+        en: "I ran across some old pictures from elementary school in an old box.",
+        ipa: "",
+        audioUrl: "",
+        id: "P009-02"
+      },
+      {
+        unit: "9",
+        set: 3,
+        theme: "Run across",
+        prompt: "I ran into one of my old college professors at the bookstore last week.",
+        ja: "先週書店で、昔の大学時代の教授に偶然出会いました。",
+        en: "I ran across one of my old college professors at the bookstore last week.",
+        ipa: "",
+        audioUrl: "",
+        id: "P009-03"
+      },
+      {
+        unit: "9",
+        set: 4,
+        theme: "Run across",
+        prompt: "I happened to see your phone number this morning, so I thought I would call you.",
+        ja: "今朝、偶然あなたの電話番号を見つけたから、電話しようと思ったんです。",
+        en: "I ran across your phone number this morning, so I thought I would call you.",
+        ipa: "",
+        audioUrl: "",
+        id: "P009-04"
+      },
+      {
+        unit: "10",
+        set: 1,
+        theme: "Look up",
+        prompt: "I searched for the movie online, but there were only a few reviews.",
+        ja: "映画についてネットで調べましたが、レビューは少ししかありませんでした。",
+        en: "I looked up the movie online, but there were only a few reviews.",
+        ipa: "",
+        audioUrl: "",
+        id: "P010-01"
+      },
+      {
+        unit: "10",
+        set: 2,
+        theme: "Look up",
+        prompt: "Things started to improve for us after we moved to the country.",
+        ja: "田舎に移住したあと、いろいろなことが上向き始めました。",
+        en: "Things started to look up for us after we moved to the country.",
+        ipa: "",
+        audioUrl: "",
+        id: "P010-02"
+      },
+      {
+        unit: "10",
+        set: 3,
+        theme: "Look up",
+        prompt: "Last weekend an old friend from England was in town and visited me.",
+        ja: "先週末、イギリス人の古い友人が町に来て、私を訪ねてきました。",
+        en: "Last weekend an old friend from England was in town and looked me up.",
+        ipa: "",
+        audioUrl: "",
+        id: "P010-03"
+      },
+      {
+        unit: "10",
+        set: 4,
+        theme: "Look up",
+        prompt: "Cellphones are banned from classrooms so students don't try to find test answers online.",
+        ja: "生徒たちがネットで答えを調べようとしないように、携帯の教室への持ち込みは禁止されています。",
+        en: "Cellphones are banned from classrooms so students don't try to look up test answers online.",
+        ipa: "",
+        audioUrl: "",
+        id: "P010-04"
+      },
+      {
+        unit: "11",
+        set: 1,
+        theme: "Give back",
+        prompt: "The thief felt guilty and returned all of the items he stole.",
+        ja: "泥棒は罪の意識を感じて盗んだすべての品を返しました。",
+        en: "The thief felt guilty and gave back all of the items he stole.",
+        ipa: "",
+        audioUrl: "",
+        id: "P011-01"
+      },
+      {
+        unit: "11",
+        set: 2,
+        theme: "Give back",
+        prompt: "The famous actor started an acting school in order to contribute to the acting community.",
+        ja: "俳優業コミュニティーに恩返しするために、その有名俳優は俳優学校をスタートしました。",
+        en: "The famous actor started an acting school in order to give back to the acting community.",
+        ipa: "",
+        audioUrl: "",
+        id: "P011-02"
+      },
+      {
+        unit: "11",
+        set: 3,
+        theme: "Give back",
+        prompt: "My coworker borrowed my favorite pen and won't return it.",
+        ja: "同僚は私のいちばん気に入っているペンを借りたまま返そうとしません。",
+        en: "My coworker borrowed my favorite pen and won't give it back.",
+        ipa: "",
+        audioUrl: "",
+        id: "P011-03"
+      },
+      {
+        unit: "11",
+        set: 4,
+        theme: "Give back",
+        prompt: "His ex-wife refuses to repay the money she owes.",
+        ja: "彼の元妻は借りているお金を返そうとしません。",
+        en: "His ex-wife refuses to give back the money she owes.",
+        ipa: "",
+        audioUrl: "",
+        id: "P011-04"
+      },
+      {
+        unit: "12",
+        set: 1,
+        theme: "Take off",
+        prompt: "You should remove your wet clothing so you don't catch a cold!",
+        ja: "風邪を引かないように、濡れた衣類は脱ぎなさい！",
+        en: "You should take off your wet clothing so you don't catch a cold!",
+        ipa: "",
+        audioUrl: "",
+        id: "P012-01"
+      },
+      {
+        unit: "12",
+        set: 2,
+        theme: "Take off",
+        prompt: "I need to leave early today to attend my son's soccer game.",
+        ja: "息子のサッカーの試合を見るために、今日は早めに出る必要があるのです。",
+        en: "I need to take off early today to attend my son's soccer game.",
+        ipa: "",
+        audioUrl: "",
+        id: "P012-02"
+      },
+      {
+        unit: "12",
+        set: 3,
+        theme: "Take off",
+        prompt: "Sales of the new game console increased rapidly right before Christmas.",
+        ja: "新しいゲーム機の売上は、クリスマス直前に絶好調になりました。",
+        en: "Sales of the new game console took off right before Christmas.",
+        ipa: "",
+        audioUrl: "",
+        id: "P012-03"
+      },
+      {
+        unit: "12",
+        set: 4,
+        theme: "Take off",
+        prompt: "After hitting a parked car, the taxi sped away.",
+        ja: "駐車していた自動車にぶつかったあと、そのタクシーは大急ぎで逃げました。",
+        en: "After hitting a parked car, the taxi took off.",
+        ipa: "",
+        audioUrl: "",
+        id: "P012-04"
+      },
+      {
+        unit: "13",
+        set: 1,
+        theme: "Put down",
+        prompt: "Please set down your pencils; the test is now over.",
+        ja: "鉛筆を置いてください。試験はここで終了です。",
+        en: "Please put down your pencils; the test is now over.",
+        ipa: "",
+        audioUrl: "",
+        id: "P013-01"
+      },
+      {
+        unit: "13",
+        set: 2,
+        theme: "Put down",
+        prompt: "The bank robber dropped his gun and surrendered to the police.",
+        ja: "銀行強盗は拳銃を置いて警察に投降しました。",
+        en: "The bank robber put down his gun and surrendered to the police.",
+        ipa: "",
+        audioUrl: "",
+        id: "P013-02"
+      },
+      {
+        unit: "13",
+        set: 3,
+        theme: "Put down",
+        prompt: "A good manager encourages workers instead of bullying them.",
+        ja: "よいマネージャーは労働者をこき下ろす代わりに勇気づけます。",
+        en: "A good manager encourages workers instead of putting them down.",
+        ipa: "",
+        audioUrl: "",
+        id: "P013-03"
+      },
+      {
+        unit: "13",
+        set: 4,
+        theme: "Put down",
+        prompt: "The dictator suppressed the pro-democracy rally using tanks and soldiers.",
+        ja: "独裁者は、戦車と兵士を使って民主化を求める集会を鎮圧しました。",
+        en: "The dictator put down the pro-democracy rally using tanks and soldiers.",
+        ipa: "",
+        audioUrl: "",
+        id: "P013-04"
+      },
+      {
+        unit: "14",
+        set: 1,
+        theme: "Do over",
+        prompt: "I was not happy with my haircut, so the hairdresser offered to cut my hair again.",
+        ja: "私は髪の毛のカットが気に入らなかったので、美容師がやり直すと言ってくれました。",
+        en: "I was not happy with my haircut, so the hairdresser offered to do my hair over.",
+        ipa: "",
+        audioUrl: "",
+        id: "P014-01"
+      },
+      {
+        unit: "14",
+        set: 2,
+        theme: "Do over",
+        prompt: "I hope I pass my English test because I don't want to have to redo it.",
+        ja: "やり直したくないから、英語のテストに受かっていることを願っています。",
+        en: "I hope I pass my English test because I don't want to have to do it over.",
+        ipa: "",
+        audioUrl: "",
+        id: "P014-02"
+      },
+      {
+        unit: "14",
+        set: 3,
+        theme: "Do over",
+        prompt: "You need to rewrite this report because it is full of errors.",
+        ja: "ミスだらけなので、この報告書はやり直してもらう必要があります。",
+        en: "You need to do this report over because it is full of errors.",
+        ipa: "",
+        audioUrl: "",
+        id: "P014-03"
+      },
+      {
+        unit: "14",
+        set: 4,
+        theme: "Do over",
+        prompt: "I cleaned the windows, but they were still dirty, so I had to start again.",
+        ja: "窓を掃除しましたが、まだ汚れていました。それでやり直さねばならなかったんです。",
+        en: "I cleaned the windows, but they were still dirty, so I had to do them over.",
+        ipa: "",
+        audioUrl: "",
+        id: "P014-04"
+      },
+      {
+        unit: "15",
+        set: 1,
+        theme: "Break down",
+        prompt: "Plastic is an environmental hazard because it takes a long time to decompose.",
+        ja: "分解するのに長い時間がかかるため、プラスチックは環境に対する脅威となっています。",
+        en: "Plastic is an environmental hazard because it takes a long time to break down.",
+        ipa: "",
+        audioUrl: "",
+        id: "P015-01"
+      },
+      {
+        unit: "15",
+        set: 2,
+        theme: "Break down",
+        prompt: "Our air conditioner stopped working on the hottest day of the summer.",
+        ja: "エアコンが夏のもっとも暑い日に壊れました。",
+        en: "Our air conditioner broke down on the hottest day of the summer.",
+        ipa: "",
+        audioUrl: "",
+        id: "P015-02"
+      },
+      {
+        unit: "15",
+        set: 3,
+        theme: "Break down",
+        prompt: "The newscaster started to cry while reporting on the war casualties.",
+        ja: "戦争被害者についてレポートしているとき、ニュースキャスターは泣き崩れました。",
+        en: "The newscaster broke down while reporting on the war casualties.",
+        ipa: "",
+        audioUrl: "",
+        id: "P015-03"
+      },
+      {
+        unit: "15",
+        set: 4,
+        theme: "Break down",
+        prompt: "The racecar malfunctioned during the last lap of the race.",
+        ja: "レースの最終ラップで、そのレースカーは機能しなくなりました。",
+        en: "The racecar broke down during the last lap of the race.",
+        ipa: "",
+        audioUrl: "",
+        id: "P015-04"
+      },
+      {
+        unit: "16",
+        set: 1,
+        theme: "Fill out",
+        prompt: "If you want to sign up, complete our online application form.",
+        ja: "登録したい場合、弊社のオンライン申請フォームにご記入ください。",
+        en: "If you want to sign up, fill out our online application form.",
+        ipa: "",
+        audioUrl: "",
+        id: "P016-01"
+      },
+      {
+        unit: "16",
+        set: 2,
+        theme: "Fill out",
+        prompt: "The bank robber used an alias when answering the census questionnaire.",
+        ja: "銀行強盗は国勢調査のアンケートの記入に偽名を使いました。",
+        en: "The bank robber used an alias when filling out the census questionnaire.",
+        ipa: "",
+        audioUrl: "",
+        id: "P016-02"
+      },
+      {
+        unit: "16",
+        set: 3,
+        theme: "Fill out",
+        prompt: "At first my son was too skinny to play football, but he has gained weight since.",
+        ja: "最初は息子はアメフトをやるには痩せすぎていましたが、それ以来体重が増えました。",
+        en: "At first my son was too skinny to play football, but he has filled out since.",
+        ipa: "",
+        audioUrl: "",
+        id: "P016-03"
+      },
+      {
+        unit: "16",
+        set: 4,
+        theme: "Fill out",
+        prompt: "The rescued children were emaciated from their ordeal but have since become healthy.",
+        ja: "救出された子どもたちは辛い体験によってやつれていましたが、以来体重が増えてきました。",
+        en: "The rescued children were emaciated from their ordeal but have since filled out.",
+        ipa: "",
+        audioUrl: "",
+        id: "P016-04"
+      },
+      {
+        unit: "17",
+        set: 1,
+        theme: "Hold up",
+        prompt: "Raise your hand if you would like to volunteer.",
+        ja: "ボランティアをしたい方は挙手してください。",
+        en: "Hold up your hand if you would like to volunteer.",
+        ipa: "",
+        audioUrl: "",
+        id: "P017-01"
+      },
+      {
+        unit: "17",
+        set: 2,
+        theme: "Hold up",
+        prompt: "The captured soldiers lifted their hands in defeat.",
+        ja: "捕らえられた兵士たちは敗北の意を示し両手を挙げました。",
+        en: "The captured soldiers held up their hands in defeat.",
+        ipa: "",
+        audioUrl: "",
+        id: "P017-02"
+      },
+      {
+        unit: "17",
+        set: 3,
+        theme: "Hold up",
+        prompt: "Our flight was delayed because of an electronic malfunction.",
+        ja: "フライトは電子機器の不調により遅延しました。",
+        en: "Our flight was held up because of an electronic malfunction.",
+        ipa: "",
+        audioUrl: "",
+        id: "P017-03"
+      },
+      {
+        unit: "17",
+        set: 4,
+        theme: "Hold up",
+        prompt: "Shockingly, the jewelry store was robbed in broad daylight.",
+        ja: "ショックなことに、白昼堂々宝石店が強盗に入られました。",
+        en: "Shockingly, the jewelry store was held up in broad daylight.",
+        ipa: "",
+        audioUrl: "",
+        id: "P017-04"
+      },
+      {
+        unit: "18",
+        set: 1,
+        theme: "Hold out",
+        prompt: "The stranded hikers were able to survive by drinking melted snow.",
+        ja: "取り残されたハイカーは雪を溶かして飲みながら持ちこたえました。",
+        en: "The stranded hikers were able to hold out by drinking melted snow.",
+        ipa: "",
+        audioUrl: "",
+        id: "P018-01"
+      },
+      {
+        unit: "18",
+        set: 2,
+        theme: "Hold out",
+        prompt: "The volunteers presented signboards with important information.",
+        ja: "ボランティアは重要な情報の書かれている掲示板を差し出しました。",
+        en: "The volunteers held out signboards with important information.",
+        ipa: "",
+        audioUrl: "",
+        id: "P018-02"
+      },
+      {
+        unit: "18",
+        set: 3,
+        theme: "Hold out",
+        prompt: "I hope this good weather will last another week.",
+        ja: "このいい天気があと1週間続くといいなあ。",
+        en: "I hope this good weather will hold out for another week.",
+        ipa: "",
+        audioUrl: "",
+        id: "P018-03"
+      },
+      {
+        unit: "18",
+        set: 4,
+        theme: "Hold out",
+        prompt: "After two days, he couldn't resist any longer and smoked a cigarette.",
+        ja: "2日後に、彼はそれ以上我慢できなくなってタバコを1本吸いました。",
+        en: "After two days, he couldn't hold out any longer and smoked a cigarette.",
+        ipa: "",
+        audioUrl: "",
+        id: "P018-04"
+      },
+      {
+        unit: "19",
+        set: 1,
+        theme: "Turn down",
+        prompt: "I hate it when moviegoers forget to lower the volume on their phones.",
+        ja: "映画館で電話のボリュームを下げるのを忘れている人が大嫌いです。",
+        en: "I hate it when moviegoers forget to turn down the volume on their phones.",
+        ipa: "",
+        audioUrl: "",
+        id: "P019-01"
+      },
+      {
+        unit: "19",
+        set: 2,
+        theme: "Turn down",
+        prompt: "The employees that were on strike rejected the offer of a $1.00 raise.",
+        ja: "ストライキを行っていた従業員たちは、1ドル昇給の提案を拒否しました。",
+        en: "The employees that were on strike turned down the offer of a $1.00 raise.",
+        ipa: "",
+        audioUrl: "",
+        id: "P019-02"
+      },
+      {
+        unit: "19",
+        set: 3,
+        theme: "Turn down",
+        prompt: "I refused the invitation to go on a camping because I was broke.",
+        ja: "お金がなかったので、キャンプに行く誘いを断りました。",
+        en: "I turned down the invitation to go on a camping because I was broke.",
+        ipa: "",
+        audioUrl: "",
+        id: "P019-03"
+      },
+      {
+        unit: "19",
+        set: 4,
+        theme: "Turn down",
+        prompt: "I was shocked when my coworker rejected the promotion.",
+        ja: "同僚が昇進を拒否したのはショックでした。",
+        en: "I was shocked when my coworker turned down the promotion.",
+        ipa: "",
+        audioUrl: "",
+        id: "P019-04"
+      },
+      {
+        unit: "20",
+        set: 1,
+        theme: "Turn up",
+        prompt: "Two of the competitors failed to appear for the race.",
+        ja: "ふたりの選手がレースに現れませんでした。",
+        en: "Two of the competitors failed to turn up for the race.",
+        ipa: "",
+        audioUrl: "",
+        id: "P020-01"
+      },
+      {
+        unit: "20",
+        set: 2,
+        theme: "Turn up",
+        prompt: "When the temperature reached 80 degrees, we elevated the AC.",
+        ja: "気温が80度に達したとき、エアコンを強くしました。",
+        en: "When the temperature reached 80 degrees, we turned up the AC.",
+        ipa: "",
+        audioUrl: "",
+        id: "P020-02"
+      },
+      {
+        unit: "20",
+        set: 3,
+        theme: "Turn up",
+        prompt: "Scientists claim an earth-like planet has been discovered in a nearby galaxy.",
+        ja: "近くの銀河系で地球に似た惑星が見つかったと、科学者たちが主張しています。",
+        en: "Scientists claim an earth-like planet has been turned up in a nearby galaxy.",
+        ipa: "",
+        audioUrl: "",
+        id: "P020-03"
+      },
+      {
+        unit: "20",
+        set: 4,
+        theme: "Turn up",
+        prompt: "Do you think many people will show up for the office Christmas party?",
+        ja: "会社のクリスマスパーティーには人がたくさん来ると思いますか？",
+        en: "Do you think many people will turn up for the office Christmas party?",
+        ipa: "",
+        audioUrl: "",
+        id: "P020-04"
+      }
+    ];
+    const LISTENING_SETS = [
+      {
+        unit: "1",
+        set: 1,
+        theme: "Wear out",
+        ja: "大好きな靴が傷んでしまい、捨てました。",
+        en: "My favorite shoes were worn out, so I threw them away.",
+        ipa: "maɪ ˈfeɪvɚɪt ʃuz wɚ ˈwɔrn aʊt, soʊ(w)aɪ θru ðɛm əˈweɪ",
+        audioUrl: "audio/listening/unit001/set-01.mp3",
+        id: "L001-01"
+      },
+      {
+        unit: "1",
+        set: 2,
+        theme: "Wear out",
+        ja: "最近の服はすぐに傷むようです。",
+        en: "Clothes seem to wear out quickly nowadays.",
+        ipa: "",
+        audioUrl: "audio/listening/unit001/set-02.mp3",
+        id: "L001-02"
+      },
+      {
+        unit: "1",
+        set: 3,
+        theme: "Wear out",
+        ja: "このカーペットは人がよく歩くところがすり切れています。",
+        en: "This carpet is worn out where people walk a lot.",
+        ipa: "",
+        audioUrl: "audio/listening/unit001/set-03.mp3",
+        id: "L001-03"
+      },
+      {
+        unit: "1",
+        set: 4,
+        theme: "Wear out",
+        ja: "姪や甥たちと遊んで疲れ果てました。",
+        en: "Playing with my nieces and nephews wore me out.",
+        ipa: "ˈpleɪ(j)ɪŋ wɪð maɪ ˈnisɪz ən ˈnɛfjuːz / wɔr mi aʊt",
+        audioUrl: "audio/listening/unit001/set-04.mp3",
+        id: "L001-04"
+      },
+      {
+        unit: "1",
+        set: 5,
+        theme: "Wear out",
+        ja: "休みなしで2週間続けて働いて、私は疲れ果てました。",
+        en: "Working two weeks straight without a day off wore me out.",
+        ipa: "",
+        audioUrl: "audio/listening/unit001/set-05.mp3",
+        id: "L001-05"
+      },
+      {
+        unit: "2",
+        set: 1,
+        theme: "Wear off",
+        ja: "この薬の効果は数時間でなくなります。",
+        en: "The effect of this drug will wear off in a few hours.",
+        ipa: "",
+        audioUrl: "audio/listening/unit002/set-01.mp3",
+        id: "L002-01"
+      },
+      {
+        unit: "2",
+        set: 2,
+        theme: "Wear off",
+        ja: "歳月による劣化で車のペイントが剥がれ始めています。",
+        en: "The paint on my car is starting to wear off from age.",
+        ipa: "",
+        audioUrl: "audio/listening/unit002/set-02.mp3",
+        id: "L002-02"
+      },
+      {
+        unit: "2",
+        set: 3,
+        theme: "Wear off",
+        ja: "歯を抜かれたあと、痛みは徐々に引き始めました。",
+        en: "After the tooth was pulled, the pain started to wear off.",
+        ipa: "",
+        audioUrl: "audio/listening/unit002/set-03.m4a",
+        id: "L002-03"
+      },
+      {
+        unit: "2",
+        set: 4,
+        theme: "Wear off",
+        ja: "最初は気にしませんでしたが、結局彼の熱意は私に伝染しました。",
+        en: "At first I didn't care but his enthusiasm eventually wore off on me.",
+        ipa: "",
+        audioUrl: "audio/listening/unit002/set-04.m4a",
+        id: "L002-04"
+      },
+      {
+        unit: "2",
+        set: 5,
+        theme: "Wear off",
+        ja: "最初、彼は内気でしたが、彼女の陽気な態度が彼に伝染しました。",
+        en: "At first he was shy but then her bubbly attitude wore off on him.",
+        ipa: "",
+        audioUrl: "audio/listening/unit002/set-05.m4a",
+        id: "L002-05"
+      },
+      {
+        unit: "3",
+        set: 1,
+        theme: "Wrap up",
+        ja: "午前中全部をクリスマスプレゼントの包装に使いました。",
+        en: "I spent all morning wrapping up Christmas presents.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/02/I-spent-all-morning-wrapping-up-Christmas-presents.mp3",
+        id: "L003-01"
+      },
+      {
+        unit: "3",
+        set: 2,
+        theme: "Wrap up",
+        ja: "このハーブをビニールで包めば、冷凍できます。",
+        en: "If you wrap these herbs up in plastic you can freeze them.",
+        ipa: "",
+        audioUrl: "audio/listening/unit003/set-02.m4a",
+        id: "L003-02"
+      },
+      {
+        unit: "3",
+        set: 3,
+        theme: "Wrap up",
+        ja: "ちゃんと暖かくしてね。外はとても寒くなってきてますよ！",
+        en: "Be sure to wrap up. It's getting really cold outside!",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/02/Be-sure-to-wrap-up.-Its-getting-really-cold-outside.mp3",
+        id: "L003-03"
+      },
+      {
+        unit: "3",
+        set: 4,
+        theme: "Wrap up",
+        ja: "天候のせいでコーチは練習を早めに切り上げました。",
+        en: "The coach wrapped up practice early because of the weather.",
+        ipa: "",
+        audioUrl: "audio/listening/unit003/set-04.m4a",
+        id: "L003-04"
+      },
+      {
+        unit: "3",
+        set: 5,
+        theme: "Wrap up",
+        ja: "この会議は急いで終える必要があります。",
+        en: "We need to wrap up this meeting quickly.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/02/We-need-to-wrap-up-this-meeting-quickly.mp3",
+        id: "L003-05"
+      },
+      {
+        unit: "4",
+        set: 1,
+        theme: "Work out",
+        ja: "心配しないでください。うまくいきますよ。",
+        en: "Don't worry. Things are going to work out just fine.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/02/Dont-worry.-Things-are-going-to-work-out-just-fine.mp3",
+        id: "L004-01"
+      },
+      {
+        unit: "4",
+        set: 2,
+        theme: "Work out",
+        ja: "うまくいくかどうか、ちょっと心配しているんです。",
+        en: "I'm just worried about how things will work out.",
+        ipa: "",
+        audioUrl: "audio/listening/unit004/set-02.m4a",
+        id: "L004-02"
+      },
+      {
+        unit: "4",
+        set: 3,
+        theme: "Work out",
+        ja: "週に2回ジムでエクササイズしています。",
+        en: "I work out at a gym twice a week.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/02/I-work-out-at-a-gym-twice-a-week.mp3",
+        id: "L004-03"
+      },
+      {
+        unit: "4",
+        set: 4,
+        theme: "Work out",
+        ja: "医師たちは患者の治療計画を作りました。",
+        en: "The doctors worked out a treatment plan for the patient.",
+        ipa: "",
+        audioUrl: "audio/listening/unit004/set-04.m4a",
+        id: "L004-04"
+      },
+      {
+        unit: "4",
+        set: 5,
+        theme: "Work out",
+        ja: "交渉人たちは妥協案を作り出せませんでした。",
+        en: "The negotiators couldn't work out a compromise.",
+        ipa: "",
+        audioUrl: "audio/listening/unit004/set-05.m4a",
+        id: "L004-05"
+      },
+      {
+        unit: "5",
+        set: 1,
+        theme: "Turn in",
+        ja: "終わったらテスト用紙を提出してください。",
+        en: "Turn in your test forms when you have finished.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/Turn-in-your-test-forms-when-you-have-finished.mp3",
+        id: "L005-01"
+      },
+      {
+        unit: "5",
+        set: 2,
+        theme: "Turn in",
+        ja: "マネージャーに休暇願を提出しました。",
+        en: "I turned my vacation request in to the manager.",
+        ipa: "",
+        audioUrl: "audio/listening/unit005/set-02.m4a",
+        id: "L005-02"
+      },
+      {
+        unit: "5",
+        set: 3,
+        theme: "Turn in",
+        ja: "今夜は早く寝ますね。おやすみ！",
+        en: "I'm going to turn in early tonight. Good night!",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/Im-going-to-turn-in-early-tonight.-Good-night.mp3",
+        id: "L005-03"
+      },
+      {
+        unit: "5",
+        set: 4,
+        theme: "Turn in",
+        ja: "日の出とともに起きられるように、カップルは早めに床に就きました。",
+        en: "The couple turned in early so they could wake up at sunrise.",
+        ipa: "",
+        audioUrl: "audio/listening/unit005/set-04.m4a",
+        id: "L005-04"
+      },
+      {
+        unit: "5",
+        set: 5,
+        theme: "Turn in",
+        ja: "私の財布を見つけた人が警察に届けてくれました。",
+        en: "The person who found my wallet turned it in to the police.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/The-person-who-found-my-wallet-turned-it-in-to-the-police.mp3",
+        id: "L005-05"
+      },
+      {
+        unit: "6",
+        set: 1,
+        theme: "Turn out",
+        ja: "そのゴルフトーナメントに集まった観客はごくわずかでした。",
+        en: "Very few spectators turned out for the golf tournament.",
+        ipa: "",
+        audioUrl: "audio/listening/unit006/set-01.m4a",
+        id: "L006-01"
+      },
+      {
+        unit: "6",
+        set: 2,
+        theme: "Turn out",
+        ja: "何千もの人がパレードに集まりました。",
+        en: "Thousands of people turned out for the parade.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/Thousands-of-people-turned-out-for-the-parade.mp3",
+        id: "L006-02"
+      },
+      {
+        unit: "6",
+        set: 3,
+        theme: "Turn out",
+        ja: "その企業は毎日何百台ものテレビを製造しています。",
+        en: "That company turns out hundreds of TVs every day.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/That-company-turns-out-hundreds-of-TVs-every-day.mp3",
+        id: "L006-03"
+      },
+      {
+        unit: "6",
+        set: 4,
+        theme: "Turn out",
+        ja: "心配ないです。うまくいきますから。",
+        en: "Don't worry, things are going to turn out fine.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/Dont-worry-things-are-going-to-turn-out-fine.mp3",
+        id: "L006-04"
+      },
+      {
+        unit: "6",
+        set: 5,
+        theme: "Turn out",
+        ja: "私が焼いたこのチョコレートマフィンは、すばらしくうまくできました。",
+        en: "These chocolate muffins I baked turned out wonderfully.",
+        ipa: "",
+        audioUrl: "audio/listening/unit006/set-05.m4a",
+        id: "L006-05"
+      },
+      {
+        unit: "7",
+        set: 1,
+        theme: "Call off",
+        ja: "雷によってサッカーの練習は中止されました。",
+        en: "Soccer practice was called off because of lightning.",
+        ipa: "",
+        audioUrl: "audio/listening/unit007/set-01.m4a",
+        id: "L007-01"
+      },
+      {
+        unit: "7",
+        set: 2,
+        theme: "Call off",
+        ja: "毎年行う出張はコロナウイルスによって中止されました。",
+        en: "Our annual business trip has been called off due to the coronavirus.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/Our-annual-business-trip-has-been-called-off-due-to-the-coronavirus.mp3",
+        id: "L007-02"
+      },
+      {
+        unit: "7",
+        set: 3,
+        theme: "Call off",
+        ja: "会社のゴルフコンペは雨によって中止になるでしょうか？",
+        en: "Is the company golf outing going to be called off because of rain?",
+        ipa: "",
+        audioUrl: "audio/listening/unit007/set-03.m4a",
+        id: "L007-03"
+      },
+      {
+        unit: "7",
+        set: 4,
+        theme: "Call off",
+        ja: "たった2日で会社の社長が交渉を中止しました。",
+        en: "The company president called off the negotiations after just two days.",
+        ipa: "",
+        audioUrl: "audio/listening/unit007/set-04.m4a",
+        id: "L007-04"
+      },
+      {
+        unit: "7",
+        set: 5,
+        theme: "Call off",
+        ja: "娘は病気なので、彼女の誕生日パーティーを中止する必要があります。",
+        en: "We need to call off our daughter's birthday party because she is sick.",
+        ipa: "",
+        audioUrl: "audio/listening/unit007/set-05.m4a",
+        id: "L007-05"
+      },
+      {
+        unit: "8",
+        set: 1,
+        theme: "Pass out",
+        ja: "ジェットコースターに乗っているとき、妹が気絶したんです。",
+        en: "My sister passed out while riding the roller coaster.",
+        ipa: "",
+        audioUrl: "audio/listening/unit008/set-01.m4a",
+        id: "L008-01"
+      },
+      {
+        unit: "8",
+        set: 2,
+        theme: "Pass out",
+        ja: "ひどい自動車事故を目撃した女性は気絶しました。",
+        en: "The woman who witnessed the horrible car accident passed out.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/The-woman-who-witnessed-the-horrible-car-accident-passed-out.mp3",
+        id: "L008-02"
+      },
+      {
+        unit: "8",
+        set: 3,
+        theme: "Pass out",
+        ja: "教師がクラスの各人にテストを配りました。",
+        en: "The teacher passed out tests to each member of the class.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/The-teacher-passed-out-tests-to-each-member-of-the-class.mp3",
+        id: "L008-03"
+      },
+      {
+        unit: "8",
+        set: 4,
+        theme: "Pass out",
+        ja: "訪問客のすべてに認証バッジを配る必要があります。",
+        en: "We need to pass out security badges to all of the people visiting.",
+        ipa: "",
+        audioUrl: "audio/listening/unit008/set-04.m4a",
+        id: "L008-04"
+      },
+      {
+        unit: "8",
+        set: 5,
+        theme: "Pass out",
+        ja: "救急車を呼んで！ この人、気絶しそうです！",
+        en: "Call an ambulance! I think he is going to pass out!",
+        ipa: "",
+        audioUrl: "audio/listening/unit008/set-05.m4a",
+        id: "L008-05"
+      },
+      {
+        unit: "9",
+        set: 1,
+        theme: "Run across",
+        ja: "京都での休暇中に偶然古い友人に出会いました。",
+        en: "I ran across an old friend while on vacation in Kyoto.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/I-ran-across-an-old-friend-while-on-vacation-in-Kyoto.mp3",
+        id: "L009-01"
+      },
+      {
+        unit: "9",
+        set: 2,
+        theme: "Run across",
+        ja: "彼の妻は、夫の電話を借りているときに、たまたま別の女性の写真を見つけました。",
+        en: "His wife ran across pictures of another woman when borrowing his phone.",
+        ipa: "",
+        audioUrl: "audio/listening/unit009/set-02.m4a",
+        id: "L009-02"
+      },
+      {
+        unit: "9",
+        set: 3,
+        theme: "Run across",
+        ja: "コンベンションでたまたまトムに会ったら、よろしく伝えておいて。",
+        en: "If you run across Tom at the convention, please give him my regards.",
+        ipa: "",
+        audioUrl: "audio/listening/unit009/set-03.m4a",
+        id: "L009-03"
+      },
+      {
+        unit: "9",
+        set: 4,
+        theme: "Run across",
+        ja: "私たちは、たまたまうちの会計ソフトの問題を見つけました。",
+        en: "We have run across a problem with our accounting software.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/We-have-run-across-a-problem-with-our-accounting-software.mp3",
+        id: "L009-04"
+      },
+      {
+        unit: "9",
+        set: 5,
+        theme: "Run across",
+        ja: "この古くて美しい花瓶はどこで見つけたの？！",
+        en: "Where did you run across this beautiful, old vase?!",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/Where-did-you-run-across-this-beautiful-old-vase.mp3",
+        id: "L009-05"
+      },
+      {
+        unit: "10",
+        set: 1,
+        theme: "Look up",
+        ja: "問題の答えをインターネットで調べました。",
+        en: "I looked up the answer to the question on the internet.",
+        ipa: "",
+        audioUrl: "audio/listening/unit010/set-01.m4a",
+        id: "L010-01"
+      },
+      {
+        unit: "10",
+        set: 2,
+        theme: "Look up",
+        ja: "わからないどんな単語も辞書で調べることが重要です。",
+        en: "It's important to look up any words you don't know in the dictionary.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/Its-important-to-look-up-any-words-you-dont-know-in-the-dictionary.mp3",
+        id: "L010-02"
+      },
+      {
+        unit: "10",
+        set: 3,
+        theme: "Look up",
+        ja: "帰省したとき、中学時代の古い友人の家を訪問しました。",
+        en: "When I went back to my hometown, I looked up an old friend from middle school.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/When-I-went-back-to-my-hometown-I-looked-up-an-old-friend-from-middle-school.mp3",
+        id: "L010-03"
+      },
+      {
+        unit: "10",
+        set: 4,
+        theme: "Look up",
+        ja: "東京に行ったとき、日本のペンフレンドの家を探そうとしましたが、きっと引っ越してしまったのでしょう。",
+        en: "I tried to look up my Japanese pen pal when I went to Tokyo, but she must have moved.",
+        ipa: "",
+        audioUrl: "audio/listening/unit010/set-04.m4a",
+        id: "L010-04"
+      },
+      {
+        unit: "10",
+        set: 5,
+        theme: "Look up",
+        ja: "いったん経済が回復したら、売上が上向くと期待しています。",
+        en: "I expect our sales to look up once the economy recovers.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/I-expect-our-sales-to-look-up-once-the-economy-recovers.mp3",
+        id: "L010-05"
+      },
+      {
+        unit: "11",
+        set: 1,
+        theme: "Give back",
+        ja: "兄が借りていたお金をやっと返してくれました。",
+        en: "My brother finally gave back the money he borrowed.",
+        ipa: "",
+        audioUrl: "audio/listening/unit011/set-01.m4a",
+        id: "L011-01"
+      },
+      {
+        unit: "11",
+        set: 2,
+        theme: "Give back",
+        ja: "この本を図書館に返却するつもりです。",
+        en: "I'm going to give these books back to the library.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/Im-going-to-give-these-books-back-to-the-library.-1-1.mp3",
+        id: "L011-02"
+      },
+      {
+        unit: "11",
+        set: 3,
+        theme: "Give back",
+        ja: "彼の婚約者は婚約指輪を返して、結婚式を取り消しました。",
+        en: "His fiance gave back the engagement ring and called off the wedding.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/His-fiance-gave-back-the-engagement-ring-and-called-off-the-wedding.mp3",
+        id: "L011-03"
+      },
+      {
+        unit: "11",
+        set: 4,
+        theme: "Give back",
+        ja: "多くのアメリカのアスリートが社会に恩返ししようとチャリティーを開始しています。",
+        en: "Many American athletes start charities in attempt to give back to society.",
+        ipa: "",
+        audioUrl: "audio/listening/unit011/set-04.m4a",
+        id: "L011-04"
+      },
+      {
+        unit: "11",
+        set: 5,
+        theme: "Give back",
+        ja: "億万長者のCEOは新しい高校を建設することで故郷の町に恩返ししました。",
+        en: "The billionaire CEO gave back to his hometown by building a new high school.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/The-billionaire-CEO-gave-back-to-his-hometown-by-building-a-new-high-school.-.mp3",
+        id: "L011-05"
+      },
+      {
+        unit: "12",
+        set: 1,
+        theme: "Take off",
+        ja: "青いシャツを脱いで代わりにこの赤いシャツを着なさい。",
+        en: "Take off the blue shirt and wear this red one instead.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/Take-off-the-blue-shirt-and-wear-this-red-one-instead.mp3",
+        id: "L012-01"
+      },
+      {
+        unit: "12",
+        set: 2,
+        theme: "Take off",
+        ja: "私の飛行機が時間どおりに離陸しなかったので、乗り継ぎを逃しました。",
+        en: "My plane didn't take off on time, so I missed my connection.",
+        ipa: "",
+        audioUrl: "audio/listening/unit012/set-02.m4a",
+        id: "L012-02"
+      },
+      {
+        unit: "12",
+        set: 3,
+        theme: "Take off",
+        ja: "どうしてそんなに早く帰っちゃうの？！ パーティーは始まったばかりですよ！",
+        en: "Why are you taking off so soon?! The party is just starting!",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/Why-are-you-taking-off-so-soon-The-party-is-just-starting.mp3",
+        id: "L012-03"
+      },
+      {
+        unit: "12",
+        set: 4,
+        theme: "Take off",
+        ja: "ダーツが日本で大流行し始めていると記事で読みました。",
+        en: "I read in a magazine that darts is starting to take off in Japan.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/I-read-in-a-magazine-that-darts-is-starting-to-take-off-in-Japan.mp3",
+        id: "L012-04"
+      },
+      {
+        unit: "12",
+        set: 5,
+        theme: "Take off",
+        ja: "デモ隊の人たちは警察が到着するや否や逃げていきました。",
+        en: "The demonstrators took off as soon as the police arrived.",
+        ipa: "",
+        audioUrl: "audio/listening/unit012/set-05.m4a",
+        id: "L012-05"
+      },
+      {
+        unit: "13",
+        set: 1,
+        theme: "Put down",
+        ja: "玄関のベルが鳴ったとき、女性は電話を置きました。",
+        en: "The woman put down her phone when the doorbell rang.",
+        ipa: "",
+        audioUrl: "audio/listening/unit013/set-01.m4a",
+        id: "L013-01"
+      },
+      {
+        unit: "13",
+        set: 2,
+        theme: "Put down",
+        ja: "ビジネスマンはテーブルの横にブリーフケースを下ろしました。",
+        en: "The businessman put his briefcase down next to the table.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/The-businessman-put-his-briefcase-down-next-to-the-table.mp3",
+        id: "L013-02"
+      },
+      {
+        unit: "13",
+        set: 3,
+        theme: "Put down",
+        ja: "妹は背が低かったので、中学のときよくバカにされていました。",
+        en: "My little sister was often put down in middle school because she was short.",
+        ipa: "",
+        audioUrl: "audio/listening/unit013/set-03.m4a",
+        id: "L013-03"
+      },
+      {
+        unit: "13",
+        set: 4,
+        theme: "Put down",
+        ja: "分厚いメガネをかけているので、みんなはいつも彼を侮辱しています。",
+        en: "People are always putting him down because he wears thick glasses.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/People-are-always-putting-him-down-because-he-wears-thick-glasses.mp3",
+        id: "L013-04"
+      },
+      {
+        unit: "13",
+        set: 5,
+        theme: "Put down",
+        ja: "反乱は政府軍によって即座に鎮圧されました。",
+        en: "The revolt was quickly put down by government forces.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/The-revolt-was-quickly-put-down-by-government-forces.mp3",
+        id: "L013-05"
+      },
+      {
+        unit: "14",
+        set: 1,
+        theme: "Do over",
+        ja: "洗剤を入れ忘れて、洗濯をやり直さなければなりませんでした。",
+        en: "I had to do my laundry over because I forgot to add detergent.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/I-had-to-do-my-laundry-over-because-I-forgot-to-add-detergent.mp3",
+        id: "L014-01"
+      },
+      {
+        unit: "14",
+        set: 2,
+        theme: "Do over",
+        ja: "その学生ドライバーは合格する前に、試験を二度繰り返し受けなければなりませんでした。",
+        en: "The student driver had to do the test over twice before she passed.",
+        ipa: "",
+        audioUrl: "audio/listening/unit014/set-02.m4a",
+        id: "L014-02"
+      },
+      {
+        unit: "14",
+        set: 3,
+        theme: "Do over",
+        ja: "もう一度やり直せるのなら、若すぎる結婚はしないでしょう。",
+        en: "If I could do it over again, I wouldn't get married so young.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/If-I-could-do-it-over-again-I-wouldnt-get-married-so-young.mp3",
+        id: "L014-03"
+      },
+      {
+        unit: "14",
+        set: 4,
+        theme: "Do over",
+        ja: "オフィスの塗装に間違った色の塗料を使ったので、塗装をやり直さなければなりません。",
+        en: "We used the wrong color paint to paint the office so now we have to do it over.",
+        ipa: "",
+        audioUrl: "audio/listening/unit014/set-04.m4a",
+        id: "L014-04"
+      },
+      {
+        unit: "14",
+        set: 5,
+        theme: "Do over",
+        ja: "数式が間違っているので、このエクセルシートはやり直さなければなりません。",
+        en: "We need to do this excel sheet over because the formulas are wrong.",
+        ipa: "",
+        audioUrl: "audio/listening/unit014/set-05.m4a",
+        id: "L014-05"
+      },
+      {
+        unit: "15",
+        set: 1,
+        theme: "Break down",
+        ja: "ライムジュースは肉の細胞を壊すので、いいマリネ液になります。",
+        en: "Lime juice makes a good marinade because it breaks down the meat cells.",
+        ipa: "",
+        audioUrl: "audio/listening/unit015/set-01.m4a",
+        id: "L015-01"
+      },
+      {
+        unit: "15",
+        set: 2,
+        theme: "Break down",
+        ja: "車が故障したので仕事に2時間遅刻しました。",
+        en: "I was two hours late to work because my car broke down.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/I-was-two-hours-late-to-work-because-my-car-broke-down.mp3",
+        id: "L015-02"
+      },
+      {
+        unit: "15",
+        set: 3,
+        theme: "Break down",
+        ja: "エレベーターが壊れたので、階段を使わなければなりません。",
+        en: "The elevator broke down so we will have to take the stairs.",
+        ipa: "",
+        audioUrl: "audio/listening/unit015/set-03.m4a",
+        id: "L015-03"
+      },
+      {
+        unit: "15",
+        set: 4,
+        theme: "Break down",
+        ja: "ひどい事故について説明しているとき、その女性は泣き崩れました。",
+        en: "The woman broke down when describing the horrible accident.",
+        ipa: "",
+        audioUrl: "audio/listening/unit015/set-04.m4a",
+        id: "L015-04"
+      },
+      {
+        unit: "15",
+        set: 5,
+        theme: "Break down",
+        ja: "その俳優は授賞式でのスピーチ中に泣き崩れました。",
+        en: "The actor broke down during his speech at the award ceremony.",
+        ipa: "",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/The-actor-broke-down-during-his-speech-at-the-award-ceremony.mp3",
+        id: "L015-05"
+      },
+      {
+        unit: "16",
+        set: 1,
+        theme: "Fill out",
+        ja: "この書類に記入して、私のところに戻してください。",
+        en: "Please fill out this paperwork and bring it back to me.",
+        ipa: "",
+        audioUrl: "audio/listening/unit016/set-01.m4a",
+        id: "L016-01"
+      },
+      {
+        unit: "16",
+        set: 2,
+        theme: "Fill out",
+        ja: "医者に診察してもらう前に、5種類の書類を埋めなければなりませんでした。",
+        en: "I had to fill out five different forms before I could see the doctor.",
+        ipa: "",
+        audioUrl: "audio/listening/unit016/set-02.m4a",
+        id: "L016-02"
+      },
+      {
+        unit: "16",
+        set: 3,
+        theme: "Fill out",
+        ja: "このかんたんなアンケートにご記入いただいたお客さまは、20%の割引が受けられます。",
+        en: "Customers who fill out this simple questionnaire can get a 20% discount.",
+        ipa: "",
+        audioUrl: "audio/unit16/U016-03.mp3",
+        id: "L016-03"
+      },
+      {
+        unit: "16",
+        set: 4,
+        theme: "Fill out",
+        ja: "若い頃はとても痩せていましたが、高校時代に健康な体つきになりました。",
+        en: "I was very skinny in my youth but filled out during my high school years.",
+        ipa: "",
+        audioUrl: "audio/unit16/U016-04.mp3",
+        id: "L016-04"
+      },
+      {
+        unit: "16",
+        set: 5,
+        theme: "Fill out",
+        ja: "彼は病気のとき20ポンド体重が減りましたが、回復後には申し分なく体重を増やしました。",
+        en: "He lost 20 pounds when he was sick but filled out nicely after recovering.",
+        ipa: "",
+        audioUrl: "audio/listening/unit016/set-05.m4a",
+        id: "L016-05"
+      },
+      {
+        unit: "17",
+        set: 1,
+        theme: "Hold up",
+        ja: "デモの参加者たちは看板を高く掲げて大使館前を行進しました。",
+        en: "The demonstrators held up signs and marched in front of the embassy.",
+        ipa: "",
+        audioUrl: "audio/listening/unit017/set-01.m4a",
+        id: "L017-01"
+      },
+      {
+        unit: "17",
+        set: 2,
+        theme: "Hold up",
+        ja: "警備員にはっきり見えるようにパスポートを持ち上げてください。",
+        en: "Hold up your passports so the security guards can see them clearly.",
+        ipa: "",
+        audioUrl: "audio/unit17/U017-02.mp3",
+        id: "L017-02"
+      },
+      {
+        unit: "17",
+        set: 3,
+        theme: "Hold up",
+        ja: "吹雪のため、電車の出発が遅れました。",
+        en: "Our train's departure was held up due to a snowstorm.",
+        ipa: "",
+        audioUrl: "audio/unit17/U017-03.mp3",
+        id: "L017-03"
+      },
+      {
+        unit: "17",
+        set: 4,
+        theme: "Hold up",
+        ja: "会議を遅らせてしまいほんとうにすみません。",
+        en: "I am really sorry for holding up the meeting.",
+        ipa: "",
+        audioUrl: "audio/unit17/U017-04.mp3",
+        id: "L017-04"
+      },
+      {
+        unit: "17",
+        set: 5,
+        theme: "Hold up",
+        ja: "4人の男が銀行強盗に入り何百万もの金を盗んで逃げました。",
+        en: "The four men held up the bank and escaped with millions.",
+        ipa: "",
+        audioUrl: "audio/unit17/U017-05.mp3",
+        id: "L017-05"
+      },
+      {
+        unit: "18",
+        set: 1,
+        theme: "Hold out",
+        ja: "ファンたちはサインをもらおうとして、あらゆる物を差し出しました。",
+        en: "The fans held out all kinds of objects in attempt to get a signature.",
+        ipa: "",
+        audioUrl: "audio/unit18/U018-01.mp3",
+        id: "L018-01"
+      },
+      {
+        unit: "18",
+        set: 2,
+        theme: "Hold out",
+        ja: "ホームレスの男性は人々がお金を入れてくれるようにカップを差し延べました。",
+        en: "The homeless man held out a cup for people to put money in.",
+        ipa: "",
+        audioUrl: "audio/listening/unit018/set-02.m4a",
+        id: "L018-02"
+      },
+      {
+        unit: "18",
+        set: 3,
+        theme: "Hold out",
+        ja: "兵士たちは最後まで抵抗しましたが、ついには敗北を喫しました。",
+        en: "The soldiers held out until the very end, but were eventually defeated.",
+        ipa: "",
+        audioUrl: "audio/listening/unit018/set-03.m4a",
+        id: "L018-03"
+      },
+      {
+        unit: "18",
+        set: 4,
+        theme: "Hold out",
+        ja: "患者は手術しなければ、これ以上持ちこたえることはできないでしょう。",
+        en: "The patient won't be able to hold out much longer without surgery.",
+        ipa: "",
+        audioUrl: "audio/unit18/U018-04.mp3",
+        id: "L018-04"
+      },
+      {
+        unit: "18",
+        set: 5,
+        theme: "Hold out",
+        ja: "われわれの食料は、これ以上はもちません。",
+        en: "Our food supply won't hold out for much longer.",
+        ipa: "",
+        audioUrl: "audio/listening/unit018/set-05.m4a",
+        id: "L018-05"
+      },
+      {
+        unit: "19",
+        set: 1,
+        theme: "Turn down",
+        ja: "テレビの音量を下げないと、ご近所から苦情が来ますよ！",
+        en: "Turn down your TV or the neighbors are going to complain!",
+        ipa: "",
+        audioUrl: "audio/unit19/U019-01.mp3",
+        id: "L019-01"
+      },
+      {
+        unit: "19",
+        set: 2,
+        theme: "Turn down",
+        ja: "さらにロマンチックな雰囲気を作ろうと、彼は明かりを暗くしました。",
+        en: "He turned down the lights to create a more romantic atmosphere.",
+        ipa: "",
+        audioUrl: "audio/listening/unit019/set-02.m4a",
+        id: "L019-02"
+      },
+      {
+        unit: "19",
+        set: 3,
+        theme: "Turn down",
+        ja: "仕事を変えたくはなかったのですが、断るには先方のオファーがよすぎたのです。",
+        en: "I didn't want to change jobs but their offer was too good to turn down.",
+        ipa: "",
+        audioUrl: "audio/listening/unit019/set-03.m4a",
+        id: "L019-03"
+      },
+      {
+        unit: "19",
+        set: 4,
+        theme: "Turn down",
+        ja: "彼は彼女をデートに誘いましたが、彼女は断りました。",
+        en: "He asked her out on a date but she turned him down.",
+        ipa: "",
+        audioUrl: "audio/unit19/U019-04.mp3",
+        id: "L019-04"
+      },
+      {
+        unit: "19",
+        set: 5,
+        theme: "Turn down",
+        ja: "会社は私にニューヨークでのポジションを提供しましたが、断りました。",
+        en: "The company offered me a position in New York but I turned it down.",
+        ipa: "",
+        audioUrl: "audio/unit19/U019-05.mp3",
+        id: "L019-05"
+      },
+      {
+        unit: "20",
+        set: 1,
+        theme: "Turn up",
+        ja: "聞こえるようにテレビの音量を上げて！",
+        en: "Please turn up the TV so I can hear it!",
+        ipa: "",
+        audioUrl: "audio/listening/unit020/set-01.m4a",
+        id: "L020-01"
+      },
+      {
+        unit: "20",
+        set: 2,
+        theme: "Turn up",
+        ja: "この中は凍えるほど寒いですね！ ヒーターの温度を上げてください！",
+        en: "It's freezing in here! Turn up the heat(er)!",
+        ipa: "",
+        audioUrl: "audio/unit20/U020-02.mp3",
+        id: "L020-02"
+      },
+      {
+        unit: "20",
+        set: 3,
+        theme: "Turn up",
+        ja: "なくなったお財布は心配しなくていいですよ、きっと出てきますから。",
+        en: "Don't worry about your lost wallet, I am sure it will turn up.",
+        ipa: "",
+        audioUrl: "audio/unit20/U020-03.mp3",
+        id: "L020-03"
+      },
+      {
+        unit: "20",
+        set: 4,
+        theme: "Turn up",
+        ja: "彼は授業に遅れて現れただけでなく、宿題も忘れてきました。",
+        en: "Not only did he turn up late for class, he forgot his homework.",
+        ipa: "",
+        audioUrl: "audio/unit20/U020-04.mp3",
+        id: "L020-04"
+      },
+      {
+        unit: "20",
+        set: 5,
+        theme: "Turn up",
+        ja: "警察は犯行現場を捜査しましたが、手掛かりはなにひとつ見つかりませんでした。",
+        en: "The police investigated the crime scene but didn't turn up any clues.",
+        ipa: "",
+        audioUrl: "audio/unit20/U020-05.mp3",
+        id: "L020-05"
+      }
+    ];
+    const state = {
+      cards: [],
+      quiz: [],
+      index: 0,
+      selected: null,
+      mode: null,
+      score: 0,
+      answerNumber: null,
+      activeSet: null,
+      reviewDecks: {
+        ok: [],
+        review: []
+      },
+      log: []
+    };
+
+    const els = {
+      pageSub: document.getElementById("pageSub"),
+      modePanel: document.getElementById("modePanel"),
+      setPanel: document.getElementById("setPanel"),
+      setGrid: document.getElementById("setGrid"),
+      setHeroThumb: document.getElementById("setHeroThumb"),
+      setHeroLabel: document.getElementById("setHeroLabel"),
+      setHeroTitle: document.getElementById("setHeroTitle"),
+      bottomSetNav: document.getElementById("bottomSetNav"),
+      backToModeBtn: document.getElementById("backToModeBtn"),
+      quizPanel: document.getElementById("quizPanel"),
+      listeningModeBtn: document.getElementById("listeningModeBtn"),
+      paraphraseModeBtn: document.getElementById("paraphraseModeBtn"),
+      meter: document.getElementById("meter"),
+      unitTag: document.getElementById("unitTag"),
+      themeTag: document.getElementById("themeTag"),
+      audio: document.getElementById("audio"),
+      audioBox: document.querySelector(".audioBox"),
+      audioPlayBtn: document.getElementById("audioPlayBtn"),
+      audioProgress: document.getElementById("audioProgress"),
+      blankSentence: document.getElementById("blankSentence"),
+      choices: document.getElementById("choices"),
+      ratings: document.getElementById("ratings"),
+      answer: document.getElementById("answer"),
+      answerUnit: document.getElementById("answerUnit"),
+      feedback: document.getElementById("feedback"),
+      answerEn: document.getElementById("answerEn"),
+      answerJa: document.getElementById("answerJa"),
+      answerIpa: document.getElementById("answerIpa"),
+      nextBtn: document.getElementById("nextBtn"),
+      prevBtn: document.getElementById("prevBtn"),
+      showBtn: document.getElementById("showBtn"),
+      replayBtn: document.getElementById("replayBtn"),
+      result: document.getElementById("result"),
+      score: document.getElementById("score"),
+      resultMessage: document.getElementById("resultMessage"),
+      review: document.getElementById("review"),
+      copyBox: document.getElementById("copyBox"),
+      copyText: document.getElementById("copyText"),
+      copyBtn: document.getElementById("copyBtn"),
+      againBtn: document.getElementById("againBtn")
+    };
+
+    function parseCSV(text){
+      const rows = [];
+      let row = [];
+      let cell = "";
+      let inQuotes = false;
+      for (let i = 0; i < text.length; i++){
+        const ch = text[i];
+        const next = text[i + 1];
+        if (ch === '"' && inQuotes && next === '"'){
+          cell += '"';
+          i++;
+        } else if (ch === '"'){
+          inQuotes = !inQuotes;
+        } else if (ch === "," && !inQuotes){
+          row.push(cell);
+          cell = "";
+        } else if ((ch === "\n" || ch === "\r") && !inQuotes){
+          if (ch === "\r" && next === "\n") i++;
+          row.push(cell);
+          if (row.some(v => v.trim() !== "")) rows.push(row);
+          row = [];
+          cell = "";
+        } else {
+          cell += ch;
+        }
+      }
+      if (cell || row.length){
+        row.push(cell);
+        rows.push(row);
+      }
+      const headers = rows.shift();
+      return rows.map(r => Object.fromEntries(headers.map((h, i) => [h, r[i] ?? ""])));
+    }
+
+    function shuffle(items){
+      const arr = [...items];
+      for (let i = arr.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function resolveAudio(url){
+      if (/^https?:\/\//.test(url)) return url;
+      return url;
+    }
+
+    function escapeRegExp(text){
+      return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
+    function verbForms(verb){
+      const forms = {
+        be: ["be", "is", "was", "been", "being"],
+        break: ["break", "breaks", "broke", "broken", "breaking"],
+        bring: ["bring", "brings", "brought", "brought", "bringing"],
+        call: ["call", "calls", "called", "called", "calling"],
+        check: ["check", "checks", "checked", "checked", "checking"],
+        come: ["come", "comes", "came", "come", "coming"],
+        do: ["do", "does", "did", "done", "doing"],
+        drop: ["drop", "drops", "dropped", "dropped", "dropping"],
+        fill: ["fill", "fills", "filled", "filled", "filling"],
+        give: ["give", "gives", "gave", "given", "giving"],
+        go: ["go", "goes", "went", "gone", "going"],
+        hold: ["hold", "holds", "held", "held", "holding"],
+        keep: ["keep", "keeps", "kept", "kept", "keeping"],
+        look: ["look", "looks", "looked", "looked", "looking"],
+        pass: ["pass", "passes", "passed", "passed", "passing"],
+        put: ["put", "puts", "put", "put", "putting"],
+        run: ["run", "runs", "ran", "run", "running"],
+        take: ["take", "takes", "took", "taken", "taking"],
+        turn: ["turn", "turns", "turned", "turned", "turning"],
+        wait: ["wait", "waits", "waited", "waited", "waiting"],
+        wear: ["wear", "wears", "wore", "worn", "wearing"],
+        work: ["work", "works", "worked", "worked", "working"],
+        wrap: ["wrap", "wraps", "wrapped", "wrapped", "wrapping"]
+      };
+      return forms[verb.toLowerCase()] || [verb, `${verb}s`, `${verb}ed`, `${verb}ed`, `${verb}ing`];
+    }
+
+    function verbPattern(verb){
+      const candidates = [...new Set(verbForms(verb))];
+      return `(?:${candidates.map(escapeRegExp).join("|")})`;
+    }
+
+    function blankOut(card){
+      const phrase = card.theme.trim();
+      const direct = new RegExp(escapeRegExp(phrase).replace(/\s+/g, "\\s+"), "i");
+      if (direct.test(card.en)) return card.en.replace(direct, '<span class="blank"></span>');
+      const words = phrase.toLowerCase().split(/\s+/);
+      if (words.length >= 2){
+        const separated = new RegExp(
+          `\\b${verbPattern(words[0])}(?:\\s+[A-Za-z'’-]+){0,4}\\s+${words.slice(1).map(escapeRegExp).join("\\s+")}\\b`,
+          "i"
+        );
+        if (separated.test(card.en)) return card.en.replace(separated, '<span class="blank"></span>');
+      }
+      return card.en.replace(/\b[a-z]+\b/i, '<span class="blank"></span>');
+    }
+
+    function replacementForm(match, replacement, offset = 0, sentence = "", sourceParticleCount = null){
+      if (!match) return replacement;
+      const matchParts = match.trim().split(/\s+/);
+      const sourceVerb = matchParts[0].toLowerCase();
+      const replacementParts = replacement.split(/\s+/);
+      const targetForms = verbForms(replacementParts[0]);
+      const before = sentence.slice(Math.max(0, offset - 18), offset).toLowerCase();
+      const isPassive = /\b(?:am|are|is|was|were|be|been|being)\s+$/.test(before);
+      const sourceForms = Object.values({
+        break: verbForms("break"), bring: verbForms("bring"), call: verbForms("call"), check: verbForms("check"),
+        come: verbForms("come"), do: verbForms("do"), drop: verbForms("drop"), fill: verbForms("fill"),
+        give: verbForms("give"), go: verbForms("go"), hold: verbForms("hold"), keep: verbForms("keep"),
+        look: verbForms("look"), pass: verbForms("pass"), put: verbForms("put"), run: verbForms("run"),
+        take: verbForms("take"), turn: verbForms("turn"), wait: verbForms("wait"), wear: verbForms("wear"),
+        work: verbForms("work"), wrap: verbForms("wrap")
+      });
+      let formIndex = 0;
+      for (const forms of sourceForms){
+        const hit = forms.findIndex(form => form === sourceVerb);
+        if (hit >= 0){
+          formIndex = isPassive && hit === 2 ? 3 : hit;
+          break;
+        }
+      }
+      replacementParts[0] = targetForms[formIndex] || targetForms[0];
+      const particleCount = sourceParticleCount ?? Math.max(1, replacementParts.length - 1);
+      const middle = matchParts.slice(1, Math.max(1, matchParts.length - particleCount));
+      const adjusted = [replacementParts[0], ...middle, ...replacementParts.slice(1)].join(" ");
+      return /^[A-Z]/.test(match)
+        ? adjusted.charAt(0).toUpperCase() + adjusted.slice(1)
+        : adjusted;
+    }
+
+    function replaceTheme(sentence, theme, replacement){
+      const direct = new RegExp(escapeRegExp(theme).replace(/\s+/g, "\\s+"), "i");
+      if (direct.test(sentence)) return sentence.replace(direct, (match, offset) => replacementForm(match, replacement, offset, sentence));
+      const words = theme.toLowerCase().split(/\s+/);
+      if (words.length >= 2){
+        const separated = new RegExp(
+          `\\b${verbPattern(words[0])}(?:\\s+[A-Za-z'’-]+){0,4}\\s+${words.slice(1).map(escapeRegExp).join("\\s+")}\\b`,
+          "i"
+        );
+        if (separated.test(sentence)) return sentence.replace(separated, (match, offset) => replacementForm(match, replacement, offset, sentence, words.length - 1));
+      }
+      return sentence;
+    }
+
+    function escapeHTML(text){
+      return String(text ?? "").replace(/[&<>"']/g, ch => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      }[ch]));
+    }
+
+    function makeParaphraseChoices(card){
+      const seen = new Set([card.en]);
+      const choices = [{ label: card.en, ja: card.ja, value: card.en, correct: true }];
+      const themes = shuffle([...new Set([...PARAPHRASE_SETS.map(c => c.theme).filter(Boolean), ...DISTRACTOR_THEMES])]);
+      for (const theme of themes){
+        if (theme === card.theme) continue;
+        const label = replaceTheme(card.en, card.theme, theme.toLowerCase());
+        if (!label || seen.has(label)) continue;
+        seen.add(label);
+        choices.push({ label, value: label, correct: false });
+        if (choices.length === 3) break;
+      }
+      return shuffle(choices).map((choice, index) => ({ ...choice, number: index + 1 }));
+    }
+
+    function addReviewCard(rating, card){
+      if (rating !== "ok" && rating !== "review") return;
+      const deck = state.reviewDecks[rating];
+      const existing = deck.findIndex(item => item.id === card.id);
+      if (existing >= 0) deck.splice(existing, 1);
+      deck.push(card);
+    }
+
+    function renderBottomSetNav(activeSet = null){
+      const isListening = state.mode === "listening";
+      els.bottomSetNav.classList.toggle("paraphraseNav", !isListening);
+      const sets = isListening ? [1, 2, 3, 4, 5] : [1, 2, 3, 4];
+      const setButtons = sets.map(set => `
+        <button class="bottomSetBtn ${set === activeSet ? "active" : ""} ${isListening && set >= 4 ? "wide" : ""}" type="button" data-set="${set}">
+          ${isListening ? `SET ${set}` : `#${set}`}
+        </button>
+      `).join("");
+      els.bottomSetNav.innerHTML = isListening ? `${setButtons}
+        <button class="bottomSetBtn" type="button" data-top="true">TOP</button>
+        <button class="bottomSetBtn compact ${activeSet === "ok" ? "active" : ""}" type="button" data-review="ok" ${state.reviewDecks.ok.length ? "" : "disabled"}>△</button>
+        <button class="bottomSetBtn compact ${activeSet === "review" ? "active" : ""}" type="button" data-review="review" ${state.reviewDecks.review.length ? "" : "disabled"}>×</button>
+      ` : `${setButtons}
+        <button class="bottomSetBtn" type="button" data-top="true">TOP</button>
+      `;
+      [...els.bottomSetNav.querySelectorAll(".bottomSetBtn")].forEach(btn => {
+        if (btn.dataset.set) btn.addEventListener("click", () => makeQuiz(state.mode, Number(btn.dataset.set)));
+        if (btn.dataset.review) btn.addEventListener("click", () => makeReviewQuiz(btn.dataset.review));
+        if (btn.dataset.top) btn.addEventListener("click", showModePicker);
+      });
+    }
+
+    function showBottomSetNav(activeSet = null){
+      renderBottomSetNav(activeSet);
+      els.bottomSetNav.classList.remove("hidden");
+    }
+
+    function hideBottomSetNav(){
+      els.bottomSetNav.classList.add("hidden");
+    }
+
+    function renderSetPicker(mode = "listening"){
+      state.mode = mode;
+      const source = mode === "listening" ? LISTENING_SETS : PARAPHRASE_SETS;
+      const setCards = [...new Set(source.map(card => card.set))]
+        .filter(set => mode === "listening" || set <= 4)
+        .sort((a, b) => a - b)
+        .map(set => ({
+          set,
+          cards: source.filter(card => card.set === set)
+        }));
+      els.modePanel.classList.add("hidden");
+      els.quizPanel.classList.add("hidden");
+      els.setPanel.classList.remove("hidden");
+      els.pageSub.textContent = "";
+      els.setHeroThumb.src = mode === "listening" ? "assets/thumb-listening.png" : "assets/thumb-paraphrase.png";
+      els.setHeroLabel.textContent = "UNIT 1 - 20";
+      els.setHeroTitle.textContent = "";
+      showBottomSetNav();
+      els.setGrid.innerHTML = setCards.map(group => `
+        <button class="setButton" type="button" data-set="${group.set}">
+          <strong>Set ${group.set}</strong>
+        </button>
+      `).join("");
+      [...els.setGrid.querySelectorAll(".setButton")].forEach(btn => {
+        btn.addEventListener("click", () => makeQuiz(mode, Number(btn.dataset.set)));
+      });
+    }
+
+    function showModePicker(){
+      state.mode = null;
+      els.modePanel.classList.remove("hidden");
+      els.setPanel.classList.add("hidden");
+      els.quizPanel.classList.add("hidden");
+      els.pageSub.textContent = "モードを選んで挑戦してください！";
+      hideBottomSetNav();
+    }
+
+    function makeQuiz(mode = state.mode, selectedSet = null){
+      state.mode = mode;
+      state.activeSet = selectedSet;
+      state.quiz = state.mode === "listening"
+        ? shuffle(LISTENING_SETS.filter(card => selectedSet ? card.set === selectedSet : true))
+        : shuffle(PARAPHRASE_SETS.filter(card => selectedSet ? card.set === selectedSet : true));
+      state.index = 0;
+      state.selected = null;
+      state.score = 0;
+      state.log = [];
+      els.modePanel.classList.add("hidden");
+      els.setPanel.classList.add("hidden");
+      els.quizPanel.classList.remove("hidden");
+      els.quizPanel.classList.toggle("mode-listening", state.mode === "listening");
+      els.quizPanel.classList.toggle("mode-paraphrase", state.mode === "paraphrase");
+      els.pageSub.textContent = state.mode === "listening"
+        ? "リスニングをして理解度を３段階評価しよう"
+        : "与えられた英文をphrasal verbで言い換えよう";
+      if (state.mode === "listening" || state.mode === "paraphrase") showBottomSetNav(selectedSet);
+      else hideBottomSetNav();
+      els.result.classList.remove("show");
+      document.querySelector(".body").style.display = "";
+      document.querySelector(".top").style.display = "";
+      renderQuestion();
+    }
+
+    function makeReviewQuiz(kind){
+      const deck = state.reviewDecks[kind];
+      if (!deck.length) return;
+      state.mode = "listening";
+      state.activeSet = kind;
+      state.quiz = shuffle(deck);
+      state.index = 0;
+      state.selected = null;
+      state.score = 0;
+      state.log = [];
+      els.modePanel.classList.add("hidden");
+      els.setPanel.classList.add("hidden");
+      els.quizPanel.classList.remove("hidden");
+      els.quizPanel.classList.add("mode-listening");
+      els.quizPanel.classList.remove("mode-paraphrase");
+      els.pageSub.textContent = kind === "ok" ? "△をつけた問題を復習" : "×をつけた問題を復習";
+      showBottomSetNav(kind);
+      els.result.classList.remove("show");
+      document.querySelector(".body").style.display = "";
+      document.querySelector(".top").style.display = "";
+      renderQuestion();
+    }
+
+    function makeChoices(card){
+      const themes = [...new Set([...state.cards, ...PARAPHRASE_SETS].map(c => c.theme).filter(Boolean))];
+      const wrong = shuffle(themes.filter(theme => theme !== card.theme)).slice(0, 3);
+      return shuffle([card.theme, ...wrong]);
+    }
+
+    function renderQuestion(){
+      const card = state.quiz[state.index];
+      state.selected = null;
+      state.answerNumber = null;
+      els.answer.classList.remove("show");
+      els.feedback.className = "feedback";
+      els.feedback.textContent = "";
+      els.prevBtn.classList.toggle("hidden", state.mode === "listening");
+      els.prevBtn.disabled = state.index === 0;
+      els.nextBtn.disabled = state.mode === "listening";
+      els.showBtn.disabled = false;
+      els.showBtn.classList.toggle("hidden", state.mode !== "listening");
+      els.meter.textContent = `Question ${state.index + 1} / ${state.quiz.length}`;
+      els.unitTag.classList.toggle("hidden", state.mode === "listening");
+      els.unitTag.textContent = state.mode === "listening" ? "" : `Unit ${String(card.unit).padStart(2, "0")}`;
+      els.audio.src = resolveAudio(card.audioUrl);
+      els.audio.parentElement.classList.toggle("hidden", !card.audioUrl);
+      els.replayBtn.classList.add("hidden");
+      resetAudioUI();
+      els.answerEn.textContent = card.en;
+      els.answerJa.textContent = card.ja;
+      els.answerIpa.textContent = card.ipa;
+      els.answerUnit.textContent = `UNIT ${String(card.unit).padStart(2, "0")}`;
+      els.choices.innerHTML = "";
+      els.ratings.classList.remove("show");
+      [...els.ratings.children].forEach(btn => {
+        btn.disabled = false;
+        btn.classList.remove("correct", "wrong");
+      });
+      if (state.mode === "listening"){
+        els.themeTag.textContent = `SET ${card.set}`;
+        els.blankSentence.innerHTML = `
+          <span class="answerSentence">音声を聞いて、内容をイメージしてください。</span>
+          <span class="listeningNotice">音声が流れない場合、答えを確認をタップして次の問題にお進みください。それでも音声が流れない場合、お手数ですがご連絡ください。</span>
+        `;
+        els.nextBtn.classList.add("hidden");
+      } else {
+        els.nextBtn.classList.remove("hidden");
+        els.themeTag.textContent = `SET ${card.set}`;
+        els.blankSentence.innerHTML = card.prompt
+          ? `<span class="promptSentence">Original sentence</span><span class="answerSentence">${escapeHTML(card.prompt)}</span>`
+          : blankOut(card);
+        makeParaphraseChoices(card).forEach(choice => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "choice";
+          btn.dataset.value = choice.value;
+          btn.dataset.number = choice.number;
+          if (choice.correct) state.answerNumber = choice.number;
+          btn.innerHTML = `
+            <span class="choiceInner">
+              <span class="choiceNumber">${choice.number}</span>
+              <span>
+                <span class="choiceEn">${escapeHTML(choice.label)}</span>
+              </span>
+            </span>
+          `;
+          btn.addEventListener("click", () => choose(choice.value, btn));
+          els.choices.appendChild(btn);
+        });
+      }
+    }
+
+    function choose(choice, btn){
+      if (state.selected) return;
+      const card = state.quiz[state.index];
+      state.selected = choice;
+      const correct = state.mode === "paraphrase" ? choice === card.en : choice === card.theme;
+      if (correct) state.score++;
+      state.log.push({ card, selected: choice, correct });
+      els.feedback.textContent = correct
+        ? "正解！"
+        : `残念。正解は「${state.answerNumber}」でした。`;
+      els.feedback.className = `feedback show ${correct ? "correct" : "wrong"}`;
+      [...els.choices.children].forEach(child => {
+        child.disabled = true;
+        const value = state.mode === "paraphrase" ? child.dataset.value : child.textContent;
+        if (value === (state.mode === "paraphrase" ? card.en : card.theme)) child.classList.add("correct");
+      });
+      if (!correct) btn.classList.add("wrong");
+      showAnswer({ scroll: state.mode === "paraphrase" });
+      els.nextBtn.disabled = false;
+    }
+
+    function rate(rating, btn){
+      if (state.selected) return;
+      const card = state.quiz[state.index];
+      state.selected = rating;
+      const correct = rating === "good";
+      if (correct) state.score++;
+      addReviewCard(rating, card);
+      state.log.push({ card, selected: rating, correct, rating });
+      [...els.ratings.children].forEach(child => {
+        child.disabled = true;
+        if (child === btn) child.classList.add(rating === "review" ? "wrong" : "correct");
+      });
+      renderBottomSetNav(state.activeSet);
+      showAnswer();
+      setTimeout(next, 220);
+    }
+
+    function showAnswer(options = {}){
+      els.answer.classList.add("show");
+      els.showBtn.disabled = true;
+      if (state.mode === "listening"){
+        els.ratings.classList.add("show");
+        els.showBtn.classList.add("hidden");
+        playAudioFromStart();
+      }
+      if (options.scroll){
+        requestAnimationFrame(() => {
+          els.answer.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
+    }
+
+    function next(){
+      if (!state.selected){
+        const card = state.quiz[state.index];
+        state.log.push({ card, selected: null, correct: false });
+      }
+      if (state.index < state.quiz.length - 1){
+        state.index++;
+        renderQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function prev(){
+      if (state.index > 0){
+        state.index--;
+        renderQuestion();
+      }
+    }
+
+    function showResult(){
+      document.querySelector(".body").style.display = "none";
+      document.querySelector(".top").style.display = "none";
+      els.result.classList.add("show");
+      const wrongNumbers = state.log
+        .map(item => item.correct ? null : `U${Number(item.card.unit)}`)
+        .filter(Boolean);
+      const isParaphrase = state.mode === "paraphrase";
+      els.score.textContent = state.mode === "listening"
+        ? `理解度: ${state.score} / ${state.quiz.length}`
+        : `総合点数: ${state.score} / ${state.quiz.length}`;
+      els.resultMessage.classList.toggle("show", isParaphrase);
+      els.copyBox.classList.toggle("show", isParaphrase);
+      if (isParaphrase){
+        const wrongText = wrongNumbers.length ? wrongNumbers.join(", ") : "なし";
+        els.copyText.value = [
+          `Paraphrase mode｜SET ${state.activeSet ?? "-"}`,
+          `総合点数: ${state.score} / ${state.quiz.length}`,
+          `間違えた問題番号: ${wrongText}`
+        ].join("\n");
+      } else {
+        els.copyText.value = "";
+      }
+      els.review.innerHTML = state.log.map((item, i) => `
+        <div class="reviewItem">
+          <strong>${i + 1}. ${item.correct ? "OK" : "Review"} - Unit ${String(item.card.unit).padStart(2, "0")} ${item.card.theme}</strong>
+          <div>${item.card.en}</div>
+          <div class="sub">${item.card.ja}</div>
+        </div>
+      `).join("");
+      requestAnimationFrame(() => {
+        els.score.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+
+    function resetQuiz(){
+      document.querySelector(".body").style.display = "";
+      document.querySelector(".top").style.display = "";
+      els.nextBtn.classList.remove("hidden");
+      if (state.mode === "listening" || state.mode === "paraphrase") renderSetPicker(state.mode);
+      else makeQuiz(state.mode);
+    }
+
+    async function init(){
+      try{
+        const text = await fetch(CSV_URL, { cache: "no-store" }).then(r => {
+          if (!r.ok) throw new Error("CSV not found");
+          return r.text();
+        });
+        state.cards = parseCSV(text)
+          .filter(c => c.unit && c.audioUrl && Number(c.unit) >= 1 && Number(c.unit) <= 20);
+        if (state.cards.length < QUESTION_COUNT) throw new Error("Not enough cards");
+        els.meter.textContent = "Choose a mode";
+      } catch (error){
+        els.meter.textContent = "cards.csv を読み込めませんでした";
+        els.choices.innerHTML = "";
+      }
+    }
+
+    els.replayBtn.addEventListener("click", () => {
+      playAudioFromStart();
+    });
+    function resetAudioUI(){
+      els.audioProgress.style.width = "0%";
+      els.audioPlayBtn.textContent = "▶";
+      els.audioPlayBtn.classList.remove("playing");
+      els.audioBox.classList.remove("is-playing");
+    }
+    function syncAudioUI(){
+      const duration = Number.isFinite(els.audio.duration) && els.audio.duration > 0 ? els.audio.duration : 0;
+      const progress = duration ? Math.min(100, (els.audio.currentTime / duration) * 100) : 0;
+      els.audioProgress.style.width = `${progress}%`;
+      const playing = !els.audio.paused && !els.audio.ended;
+      els.audioPlayBtn.textContent = playing ? "Ⅱ" : "▶";
+      els.audioPlayBtn.classList.toggle("playing", playing);
+      els.audioBox.classList.toggle("is-playing", playing);
+    }
+    function playAudioFromStart(){
+      if (!els.audio.src) return;
+      try{
+        els.audio.pause();
+        els.audio.currentTime = 0;
+      } catch (error){
+        els.audio.load();
+      }
+      const playback = els.audio.play();
+      if (playback?.catch){
+        playback.catch(() => {
+          syncAudioUI();
+        });
+      }
+      syncAudioUI();
+    }
+    els.audioPlayBtn.addEventListener("click", () => {
+      if (els.audio.paused || els.audio.ended){
+        if (els.audio.ended) playAudioFromStart();
+        else {
+          const playback = els.audio.play();
+          if (playback?.catch) playback.catch(() => syncAudioUI());
+        }
+      } else {
+        els.audio.pause();
+      }
+      syncAudioUI();
+    });
+    els.audio.addEventListener("play", syncAudioUI);
+    els.audio.addEventListener("pause", syncAudioUI);
+    els.audio.addEventListener("ended", syncAudioUI);
+    els.audio.addEventListener("timeupdate", syncAudioUI);
+    els.showBtn.addEventListener("click", showAnswer);
+    els.prevBtn.addEventListener("click", prev);
+    els.nextBtn.addEventListener("click", next);
+    els.againBtn.addEventListener("click", resetQuiz);
+    els.copyBtn.addEventListener("click", async () => {
+      els.copyText.select();
+      try{
+        await navigator.clipboard.writeText(els.copyText.value);
+        els.copyBtn.textContent = "コピーしました";
+        setTimeout(() => {
+          els.copyBtn.textContent = "コピー";
+        }, 1200);
+      } catch (error){
+        document.execCommand("copy");
+      }
+    });
+    els.backToModeBtn.addEventListener("click", showModePicker);
+    els.listeningModeBtn.addEventListener("click", () => renderSetPicker("listening"));
+    els.paraphraseModeBtn.addEventListener("click", () => renderSetPicker("paraphrase"));
+    [...els.ratings.children].forEach(btn => {
+      btn.addEventListener("click", () => rate(btn.dataset.rating, btn));
+    });
+    init();
+  </script>
+</body>
+</html>
