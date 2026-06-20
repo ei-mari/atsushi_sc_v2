@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unit 21-30 Review Test</title>
+  <style>
+    :root{
+      --bg:#f7f8fb;
+      --card:#fff;
+      --text:#15171c;
+      --muted:#687080;
+      --line:rgba(21,23,28,.1);
+      --good:#148548;
+      --bad:#ba1a1a;
+      --accent:#2357c6;
+      --accent-soft:#e8efff;
+      --shadow:0 14px 34px rgba(25,32,56,.08);
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      min-height:100vh;
+      background:var(--bg);
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Sans","Noto Sans JP",sans-serif;
+    }
+    .wrap{
+      width:min(100%, 760px);
+      margin:0 auto;
+      padding:18px 14px 34px;
+    }
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin:4px 0 14px;
+    }
+    h1{
+      font-size:24px;
+      line-height:1.15;
+      margin:0;
+      letter-spacing:0;
+    }
+    .sub{
+      margin-top:6px;
+      color:var(--muted);
+      font-size:13px;
+      font-weight:700;
+    }
+    .topLink{
+      color:var(--text);
+      text-decoration:none;
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:9px 11px;
+      background:#fff;
+      font-weight:900;
+      white-space:nowrap;
+    }
+    .panel{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .status{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:14px;
+      border-bottom:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+      font-weight:900;
+    }
+    .body{ padding:18px; }
+    .tags{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+    .tag{
+      border-radius:999px;
+      background:rgba(21,23,28,.06);
+      padding:6px 10px;
+      font-size:12px;
+      font-weight:900;
+      color:#2a3039;
+    }
+    .tag.unit{
+      background:var(--accent-soft);
+      color:var(--accent);
+    }
+    .promptLabel{
+      color:var(--muted);
+      font-size:12px;
+      font-weight:950;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:8px;
+    }
+    .prompt{
+      min-height:96px;
+      display:flex;
+      align-items:center;
+      padding:18px;
+      border-radius:16px;
+      background:#f4f6fa;
+      font-size:21px;
+      line-height:1.55;
+      font-weight:850;
+    }
+    .selfCheck{
+      display:none;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+    .selfCheck.show{ display:flex; }
+    .answer{
+      display:none;
+      margin-top:16px;
+      padding:14px;
+      border-radius:14px;
+      background:#f8fafc;
+      border:1px solid var(--line);
+    }
+    .answer.show{ display:block; }
+    .answerEn{
+      font-size:18px;
+      line-height:1.5;
+      font-weight:900;
+      margin-bottom:8px;
+    }
+    .answerIpa{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.5;
+      overflow-wrap:anywhere;
+    }
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+    button.action{
+      border:0;
+      border-radius:13px;
+      padding:12px 14px;
+      background:var(--accent);
+      color:#fff;
+      font-weight:950;
+      cursor:pointer;
+    }
+    button.action.secondary{
+      background:rgba(21,23,28,.07);
+      color:var(--text);
+    }
+    button.action:disabled{
+      opacity:.42;
+      cursor:not-allowed;
+    }
+    .result{
+      padding:18px;
+    }
+    .score{
+      font-size:28px;
+      font-weight:950;
+      margin-bottom:12px;
+    }
+    .review{
+      display:grid;
+      gap:10px;
+      margin-top:14px;
+    }
+    .reviewItem{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px;
+      background:#fff;
+      line-height:1.5;
+    }
+    .reviewItem strong{
+      display:block;
+      margin-bottom:4px;
+    }
+    .missedPanel{
+      margin-top:16px;
+      padding:16px;
+    }
+    .missedHead{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:10px;
+    }
+    .missedTitle{
+      margin:0;
+      font-size:18px;
+      line-height:1.3;
+    }
+    .empty{
+      color:var(--muted);
+      font-weight:800;
+      line-height:1.5;
+    }
+    .hidden{ display:none; }
+    @media (max-width:520px){
+      header{ align-items:flex-start; flex-direction:column; }
+      .prompt{ font-size:19px; min-height:116px; }
+      .body{ padding:14px; }
+      .actions .action{ flex:1; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div>
+        <h1>Unit 21-30 Review Test</h1>
+        <div class="sub">UNIT 21-30からランダムに出題</div>
+      </div>
+      <a class="topLink" href="./">カードへ戻る</a>
+    </header>
+
+    <section class="panel" id="quizPanel">
+      <div class="status">
+        <span id="meter">Loading...</span>
+          <span id="score">0 checked</span>
+      </div>
+      <div class="body">
+        <div class="tags">
+          <span class="tag unit" id="unitTag">UNIT --</span>
+          <span class="tag" id="themeTag">Theme</span>
+        </div>
+        <div class="promptLabel">Say the English sentence</div>
+        <div class="prompt" id="prompt">Loading...</div>
+        <div class="answer" id="answer">
+          <div class="answerEn" id="answerEn"></div>
+          <div class="answerIpa" id="answerIpa"></div>
+        </div>
+        <div class="selfCheck" id="selfCheck">
+          <button class="action secondary" id="okBtn" type="button">⭕️</button>
+          <button class="action secondary" id="triangleBtn" type="button">🔺</button>
+          <button class="action secondary" id="xBtn" type="button">❌</button>
+        </div>
+        <div class="actions">
+          <button class="action secondary" id="playBtn" type="button">Play audio</button>
+          <button class="action" id="showAnswerBtn" type="button">Show answer</button>
+          <button class="action" id="nextBtn" type="button" disabled>Next</button>
+          <button class="action secondary" id="restartBtn" type="button">Restart</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel missedPanel" id="missedPanel">
+      <div class="missedHead">
+        <h2 class="missedTitle">復習リスト</h2>
+        <button class="action secondary" id="clearReviewBtn" type="button">Clear</button>
+      </div>
+      <div class="review" id="triangleList"></div>
+      <div class="review" id="xList"></div>
+    </section>
+
+    <section class="panel hidden" id="resultPanel">
+      <div class="result">
+        <div class="score" id="finalScore"></div>
+        <button class="action" id="againBtn" type="button">もう一度ランダム出題</button>
+        <div class="review" id="review"></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const CSV_URL = "./cards.csv";
+    const UNIT_MIN = 21;
+    const UNIT_MAX = 30;
+    const TRIANGLE_KEY = "phrasal-quiz-21-30-triangle";
+    const X_KEY = "phrasal-quiz-21-30-x";
+
+    const els = {
+      quizPanel: document.getElementById("quizPanel"),
+      resultPanel: document.getElementById("resultPanel"),
+      meter: document.getElementById("meter"),
+      score: document.getElementById("score"),
+      unitTag: document.getElementById("unitTag"),
+      themeTag: document.getElementById("themeTag"),
+      prompt: document.getElementById("prompt"),
+      answer: document.getElementById("answer"),
+      answerEn: document.getElementById("answerEn"),
+      answerIpa: document.getElementById("answerIpa"),
+      selfCheck: document.getElementById("selfCheck"),
+      okBtn: document.getElementById("okBtn"),
+      triangleBtn: document.getElementById("triangleBtn"),
+      xBtn: document.getElementById("xBtn"),
+      playBtn: document.getElementById("playBtn"),
+      showAnswerBtn: document.getElementById("showAnswerBtn"),
+      nextBtn: document.getElementById("nextBtn"),
+      restartBtn: document.getElementById("restartBtn"),
+      againBtn: document.getElementById("againBtn"),
+      clearReviewBtn: document.getElementById("clearReviewBtn"),
+      finalScore: document.getElementById("finalScore"),
+      review: document.getElementById("review"),
+      triangleList: document.getElementById("triangleList"),
+      xList: document.getElementById("xList")
+    };
+
+    const audio = new Audio();
+    const state = {
+      cards: [],
+      quiz: [],
+      index: 0,
+      score: 0,
+      answered: false,
+      log: [],
+      triangle: [],
+      x: []
+    };
+
+    function parseCsv(text){
+      const rows = [];
+      let row = [];
+      let value = "";
+      let quoted = false;
+      for (let i = 0; i < text.length; i++){
+        const ch = text[i];
+        const next = text[i + 1];
+        if (quoted){
+          if (ch === '"' && next === '"'){ value += '"'; i++; }
+          else if (ch === '"'){ quoted = false; }
+          else { value += ch; }
+        } else {
+          if (ch === '"') quoted = true;
+          else if (ch === ","){ row.push(value); value = ""; }
+          else if (ch === "\n"){
+            row.push(value);
+            if (row.some(cell => cell.trim() !== "")) rows.push(row);
+            row = [];
+            value = "";
+          } else if (ch !== "\r") {
+            value += ch;
+          }
+        }
+      }
+      if (value || row.length){
+        row.push(value);
+        rows.push(row);
+      }
+      const header = rows.shift();
+      return rows.map(cols => Object.fromEntries(header.map((key, i) => [key, cols[i] || ""])));
+    }
+
+    function shuffle(items){
+      const arr = items.slice();
+      for (let i = arr.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function normalizeCard(row){
+      return {
+        unit: Number(row.unit),
+        idx: Number(row.idx),
+        theme: row.theme,
+        ja: row.ja,
+        en: row.en,
+        ipa: row.ipa,
+        audioUrl: row.audioUrl,
+        id: row.id
+      };
+    }
+
+    function renderQuestion(){
+      if (state.index >= state.quiz.length){
+        renderResult();
+        return;
+      }
+      const card = state.quiz[state.index];
+      state.answered = false;
+      els.answer.classList.remove("show");
+      els.selfCheck.classList.remove("show");
+      els.showAnswerBtn.disabled = false;
+      els.okBtn.disabled = false;
+      els.triangleBtn.disabled = false;
+      els.xBtn.disabled = false;
+      els.nextBtn.disabled = true;
+      els.meter.textContent = `Question ${state.index + 1} / ${state.quiz.length}`;
+      els.score.textContent = `${state.score} できた`;
+      els.unitTag.textContent = `UNIT ${String(card.unit).padStart(2, "0")}`;
+      els.themeTag.textContent = card.theme;
+      els.prompt.textContent = card.ja;
+      els.answerEn.textContent = card.en;
+      els.answerIpa.textContent = card.ipa;
+      els.playBtn.disabled = !card.audioUrl;
+    }
+
+    function showAnswer(){
+      if (state.answered) return;
+      els.answer.classList.add("show");
+      els.selfCheck.classList.add("show");
+      els.showAnswerBtn.disabled = true;
+    }
+
+    function markAnswer(rating){
+      if (state.answered) return;
+      const card = state.quiz[state.index];
+      state.answered = true;
+      if (rating === "ok") state.score++;
+      if (rating === "triangle") addReviewCard("triangle", card);
+      if (rating === "x") addReviewCard("x", card);
+      state.log.push({ card, rating, correct: rating === "ok" });
+      els.okBtn.disabled = true;
+      els.triangleBtn.disabled = true;
+      els.xBtn.disabled = true;
+      els.nextBtn.disabled = false;
+      els.score.textContent = `${state.score} できた`;
+    }
+
+    function playCurrent(){
+      const card = state.quiz[state.index];
+      if (!card || !card.audioUrl) return;
+      audio.pause();
+      audio.currentTime = 0;
+      audio.src = card.audioUrl;
+      audio.play().catch(() => {});
+    }
+
+    function next(){
+      state.index++;
+      renderQuestion();
+    }
+
+    function start(){
+      state.quiz = shuffle(state.cards);
+      state.index = 0;
+      state.score = 0;
+      state.log = [];
+      els.quizPanel.classList.remove("hidden");
+      els.resultPanel.classList.add("hidden");
+      renderQuestion();
+    }
+
+    function renderResult(){
+      els.quizPanel.classList.add("hidden");
+      els.resultPanel.classList.remove("hidden");
+      els.finalScore.textContent = `できた ${state.score} / ${state.quiz.length}`;
+      els.review.innerHTML = state.log.map((item, index) => `
+        <div class="reviewItem">
+          <strong>${index + 1}. ${ratingLabel(item.rating)} - UNIT ${String(item.card.unit).padStart(2, "0")} ${item.card.theme}</strong>
+          <div>${item.card.ja}</div>
+          <div>${item.card.en}</div>
+        </div>
+      `).join("");
+    }
+
+    function ratingLabel(rating){
+      if (rating === "ok") return "⭕️";
+      if (rating === "triangle") return "🔺";
+      return "❌";
+    }
+
+    function saveReviewLists(){
+      localStorage.setItem(TRIANGLE_KEY, JSON.stringify(state.triangle.map(card => card.id)));
+      localStorage.setItem(X_KEY, JSON.stringify(state.x.map(card => card.id)));
+    }
+
+    function loadReviewLists(){
+      try{
+        const triangleIds = JSON.parse(localStorage.getItem(TRIANGLE_KEY) || "[]");
+        const xIds = JSON.parse(localStorage.getItem(X_KEY) || "[]");
+        state.triangle = triangleIds.map(id => state.cards.find(card => card.id === id)).filter(Boolean);
+        state.x = xIds.map(id => state.cards.find(card => card.id === id)).filter(Boolean);
+      } catch {
+        state.triangle = [];
+        state.x = [];
+      }
+      renderReviewLists();
+    }
+
+    function addReviewCard(kind, card){
+      const list = kind === "triangle" ? state.triangle : state.x;
+      if (!list.some(item => item.id === card.id)){
+        list.push(card);
+        saveReviewLists();
+        renderReviewLists();
+      }
+    }
+
+    function clearReviewLists(){
+      state.triangle = [];
+      state.x = [];
+      saveReviewLists();
+      renderReviewLists();
+    }
+
+    function renderReviewList(el, label, list){
+      if (!list.length){
+        el.innerHTML = `<div class="empty">${label}の問題はまだありません。</div>`;
+        return;
+      }
+      el.innerHTML = `<div class="empty">${label}</div>` + list.map((card, index) => `
+        <div class="reviewItem">
+          <strong>${index + 1}. UNIT ${String(card.unit).padStart(2, "0")} ${card.theme}</strong>
+          <div>${card.ja}</div>
+          <div>${card.en}</div>
+        </div>
+      `).join("");
+    }
+
+    function renderReviewLists(){
+      renderReviewList(els.triangleList, "🔺", state.triangle);
+      renderReviewList(els.xList, "❌", state.x);
+    }
+
+    async function init(){
+      try{
+        const res = await fetch(CSV_URL, { cache: "no-store" });
+        if (!res.ok) throw new Error("CSV not found");
+        const rows = parseCsv(await res.text());
+        state.cards = rows.map(normalizeCard)
+          .filter(card => card.unit >= UNIT_MIN && card.unit <= UNIT_MAX && card.ja && card.en);
+        if (!state.cards.length) throw new Error("No cards");
+        loadReviewLists();
+        start();
+      } catch (error){
+        els.meter.textContent = "Error";
+        els.prompt.textContent = "cards.csvからUNIT 21-30を読み込めませんでした。";
+        els.playBtn.disabled = true;
+        els.nextBtn.disabled = true;
+      }
+    }
+
+    els.playBtn.addEventListener("click", playCurrent);
+    els.showAnswerBtn.addEventListener("click", showAnswer);
+    els.okBtn.addEventListener("click", () => markAnswer("ok"));
+    els.triangleBtn.addEventListener("click", () => markAnswer("triangle"));
+    els.xBtn.addEventListener("click", () => markAnswer("x"));
+    els.nextBtn.addEventListener("click", next);
+    els.restartBtn.addEventListener("click", start);
+    els.againBtn.addEventListener("click", start);
+    els.clearReviewBtn.addEventListener("click", clearReviewLists);
+
+    init();
+  </script>
+</body>
+</html>
