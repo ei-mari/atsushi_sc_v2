@@ -265,6 +265,24 @@
       border-color:transparent;
       background:transparent;
     }
+    .modeCard.textMode{
+      min-height:118px;
+      padding:22px;
+      border-radius:20px;
+      border:1px solid var(--line);
+      background:var(--card);
+      box-shadow:var(--shadow);
+    }
+    .modeCard.textMode strong,
+    .modeCard.textMode span{
+      display:block;
+      margin-left:0;
+      margin-right:0;
+    }
+    .modeCard.textMode:hover{
+      border-color:var(--primary-soft);
+      background:#fff;
+    }
     .top{
       display:flex;
       align-items:center;
@@ -295,11 +313,9 @@
       font-weight:800;
     }
     .audioBox{
-      display:flex;
-      align-items:center;
-      gap:16px;
+      display:block;
       margin-bottom:18px;
-      padding:18px;
+      padding:14px;
       border:2px solid var(--line);
       border-radius:22px;
       background:
@@ -308,81 +324,131 @@
       box-shadow:var(--shadow);
     }
     .audioBox audio{
-      display:none;
+      display:block;
+      width:100%;
+      min-height:42px;
     }
-    .audioPlay{
-      width:62px;
-      height:62px;
-      min-height:62px;
-      flex:0 0 auto;
-      border-radius:50%;
-      padding:0;
-      display:grid;
-      place-items:center;
-      background:var(--primary);
-      box-shadow:0 3px 8px rgba(103,80,164,.28);
-      font-size:25px;
+    .audioSpeed{
+      display:flex;
+      gap:8px;
+      margin-top:12px;
     }
-    .audioPlay.playing{
-      background:var(--secondary);
-      box-shadow:0 3px 8px rgba(0,106,106,.26);
-    }
-    .audioMeta{
-      min-width:0;
-      flex:1;
-    }
-    .audioLabel{
+    .speedBtn{
+      min-height:36px;
+      padding:0 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
       color:var(--primary-dark);
+      box-shadow:none;
       font-size:13px;
+      font-weight:950;
+    }
+    .speedBtn.active{
+      border-color:var(--primary);
+      background:var(--primary);
+      color:#fff;
+    }
+    .replayAudioBtn{
+      width:100%;
+      margin-top:10px;
+      min-height:42px;
+      border-radius:14px;
+      background:#fff;
+      color:var(--primary-dark);
+      border:1px solid var(--line);
+      box-shadow:none;
+      font-size:14px;
+      font-weight:950;
+    }
+    .playerBody{
+      padding:20px 18px 22px;
+      display:grid;
+      gap:16px;
+    }
+    .playerCard{
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:18px;
+      background:var(--card);
+      box-shadow:var(--shadow);
+    }
+    .playerEyebrow{
+      margin:0 0 8px;
+      color:var(--primary-dark);
+      font-size:12px;
       line-height:1;
       font-weight:950;
-      margin-bottom:10px;
-      letter-spacing:.04em;
+      letter-spacing:.05em;
     }
-    .audioTrack{
-      position:relative;
-      height:14px;
-      border-radius:999px;
-      background:#e7e0ec;
-      overflow:hidden;
-      box-shadow:inset 0 2px 4px rgba(31,41,51,.08);
+    .playerTitle{
+      margin:0 0 8px;
+      color:var(--text);
+      font-size:22px;
+      line-height:1.3;
+      font-weight:950;
     }
-    .audioProgress{
-      width:0%;
-      height:100%;
-      border-radius:999px;
-      background:linear-gradient(90deg, var(--primary), var(--secondary));
-      transition:width .12s linear;
+    .playerJa{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.65;
+      font-weight:800;
     }
-    .audioWaves{
-      display:flex;
-      align-items:end;
-      gap:4px;
-      height:22px;
-      margin-top:10px;
+    .playerControls{
+      display:grid;
+      grid-template-columns:1fr 1.4fr 1fr;
+      gap:10px;
+      align-items:center;
     }
-    .audioWaves span{
-      width:6px;
-      border-radius:999px;
-      background:rgba(103,80,164,.52);
+    .playerControls button{
+      min-height:52px;
     }
-    .audioWaves span:nth-child(1){ height:8px; }
-    .audioWaves span:nth-child(2){ height:16px; background:rgba(0,106,106,.48); }
-    .audioWaves span:nth-child(3){ height:11px; }
-    .audioWaves span:nth-child(4){ height:20px; background:rgba(125,82,96,.48); }
-    .audioWaves span:nth-child(5){ height:13px; background:rgba(0,106,106,.42); }
-    .audioWaves span:nth-child(6){ height:18px; }
-    .audioBox.is-playing .audioWaves span{
-      animation:bounceWave .72s ease-in-out infinite alternate;
+    .playerSeek{
+      width:100%;
+      accent-color:var(--primary);
     }
-    .audioBox.is-playing .audioWaves span:nth-child(2){ animation-delay:.08s; }
-    .audioBox.is-playing .audioWaves span:nth-child(3){ animation-delay:.16s; }
-    .audioBox.is-playing .audioWaves span:nth-child(4){ animation-delay:.24s; }
-    .audioBox.is-playing .audioWaves span:nth-child(5){ animation-delay:.32s; }
-    .audioBox.is-playing .audioWaves span:nth-child(6){ animation-delay:.4s; }
-    @keyframes bounceWave{
-      from{ transform:scaleY(.72); opacity:.7; }
-      to{ transform:scaleY(1.12); opacity:1; }
+    .playerList{
+      display:grid;
+      gap:8px;
+    }
+    .playerTrack{
+      width:100%;
+      display:grid;
+      grid-template-columns:auto 1fr;
+      gap:10px;
+      align-items:start;
+      text-align:left;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--text);
+      box-shadow:none;
+    }
+    .playerTrack.active{
+      border-color:var(--primary);
+      background:var(--primary-soft);
+      color:var(--primary-dark);
+    }
+    .playerTrackNum{
+      font-weight:950;
+      color:var(--primary);
+      font-size:13px;
+      line-height:1.4;
+    }
+    .playerTrackText{
+      min-width:0;
+      font-size:13px;
+      line-height:1.45;
+      font-weight:850;
+    }
+    .playerTrackText span{
+      display:block;
+      margin-top:3px;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:750;
     }
     .blankSentence{
       font-size:21px;
@@ -822,6 +888,10 @@
           <strong>PARAPHRASE MODE</strong>
           <span>与えられた英文をphrasal verbで言い換えよう</span>
         </button>
+        <button class="modeCard textMode" id="playerModeBtn" type="button">
+          <strong>PLAYER MODE</strong>
+          <span>LISTENING MODEの音声をSETごとに20個ずつ再生しよう</span>
+        </button>
       </div>
     </section>
 
@@ -838,10 +908,31 @@
       </div>
     </section>
 
+    <section class="panel hidden" id="playerPanel">
+      <div class="top">
+        <div class="meter" id="playerMeter">PLAYER MODE</div>
+        <button class="secondary" id="playerTopBtn" type="button">TOP</button>
+      </div>
+      <div class="playerBody">
+        <div class="playerCard">
+          <p class="playerEyebrow" id="playerSetLabel">SET --</p>
+          <h2 class="playerTitle" id="playerTitle">Ready</h2>
+          <p class="playerJa" id="playerJa"></p>
+          <audio id="playerAudio" preload="auto"></audio>
+        </div>
+        <input class="playerSeek" id="playerSeek" type="range" min="0" max="100" value="0" aria-label="Audio progress">
+        <div class="playerControls">
+          <button class="secondary" id="playerPrevBtn" type="button">Prev</button>
+          <button id="playerPlayBtn" type="button">Play</button>
+          <button class="secondary" id="playerNextBtn" type="button">Next</button>
+        </div>
+        <div class="playerList" id="playerList"></div>
+      </div>
+    </section>
+
     <section class="panel hidden" id="quizPanel">
       <div class="top">
         <div class="meter" id="meter">Loading...</div>
-        <button class="secondary" id="replayBtn" type="button">Play</button>
       </div>
       <div class="body">
         <div class="questionMeta">
@@ -849,17 +940,13 @@
           <span class="tag" id="themeTag">Choose one</span>
         </div>
         <div class="audioBox">
-          <button class="audioPlay" id="audioPlayBtn" type="button" aria-label="Play audio">▶</button>
-          <div class="audioMeta">
-            <div class="audioLabel">LISTEN AND CATCH IT</div>
-            <div class="audioTrack" aria-hidden="true">
-              <div class="audioProgress" id="audioProgress"></div>
-            </div>
-            <div class="audioWaves" aria-hidden="true">
-              <span></span><span></span><span></span><span></span><span></span><span></span>
-            </div>
-          </div>
           <audio id="audio" controls preload="auto"></audio>
+          <div class="audioSpeed" id="audioSpeed" aria-label="Playback speed">
+            <button class="speedBtn" type="button" data-rate="0.5">x0.5</button>
+            <button class="speedBtn" type="button" data-rate="0.75">x0.75</button>
+            <button class="speedBtn active" type="button" data-rate="1">x1.0</button>
+          </div>
+          <button class="replayAudioBtn" id="replayBtn" type="button">もう一度再生</button>
         </div>
         <div class="blankSentence" id="blankSentence"></div>
         <div class="choices" id="choices"></div>
@@ -963,7 +1050,7 @@
         prompt: "Working two weeks straight without a day off exhausted me.",
         ja: "休みなしで2週間続けて働いて、私は疲れ果てました。",
         en: "Working two weeks straight without a day off wore me out.",
-        ipa: "",
+        ipa: "/ˈwɝkɪŋ tu wiks streɪt wɪˈðaʊt ə deɪ ɔf wɔr mi aʊt/",
         audioUrl: "",
         id: "P001-05"
       },
@@ -1018,7 +1105,7 @@
         prompt: "At first he was shy but then her bubbly attitude spread to him.",
         ja: "最初、彼は内気でしたが、彼女の陽気な態度が彼に伝染しました。",
         en: "At first he was shy but then her bubbly attitude wore off on him.",
-        ipa: "",
+        ipa: "/ət fɝst hi wəz ʃaɪ bət ðɛn hɚ ˈbʌbli ˈætəˌtud wɔr ɔf ɑn hɪm/",
         audioUrl: "",
         id: "P002-05"
       },
@@ -1822,7 +1909,7 @@
         theme: "Wear out",
         ja: "大好きな靴が傷んでしまい、捨てました。",
         en: "My favorite shoes were worn out, so I threw them away.",
-        ipa: "maɪ ˈfeɪvɚɪt ʃuz wɚ ˈwɔrn aʊt, soʊ(w)aɪ θru ðɛm əˈweɪ",
+        ipa: "maɪ ˈfeɪvɚɪt ʃuz wɚ ˈwɔrn aʊt, soʊ(w)aɪ θru / ðɛm əˈweɪ",
         audioUrl: "audio/listening/unit001/set-01.mp3",
         id: "L001-01"
       },
@@ -1832,7 +1919,7 @@
         theme: "Wear out",
         ja: "最近の服はすぐに傷むようです。",
         en: "Clothes seem to wear out quickly nowadays.",
-        ipa: "",
+        ipa: "/kloʊðz sim tə wɛr aʊt ˈkwɪkli ˈnaʊəˌdeɪz/",
         audioUrl: "audio/listening/unit001/set-02.mp3",
         id: "L001-02"
       },
@@ -1842,7 +1929,7 @@
         theme: "Wear out",
         ja: "このカーペットは人がよく歩くところがすり切れています。",
         en: "This carpet is worn out where people walk a lot.",
-        ipa: "",
+        ipa: "/ðɪs ˈkɑrpət ɪz wɔrn aʊt wɛr ˈpipəl wɔk ə lɑt/",
         audioUrl: "audio/listening/unit001/set-03.mp3",
         id: "L001-03"
       },
@@ -1862,7 +1949,7 @@
         theme: "Wear out",
         ja: "休みなしで2週間続けて働いて、私は疲れ果てました。",
         en: "Working two weeks straight without a day off wore me out.",
-        ipa: "",
+        ipa: "/ˈwɝkɪŋ tu wiks streɪt wɪˈðaʊt ə deɪ ɔf wɔr mi aʊt/",
         audioUrl: "audio/listening/unit001/set-05.mp3",
         id: "L001-05"
       },
@@ -1872,8 +1959,8 @@
         theme: "Wear off",
         ja: "この薬の効果は数時間でなくなります。",
         en: "The effect of this drug will wear off in a few hours.",
-        ipa: "",
-        audioUrl: "audio/listening/unit002/set-01.mp3",
+        ipa: "ði ɪˈfɛkt əv / ðɪs dʒrʌɡ wɪl / wɛr ɔf / ɪn ə fju aʊɚz",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/02/The-effect-of-this-drug-will-wear-off-in-a-few-hours.mp3",
         id: "L002-01"
       },
       {
@@ -1882,8 +1969,8 @@
         theme: "Wear off",
         ja: "歳月による劣化で車のペイントが剥がれ始めています。",
         en: "The paint on my car is starting to wear off from age.",
-        ipa: "",
-        audioUrl: "audio/listening/unit002/set-02.mp3",
+        ipa: "ðə peɪnt ɑn maɪ kɑr ɪz ˈstɑrtɪŋ tə wɛr ɔf frəm eɪdʒ",
+        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/02/The-paint-on-my-car-is-starting-to-wear-off-from-age-1.mp3",
         id: "L002-02"
       },
       {
@@ -1892,8 +1979,8 @@
         theme: "Wear off",
         ja: "歯を抜かれたあと、痛みは徐々に引き始めました。",
         en: "After the tooth was pulled, the pain started to wear off.",
-        ipa: "",
-        audioUrl: "audio/listening/unit002/set-03.m4a",
+        ipa: "/ˈæftɚ ðə tuθ wəz pʊld ðə peɪn ˈstɑrtəd tə wɛr ɔf/",
+        audioUrl: "audio/listening/unit002/set-03.mp3",
         id: "L002-03"
       },
       {
@@ -1902,8 +1989,8 @@
         theme: "Wear off",
         ja: "最初は気にしませんでしたが、結局彼の熱意は私に伝染しました。",
         en: "At first I didn't care but his enthusiasm eventually wore off on me.",
-        ipa: "",
-        audioUrl: "audio/listening/unit002/set-04.m4a",
+        ipa: "/ət fɝst aɪ ˈdɪdənt kɛr bət hɪz ɪnˈθuziˌæzəm ɪˈvɛntʃuəli wɔr ɔf ɑn mi/",
+        audioUrl: "audio/listening/unit002/set-04.mp3",
         id: "L002-04"
       },
       {
@@ -1912,8 +1999,8 @@
         theme: "Wear off",
         ja: "最初、彼は内気でしたが、彼女の陽気な態度が彼に伝染しました。",
         en: "At first he was shy but then her bubbly attitude wore off on him.",
-        ipa: "",
-        audioUrl: "audio/listening/unit002/set-05.m4a",
+        ipa: "/ət fɝst hi wəz ʃaɪ bət ðɛn hɚ ˈbʌbli ˈætəˌtud wɔr ɔf ɑn hɪm/",
+        audioUrl: "audio/listening/unit002/set-05.mp3",
         id: "L002-05"
       },
       {
@@ -1922,7 +2009,7 @@
         theme: "Wrap up",
         ja: "午前中全部をクリスマスプレゼントの包装に使いました。",
         en: "I spent all morning wrapping up Christmas presents.",
-        ipa: "",
+        ipa: "aɪ spɛnt ɔl ˈmɔrnɪŋ ˈræpɪŋ ʌp ˈkrɪsməs ˈprɛzənts",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/02/I-spent-all-morning-wrapping-up-Christmas-presents.mp3",
         id: "L003-01"
       },
@@ -1932,8 +2019,8 @@
         theme: "Wrap up",
         ja: "このハーブをビニールで包めば、冷凍できます。",
         en: "If you wrap these herbs up in plastic you can freeze them.",
-        ipa: "",
-        audioUrl: "audio/listening/unit003/set-02.m4a",
+        ipa: "/ɪf ju ræp ðiz ɝbz ʌp ɪn ˈplæstɪk ju kən friz ðɛm/",
+        audioUrl: "audio/listening/unit003/set-02.mp3",
         id: "L003-02"
       },
       {
@@ -1942,7 +2029,7 @@
         theme: "Wrap up",
         ja: "ちゃんと暖かくしてね。外はとても寒くなってきてますよ！",
         en: "Be sure to wrap up. It's getting really cold outside!",
-        ipa: "",
+        ipa: "bi ʃʊr də ˈræp ʌp. ɪts ˈɡɛtɪŋ ˈrɪli koʊld ˌaʊtˈsaɪd",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/02/Be-sure-to-wrap-up.-Its-getting-really-cold-outside.mp3",
         id: "L003-03"
       },
@@ -1952,8 +2039,8 @@
         theme: "Wrap up",
         ja: "天候のせいでコーチは練習を早めに切り上げました。",
         en: "The coach wrapped up practice early because of the weather.",
-        ipa: "",
-        audioUrl: "audio/listening/unit003/set-04.m4a",
+        ipa: "/ðə koʊtʃ ræpt ʌp ˈpræktəs ˈɝli bɪˈkɔz əv ðə ˈwɛðɚ/",
+        audioUrl: "audio/listening/unit003/set-04.mp3",
         id: "L003-04"
       },
       {
@@ -1962,7 +2049,7 @@
         theme: "Wrap up",
         ja: "この会議は急いで終える必要があります。",
         en: "We need to wrap up this meeting quickly.",
-        ipa: "",
+        ipa: "wi nid tə ˈræp ʌp ðɪs ˈmitɪŋ / ˈkwɪkli",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/02/We-need-to-wrap-up-this-meeting-quickly.mp3",
         id: "L003-05"
       },
@@ -1972,7 +2059,7 @@
         theme: "Work out",
         ja: "心配しないでください。うまくいきますよ。",
         en: "Don't worry. Things are going to work out just fine.",
-        ipa: "",
+        ipa: "doʊnt ˈwɝi./ θɪŋz ɚ ˈɡoʊɪŋ tə wɝk aʊt / dʒʌst faɪn",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/02/Dont-worry.-Things-are-going-to-work-out-just-fine.mp3",
         id: "L004-01"
       },
@@ -1982,8 +2069,8 @@
         theme: "Work out",
         ja: "うまくいくかどうか、ちょっと心配しているんです。",
         en: "I'm just worried about how things will work out.",
-        ipa: "",
-        audioUrl: "audio/listening/unit004/set-02.m4a",
+        ipa: "/aɪm dʒʌst ˈwɝid əˈbaʊt haʊ θɪŋz wɪl wɝk aʊt/",
+        audioUrl: "audio/listening/unit004/set-02.mp3",
         id: "L004-02"
       },
       {
@@ -1992,7 +2079,7 @@
         theme: "Work out",
         ja: "週に2回ジムでエクササイズしています。",
         en: "I work out at a gym twice a week.",
-        ipa: "",
+        ipa: "aɪ wɝk aʊt ət ə dʒɪm / twaɪs ə wik",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/02/I-work-out-at-a-gym-twice-a-week.mp3",
         id: "L004-03"
       },
@@ -2002,8 +2089,8 @@
         theme: "Work out",
         ja: "医師たちは患者の治療計画を作りました。",
         en: "The doctors worked out a treatment plan for the patient.",
-        ipa: "",
-        audioUrl: "audio/listening/unit004/set-04.m4a",
+        ipa: "/ðə ˈdɑktɚz wɝkt aʊt ə ˈtritmənt plæn fɚ ðə ˈpeɪʃənt/",
+        audioUrl: "audio/listening/unit004/set-04.mp3",
         id: "L004-04"
       },
       {
@@ -2012,8 +2099,8 @@
         theme: "Work out",
         ja: "交渉人たちは妥協案を作り出せませんでした。",
         en: "The negotiators couldn't work out a compromise.",
-        ipa: "",
-        audioUrl: "audio/listening/unit004/set-05.m4a",
+        ipa: "/ðə nəˈɡoʊʃiˌeɪtɚz ˈkʊdənt wɝk aʊt ə ˈkɑmprəˌmaɪz/",
+        audioUrl: "audio/listening/unit004/set-05.mp3",
         id: "L004-05"
       },
       {
@@ -2022,7 +2109,7 @@
         theme: "Turn in",
         ja: "終わったらテスト用紙を提出してください。",
         en: "Turn in your test forms when you have finished.",
-        ipa: "",
+        ipa: "/tɝn ɪn jʊr tɛst fɔrmz wɛn ju hæv ˈfɪnɪʃt/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/Turn-in-your-test-forms-when-you-have-finished.mp3",
         id: "L005-01"
       },
@@ -2032,8 +2119,8 @@
         theme: "Turn in",
         ja: "マネージャーに休暇願を提出しました。",
         en: "I turned my vacation request in to the manager.",
-        ipa: "",
-        audioUrl: "audio/listening/unit005/set-02.m4a",
+        ipa: "/aɪ tɝnd maɪ veɪˈkeɪʃən rɪˈkwɛst ɪn tə ðə ˈmænɪdʒɚ/",
+        audioUrl: "audio/listening/unit005/set-02.mp3",
         id: "L005-02"
       },
       {
@@ -2042,7 +2129,7 @@
         theme: "Turn in",
         ja: "今夜は早く寝ますね。おやすみ！",
         en: "I'm going to turn in early tonight. Good night!",
-        ipa: "",
+        ipa: "/aɪm ˈɡoʊɪŋ tə tɝn ɪn ˈɝli təˈnaɪt | ɡʊd naɪt/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/Im-going-to-turn-in-early-tonight.-Good-night.mp3",
         id: "L005-03"
       },
@@ -2052,8 +2139,8 @@
         theme: "Turn in",
         ja: "日の出とともに起きられるように、カップルは早めに床に就きました。",
         en: "The couple turned in early so they could wake up at sunrise.",
-        ipa: "",
-        audioUrl: "audio/listening/unit005/set-04.m4a",
+        ipa: "/ðə ˈkʌpəl tɝnd ɪn ˈɝli soʊ ðeɪ kəd weɪk ʌp ət ˈsʌnˌraɪz/",
+        audioUrl: "audio/listening/unit005/set-04.mp3",
         id: "L005-04"
       },
       {
@@ -2062,7 +2149,7 @@
         theme: "Turn in",
         ja: "私の財布を見つけた人が警察に届けてくれました。",
         en: "The person who found my wallet turned it in to the police.",
-        ipa: "",
+        ipa: "/ðə ˈpɝsən hu faʊnd maɪ ˈwɑlɪt tɝnd ɪt ɪn tu ðə pəˈlis/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/The-person-who-found-my-wallet-turned-it-in-to-the-police.mp3",
         id: "L005-05"
       },
@@ -2072,8 +2159,8 @@
         theme: "Turn out",
         ja: "そのゴルフトーナメントに集まった観客はごくわずかでした。",
         en: "Very few spectators turned out for the golf tournament.",
-        ipa: "",
-        audioUrl: "audio/listening/unit006/set-01.m4a",
+        ipa: "/ˈvɛri fju spɛkˈteɪtɚz tɝnd aʊt fɚ ðə ɡɑlf ˈtʊrnəmənt/",
+        audioUrl: "audio/listening/unit006/set-01.mp3",
         id: "L006-01"
       },
       {
@@ -2082,7 +2169,7 @@
         theme: "Turn out",
         ja: "何千もの人がパレードに集まりました。",
         en: "Thousands of people turned out for the parade.",
-        ipa: "",
+        ipa: "/ˈθaʊzəndz əv ˈpipəl tɝnd aʊt fɚ ðə pəˈreɪd/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/Thousands-of-people-turned-out-for-the-parade.mp3",
         id: "L006-02"
       },
@@ -2092,7 +2179,7 @@
         theme: "Turn out",
         ja: "その企業は毎日何百台ものテレビを製造しています。",
         en: "That company turns out hundreds of TVs every day.",
-        ipa: "",
+        ipa: "/ðæt ˈkʌmpəni tɝnz aʊt ˈhʌndrədz əv ˌtiˈviz ˈɛvri deɪ/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/That-company-turns-out-hundreds-of-TVs-every-day.mp3",
         id: "L006-03"
       },
@@ -2102,7 +2189,7 @@
         theme: "Turn out",
         ja: "心配ないです。うまくいきますから。",
         en: "Don't worry, things are going to turn out fine.",
-        ipa: "",
+        ipa: "/doʊnt ˈwɝi | θɪŋz ɚ ˈɡoʊɪŋ tə tɝn aʊt faɪn/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/Dont-worry-things-are-going-to-turn-out-fine.mp3",
         id: "L006-04"
       },
@@ -2112,8 +2199,8 @@
         theme: "Turn out",
         ja: "私が焼いたこのチョコレートマフィンは、すばらしくうまくできました。",
         en: "These chocolate muffins I baked turned out wonderfully.",
-        ipa: "",
-        audioUrl: "audio/listening/unit006/set-05.m4a",
+        ipa: "/ðiz ˈtʃɑklət ˈmʌfɪnz aɪ beɪkt tɝnd aʊt ˈwʌndɚfəli/",
+        audioUrl: "audio/listening/unit006/set-05.mp3",
         id: "L006-05"
       },
       {
@@ -2122,8 +2209,8 @@
         theme: "Call off",
         ja: "雷によってサッカーの練習は中止されました。",
         en: "Soccer practice was called off because of lightning.",
-        ipa: "",
-        audioUrl: "audio/listening/unit007/set-01.m4a",
+        ipa: "/ˈsɑkɚ ˈpræktəs wəz kɔld ɔf bɪˈkɔz əv ˈlaɪtnɪŋ/",
+        audioUrl: "audio/listening/unit007/set-01.mp3",
         id: "L007-01"
       },
       {
@@ -2132,7 +2219,7 @@
         theme: "Call off",
         ja: "毎年行う出張はコロナウイルスによって中止されました。",
         en: "Our annual business trip has been called off due to the coronavirus.",
-        ipa: "",
+        ipa: "/aʊr ˈænjuəl ˈbɪznəs trɪp həz bɪn kɔld ɔf du tə ðə kəˈroʊnəˌvaɪrəs/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/Our-annual-business-trip-has-been-called-off-due-to-the-coronavirus.mp3",
         id: "L007-02"
       },
@@ -2142,8 +2229,8 @@
         theme: "Call off",
         ja: "会社のゴルフコンペは雨によって中止になるでしょうか？",
         en: "Is the company golf outing going to be called off because of rain?",
-        ipa: "",
-        audioUrl: "audio/listening/unit007/set-03.m4a",
+        ipa: "/ɪz ðə ˈkʌmpəni ɡɑlf ˈaʊtɪŋ ˈɡoʊɪŋ tə bi kɔld ɔf bɪˈkɔz əv reɪn/",
+        audioUrl: "audio/listening/unit007/set-03.mp3",
         id: "L007-03"
       },
       {
@@ -2152,8 +2239,8 @@
         theme: "Call off",
         ja: "たった2日で会社の社長が交渉を中止しました。",
         en: "The company president called off the negotiations after just two days.",
-        ipa: "",
-        audioUrl: "audio/listening/unit007/set-04.m4a",
+        ipa: "/ðə ˈkʌmpəni ˈprɛzədənt kɔld ɔf ðə nəˌɡoʊʃiˈeɪʃənz ˈæftɚ dʒʌst tu deɪz/",
+        audioUrl: "audio/listening/unit007/set-04.mp3",
         id: "L007-04"
       },
       {
@@ -2162,8 +2249,8 @@
         theme: "Call off",
         ja: "娘は病気なので、彼女の誕生日パーティーを中止する必要があります。",
         en: "We need to call off our daughter's birthday party because she is sick.",
-        ipa: "",
-        audioUrl: "audio/listening/unit007/set-05.m4a",
+        ipa: "/wi nid tə kɔl ɔf aʊr ˈdɔtɚz ˈbɝθˌdeɪ ˈpɑrti bɪˈkɔz ʃi ɪz sɪk/",
+        audioUrl: "audio/listening/unit007/set-05.mp3",
         id: "L007-05"
       },
       {
@@ -2172,8 +2259,8 @@
         theme: "Pass out",
         ja: "ジェットコースターに乗っているとき、妹が気絶したんです。",
         en: "My sister passed out while riding the roller coaster.",
-        ipa: "",
-        audioUrl: "audio/listening/unit008/set-01.m4a",
+        ipa: "/maɪ ˈsɪstɚ pæst aʊt waɪl ˈraɪdɪŋ ðə ˈroʊlɚ ˈkoʊstɚ/",
+        audioUrl: "audio/listening/unit008/set-01.mp3",
         id: "L008-01"
       },
       {
@@ -2182,7 +2269,7 @@
         theme: "Pass out",
         ja: "ひどい自動車事故を目撃した女性は気絶しました。",
         en: "The woman who witnessed the horrible car accident passed out.",
-        ipa: "",
+        ipa: "/ðə ˈwʊmən hu ˈwɪtnəst ðə ˈhɔrəbəl kɑr ˈæksɪdənt pæst aʊt/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/The-woman-who-witnessed-the-horrible-car-accident-passed-out.mp3",
         id: "L008-02"
       },
@@ -2192,7 +2279,7 @@
         theme: "Pass out",
         ja: "教師がクラスの各人にテストを配りました。",
         en: "The teacher passed out tests to each member of the class.",
-        ipa: "",
+        ipa: "/ðə ˈtitʃɚ pæst aʊt tɛsts tə itʃ ˈmɛmbɚ əv ðə klæs/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/The-teacher-passed-out-tests-to-each-member-of-the-class.mp3",
         id: "L008-03"
       },
@@ -2202,8 +2289,8 @@
         theme: "Pass out",
         ja: "訪問客のすべてに認証バッジを配る必要があります。",
         en: "We need to pass out security badges to all of the people visiting.",
-        ipa: "",
-        audioUrl: "audio/listening/unit008/set-04.m4a",
+        ipa: "/wi nid tə pæs aʊt sɪˈkjʊrəti ˈbædʒəz tə ɔl əv ðə ˈpipəl ˈvɪzətɪŋ/",
+        audioUrl: "audio/listening/unit008/set-04.mp3",
         id: "L008-04"
       },
       {
@@ -2212,8 +2299,8 @@
         theme: "Pass out",
         ja: "救急車を呼んで！ この人、気絶しそうです！",
         en: "Call an ambulance! I think he is going to pass out!",
-        ipa: "",
-        audioUrl: "audio/listening/unit008/set-05.m4a",
+        ipa: "/kɔl ən ˈæmbjələns aɪ θɪŋk hi ɪz ˈɡoʊɪŋ tə pæs aʊt/",
+        audioUrl: "audio/listening/unit008/set-05.mp3",
         id: "L008-05"
       },
       {
@@ -2222,7 +2309,7 @@
         theme: "Run across",
         ja: "京都での休暇中に偶然古い友人に出会いました。",
         en: "I ran across an old friend while on vacation in Kyoto.",
-        ipa: "",
+        ipa: "/aɪ ræn əˈkrɔs ən oʊld frɛnd waɪl ɑn veɪˈkeɪʃən ɪn ˈkjoʊtoʊ/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/I-ran-across-an-old-friend-while-on-vacation-in-Kyoto.mp3",
         id: "L009-01"
       },
@@ -2232,8 +2319,8 @@
         theme: "Run across",
         ja: "彼の妻は、夫の電話を借りているときに、たまたま別の女性の写真を見つけました。",
         en: "His wife ran across pictures of another woman when borrowing his phone.",
-        ipa: "",
-        audioUrl: "audio/listening/unit009/set-02.m4a",
+        ipa: "/hɪz waɪf ræn əˈkrɔs ˈpɪktʃɚz əv əˈnʌðɚ ˈwʊmən wɛn ˈbɑroʊɪŋ hɪz foʊn/",
+        audioUrl: "audio/listening/unit009/set-02.mp3",
         id: "L009-02"
       },
       {
@@ -2242,8 +2329,8 @@
         theme: "Run across",
         ja: "コンベンションでたまたまトムに会ったら、よろしく伝えておいて。",
         en: "If you run across Tom at the convention, please give him my regards.",
-        ipa: "",
-        audioUrl: "audio/listening/unit009/set-03.m4a",
+        ipa: "/ɪf ju rʌn əˈkrɔs tɑm ət ðə kənˈvɛnʃən pliz ɡɪv hɪm maɪ rɪˈɡɑrdz/",
+        audioUrl: "audio/listening/unit009/set-03.mp3",
         id: "L009-03"
       },
       {
@@ -2252,7 +2339,7 @@
         theme: "Run across",
         ja: "私たちは、たまたまうちの会計ソフトの問題を見つけました。",
         en: "We have run across a problem with our accounting software.",
-        ipa: "",
+        ipa: "/wi hæv rʌn əˈkrɔs ə ˈprɑbləm wɪð aʊr əˈkaʊntɪŋ ˈsɔftˌwɛr/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/We-have-run-across-a-problem-with-our-accounting-software.mp3",
         id: "L009-04"
       },
@@ -2262,7 +2349,7 @@
         theme: "Run across",
         ja: "この古くて美しい花瓶はどこで見つけたの？！",
         en: "Where did you run across this beautiful, old vase?!",
-        ipa: "",
+        ipa: "/wɛr dɪd ju rʌn əˈkrɔs ðɪs ˈbjutəfəl oʊld veɪs/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/Where-did-you-run-across-this-beautiful-old-vase.mp3",
         id: "L009-05"
       },
@@ -2272,8 +2359,8 @@
         theme: "Look up",
         ja: "問題の答えをインターネットで調べました。",
         en: "I looked up the answer to the question on the internet.",
-        ipa: "",
-        audioUrl: "audio/listening/unit010/set-01.m4a",
+        ipa: "/aɪ lʊkt ʌp ði ˈænsɚ tə ðə ˈkwɛstʃən ɑn ði ˈɪntɚˌnɛt/",
+        audioUrl: "audio/listening/unit010/set-01.mp3",
         id: "L010-01"
       },
       {
@@ -2282,7 +2369,7 @@
         theme: "Look up",
         ja: "わからないどんな単語も辞書で調べることが重要です。",
         en: "It's important to look up any words you don't know in the dictionary.",
-        ipa: "",
+        ipa: "/ɪts ɪmˈpɔrtənt tə lʊk ʌp ˈɛni wɝdz ju doʊnt noʊ ɪn ðə ˈdɪkʃəˌnɛri/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/Its-important-to-look-up-any-words-you-dont-know-in-the-dictionary.mp3",
         id: "L010-02"
       },
@@ -2292,7 +2379,7 @@
         theme: "Look up",
         ja: "帰省したとき、中学時代の古い友人の家を訪問しました。",
         en: "When I went back to my hometown, I looked up an old friend from middle school.",
-        ipa: "",
+        ipa: "/wɛn aɪ wɛnt bæk tə maɪ ˈhoʊmˌtaʊn, aɪ lʊkt ʌp ən oʊld frɛnd frəm ˈmɪdəl skul/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/When-I-went-back-to-my-hometown-I-looked-up-an-old-friend-from-middle-school.mp3",
         id: "L010-03"
       },
@@ -2302,8 +2389,8 @@
         theme: "Look up",
         ja: "東京に行ったとき、日本のペンフレンドの家を探そうとしましたが、きっと引っ越してしまったのでしょう。",
         en: "I tried to look up my Japanese pen pal when I went to Tokyo, but she must have moved.",
-        ipa: "",
-        audioUrl: "audio/listening/unit010/set-04.m4a",
+        ipa: "/aɪ traɪd tə lʊk ʌp maɪ ˌdʒæpəˈniz pɛn pæl wɛn aɪ wɛnt tə ˈtoʊkioʊ bət ʃi mʌst həv muvd/",
+        audioUrl: "audio/listening/unit010/set-04.mp3",
         id: "L010-04"
       },
       {
@@ -2312,7 +2399,7 @@
         theme: "Look up",
         ja: "いったん経済が回復したら、売上が上向くと期待しています。",
         en: "I expect our sales to look up once the economy recovers.",
-        ipa: "",
+        ipa: "/aɪ ɪkˈspɛkt aʊɚ seɪlz tə lʊk ʌp wʌns ði ɪˈkɑnəmi rɪˈkʌvɚz/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/I-expect-our-sales-to-look-up-once-the-economy-recovers.mp3",
         id: "L010-05"
       },
@@ -2322,8 +2409,8 @@
         theme: "Give back",
         ja: "兄が借りていたお金をやっと返してくれました。",
         en: "My brother finally gave back the money he borrowed.",
-        ipa: "",
-        audioUrl: "audio/listening/unit011/set-01.m4a",
+        ipa: "/maɪ ˈbrʌðɚ ˈfaɪnəli ɡeɪv bæk ðə ˈmʌni hi ˈbɑroʊd/",
+        audioUrl: "audio/listening/unit011/set-01.mp3",
         id: "L011-01"
       },
       {
@@ -2332,7 +2419,7 @@
         theme: "Give back",
         ja: "この本を図書館に返却するつもりです。",
         en: "I'm going to give these books back to the library.",
-        ipa: "",
+        ipa: "/aɪm ˈɡoʊɪŋ tə ɡɪv ðiz bʊks bæk tə ðə ˈlaɪˌbrɛri/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/Im-going-to-give-these-books-back-to-the-library.-1-1.mp3",
         id: "L011-02"
       },
@@ -2342,7 +2429,7 @@
         theme: "Give back",
         ja: "彼の婚約者は婚約指輪を返して、結婚式を取り消しました。",
         en: "His fiance gave back the engagement ring and called off the wedding.",
-        ipa: "",
+        ipa: "/hɪz fiˈɑnseɪ ɡeɪv bæk ði ɪnˈɡeɪdʒmənt rɪŋ ənd kɔld ɔf ðə ˈwɛdɪŋ/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/His-fiance-gave-back-the-engagement-ring-and-called-off-the-wedding.mp3",
         id: "L011-03"
       },
@@ -2352,8 +2439,8 @@
         theme: "Give back",
         ja: "多くのアメリカのアスリートが社会に恩返ししようとチャリティーを開始しています。",
         en: "Many American athletes start charities in attempt to give back to society.",
-        ipa: "",
-        audioUrl: "audio/listening/unit011/set-04.m4a",
+        ipa: "/ˈmɛni əˈmɛrəkən ˈæθˌlits stɑrt ˈtʃɛrətiz ɪn əˈtɛmpt tə ɡɪv bæk tə səˈsaɪəti/",
+        audioUrl: "audio/listening/unit011/set-04.mp3",
         id: "L011-04"
       },
       {
@@ -2362,7 +2449,7 @@
         theme: "Give back",
         ja: "億万長者のCEOは新しい高校を建設することで故郷の町に恩返ししました。",
         en: "The billionaire CEO gave back to his hometown by building a new high school.",
-        ipa: "",
+        ipa: "/ðə ˌbɪljəˈnɛr ˌsiːiˈoʊ ɡeɪv bæk tə hɪz ˌhoʊmˈtaʊn baɪ ˈbɪldɪŋ ə nu haɪ skul/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/The-billionaire-CEO-gave-back-to-his-hometown-by-building-a-new-high-school.-.mp3",
         id: "L011-05"
       },
@@ -2372,7 +2459,7 @@
         theme: "Take off",
         ja: "青いシャツを脱いで代わりにこの赤いシャツを着なさい。",
         en: "Take off the blue shirt and wear this red one instead.",
-        ipa: "",
+        ipa: "/teɪk ɔf ðə blu ʃɝt ənd wɛr ðɪs rɛd (wʌn) ɪnˈstɛd/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/Take-off-the-blue-shirt-and-wear-this-red-one-instead.mp3",
         id: "L012-01"
       },
@@ -2382,8 +2469,8 @@
         theme: "Take off",
         ja: "私の飛行機が時間どおりに離陸しなかったので、乗り継ぎを逃しました。",
         en: "My plane didn't take off on time, so I missed my connection.",
-        ipa: "",
-        audioUrl: "audio/listening/unit012/set-02.m4a",
+        ipa: "/maɪ pleɪn ˈdɪdənt teɪk ɔf ɑn taɪm soʊ aɪ mɪst maɪ kəˈnɛkʃən/",
+        audioUrl: "audio/listening/unit012/set-02.mp3",
         id: "L012-02"
       },
       {
@@ -2392,7 +2479,7 @@
         theme: "Take off",
         ja: "どうしてそんなに早く帰っちゃうの？！ パーティーは始まったばかりですよ！",
         en: "Why are you taking off so soon?! The party is just starting!",
-        ipa: "",
+        ipa: "/waɪ ɚ ju ˈteɪkɪŋ ɔf soʊ sun ðə ˈpɑrti ɪz dʒʌst ˈstɑrtɪŋ/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/Why-are-you-taking-off-so-soon-The-party-is-just-starting.mp3",
         id: "L012-03"
       },
@@ -2402,7 +2489,7 @@
         theme: "Take off",
         ja: "ダーツが日本で大流行し始めていると記事で読みました。",
         en: "I read in a magazine that darts is starting to take off in Japan.",
-        ipa: "",
+        ipa: "/aɪ rɛd ɪn ə ˌmæɡəˈzin ðət dɑrts ɪz ˈstɑrtɪŋ tə teɪk ɔf ɪn dʒəˈpæn/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/I-read-in-a-magazine-that-darts-is-starting-to-take-off-in-Japan.mp3",
         id: "L012-04"
       },
@@ -2412,8 +2499,8 @@
         theme: "Take off",
         ja: "デモ隊の人たちは警察が到着するや否や逃げていきました。",
         en: "The demonstrators took off as soon as the police arrived.",
-        ipa: "",
-        audioUrl: "audio/listening/unit012/set-05.m4a",
+        ipa: "/ðə ˈdɛmənˌstreɪtɚz tʊk ɔf əz sun əz ðə pəˈlis əˈraɪvd/",
+        audioUrl: "audio/listening/unit012/set-05.mp3",
         id: "L012-05"
       },
       {
@@ -2422,8 +2509,8 @@
         theme: "Put down",
         ja: "玄関のベルが鳴ったとき、女性は電話を置きました。",
         en: "The woman put down her phone when the doorbell rang.",
-        ipa: "",
-        audioUrl: "audio/listening/unit013/set-01.m4a",
+        ipa: "/ðə ˈwʊmən pʊt daʊn hɚ foʊn wɛn ðə ˈdɔrˌbɛl ræŋ/",
+        audioUrl: "audio/listening/unit013/set-01.mp3",
         id: "L013-01"
       },
       {
@@ -2432,7 +2519,7 @@
         theme: "Put down",
         ja: "ビジネスマンはテーブルの横にブリーフケースを下ろしました。",
         en: "The businessman put his briefcase down next to the table.",
-        ipa: "",
+        ipa: "/ðə ˈbɪznəsmæn pʊt hɪz ˈbrifˌkeɪs daʊn nɛkst tə ðə ˈteɪbəl/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/The-businessman-put-his-briefcase-down-next-to-the-table.mp3",
         id: "L013-02"
       },
@@ -2442,8 +2529,8 @@
         theme: "Put down",
         ja: "妹は背が低かったので、中学のときよくバカにされていました。",
         en: "My little sister was often put down in middle school because she was short.",
-        ipa: "",
-        audioUrl: "audio/listening/unit013/set-03.m4a",
+        ipa: "/maɪ ˈlɪtəl ˈsɪstɚ wəz ˈɔfən pʊt daʊn ɪn ˈmɪdəl skul bɪˈkɔz ʃi wəz ʃɔrt/",
+        audioUrl: "audio/listening/unit013/set-03.mp3",
         id: "L013-03"
       },
       {
@@ -2452,7 +2539,7 @@
         theme: "Put down",
         ja: "分厚いメガネをかけているので、みんなはいつも彼を侮辱しています。",
         en: "People are always putting him down because he wears thick glasses.",
-        ipa: "",
+        ipa: "/ˈpipəl ɚ ˈɔlweɪz ˈpʊtɪŋ hɪm daʊn bɪˈkɔz hi wɛrz θɪk ˈɡlæsəz/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/People-are-always-putting-him-down-because-he-wears-thick-glasses.mp3",
         id: "L013-04"
       },
@@ -2462,7 +2549,7 @@
         theme: "Put down",
         ja: "反乱は政府軍によって即座に鎮圧されました。",
         en: "The revolt was quickly put down by government forces.",
-        ipa: "",
+        ipa: "/ðə rɪˈvoʊlt wəz ˈkwɪkli pʊt daʊn baɪ ˈɡʌvɚnmənt ˈfɔrsəz/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/The-revolt-was-quickly-put-down-by-government-forces.mp3",
         id: "L013-05"
       },
@@ -2472,7 +2559,7 @@
         theme: "Do over",
         ja: "洗剤を入れ忘れて、洗濯をやり直さなければなりませんでした。",
         en: "I had to do my laundry over because I forgot to add detergent.",
-        ipa: "",
+        ipa: "/aɪ hæd tə du maɪ ˈlɔndri ˈoʊvɚ bɪˈkɔz aɪ fərˈɡɑt tə æd dɪˈtɝdʒənt/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/I-had-to-do-my-laundry-over-because-I-forgot-to-add-detergent.mp3",
         id: "L014-01"
       },
@@ -2482,8 +2569,8 @@
         theme: "Do over",
         ja: "その学生ドライバーは合格する前に、試験を二度繰り返し受けなければなりませんでした。",
         en: "The student driver had to do the test over twice before she passed.",
-        ipa: "",
-        audioUrl: "audio/listening/unit014/set-02.m4a",
+        ipa: "/ðə ˈstudənt ˈdraɪvɚ hæd tə du ðə tɛst ˈoʊvɚ twaɪs bɪˈfɔr ʃi pæst/",
+        audioUrl: "audio/listening/unit014/set-02.mp3",
         id: "L014-02"
       },
       {
@@ -2492,7 +2579,7 @@
         theme: "Do over",
         ja: "もう一度やり直せるのなら、若すぎる結婚はしないでしょう。",
         en: "If I could do it over again, I wouldn't get married so young.",
-        ipa: "",
+        ipa: "/ɪf aɪ kʊd du ɪt ˈoʊvɚ əˈɡɛn aɪ ˈwʊdənt ɡɛt ˈmærid soʊ jʌŋ/",
         audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/If-I-could-do-it-over-again-I-wouldnt-get-married-so-young.mp3",
         id: "L014-03"
       },
@@ -2502,8 +2589,8 @@
         theme: "Do over",
         ja: "オフィスの塗装に間違った色の塗料を使ったので、塗装をやり直さなければなりません。",
         en: "We used the wrong color paint to paint the office so now we have to do it over.",
-        ipa: "",
-        audioUrl: "audio/listening/unit014/set-04.m4a",
+        ipa: "/wi juzd ðə rɔŋ ˈkʌlɚ peɪnt tə peɪnt ði ˈɔfəs soʊ naʊ wi hæv tə du ɪt ˈoʊvɚ/",
+        audioUrl: "audio/listening/unit014/set-04.mp3",
         id: "L014-04"
       },
       {
@@ -2512,8 +2599,8 @@
         theme: "Do over",
         ja: "数式が間違っているので、このエクセルシートはやり直さなければなりません。",
         en: "We need to do this excel sheet over because the formulas are wrong.",
-        ipa: "",
-        audioUrl: "audio/listening/unit014/set-05.m4a",
+        ipa: "/wi nid tə du ðɪs ˈɛksɛl ʃit ˈoʊvɚ bɪˈkɔz ðə ˈfɔrmjələz ɚ rɔŋ/",
+        audioUrl: "audio/listening/unit014/set-05.mp3",
         id: "L014-05"
       },
       {
@@ -2522,8 +2609,8 @@
         theme: "Break down",
         ja: "ライムジュースは肉の細胞を壊すので、いいマリネ液になります。",
         en: "Lime juice makes a good marinade because it breaks down the meat cells.",
-        ipa: "",
-        audioUrl: "audio/listening/unit015/set-01.m4a",
+        ipa: "/laɪm dʒus meɪks ə ɡʊd ˌmærəˈneɪd bɪˈkɔz ɪt breɪks daʊn ðə mit sɛlz/",
+        audioUrl: "audio/listening/unit015/set-01.mp3",
         id: "L015-01"
       },
       {
@@ -2532,8 +2619,8 @@
         theme: "Break down",
         ja: "車が故障したので仕事に2時間遅刻しました。",
         en: "I was two hours late to work because my car broke down.",
-        ipa: "",
-        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/I-was-two-hours-late-to-work-because-my-car-broke-down.mp3",
+        ipa: "/aɪ wəz tu ˈaʊɚz leɪt tə wɝk bɪˈkʌz maɪ kɑr broʊk daʊn/",
+        audioUrl: "audio/listening/unit015/set-02.mp3",
         id: "L015-02"
       },
       {
@@ -2542,8 +2629,8 @@
         theme: "Break down",
         ja: "エレベーターが壊れたので、階段を使わなければなりません。",
         en: "The elevator broke down so we will have to take the stairs.",
-        ipa: "",
-        audioUrl: "audio/listening/unit015/set-03.m4a",
+        ipa: "/ði ˈɛləˌveɪtɚ broʊk daʊn soʊ wi wɪl hæv tə teɪk ðə stɛrz/",
+        audioUrl: "audio/listening/unit015/set-03.mp3",
         id: "L015-03"
       },
       {
@@ -2552,8 +2639,8 @@
         theme: "Break down",
         ja: "ひどい事故について説明しているとき、その女性は泣き崩れました。",
         en: "The woman broke down when describing the horrible accident.",
-        ipa: "",
-        audioUrl: "audio/listening/unit015/set-04.m4a",
+        ipa: "/ðə ˈwʊmən broʊk daʊn wɛn dɪˈskraɪbɪŋ ðə ˈhɔrəbəl ˈæksɪdənt/",
+        audioUrl: "audio/listening/unit015/set-04.mp3",
         id: "L015-04"
       },
       {
@@ -2562,8 +2649,8 @@
         theme: "Break down",
         ja: "その俳優は授賞式でのスピーチ中に泣き崩れました。",
         en: "The actor broke down during his speech at the award ceremony.",
-        ipa: "",
-        audioUrl: "https://www.eight-english.com/wp-content/uploads/2026/03/The-actor-broke-down-during-his-speech-at-the-award-ceremony.mp3",
+        ipa: "/ði ˈæktɚ broʊk daʊn ˈdʊrɪŋ hɪz spiːtʃ ət ði əˈwɔrd ˌsɛrəˌmoʊni/",
+        audioUrl: "audio/listening/unit015/set-05.mp3",
         id: "L015-05"
       },
       {
@@ -2572,8 +2659,8 @@
         theme: "Fill out",
         ja: "この書類に記入して、私のところに戻してください。",
         en: "Please fill out this paperwork and bring it back to me.",
-        ipa: "",
-        audioUrl: "audio/listening/unit016/set-01.m4a",
+        ipa: "/pliz fɪl aʊt ðɪs ˈpeɪpɚˌwɝk ənd brɪŋ ɪt bæk tə mi/",
+        audioUrl: "audio/listening/unit016/set-01.mp3",
         id: "L016-01"
       },
       {
@@ -2582,8 +2669,8 @@
         theme: "Fill out",
         ja: "医者に診察してもらう前に、5種類の書類を埋めなければなりませんでした。",
         en: "I had to fill out five different forms before I could see the doctor.",
-        ipa: "",
-        audioUrl: "audio/listening/unit016/set-02.m4a",
+        ipa: "/aɪ hæd tə fɪl aʊt faɪv ˈdɪfrənt fɔrmz bɪˈfɔr aɪ kʊd si ðə ˈdɑktɚ/",
+        audioUrl: "audio/listening/unit016/set-02.mp3",
         id: "L016-02"
       },
       {
@@ -2592,7 +2679,7 @@
         theme: "Fill out",
         ja: "このかんたんなアンケートにご記入いただいたお客さまは、20%の割引が受けられます。",
         en: "Customers who fill out this simple questionnaire can get a 20% discount.",
-        ipa: "",
+        ipa: "/ˈkʌstəmɚz hu fɪl aʊt ðɪs ˈsɪmpəl ˌkwɛstʃəˈnɛr kən ɡɛt ə ˈtwɛni pɚˈsɛnt ˈdɪsˌkaʊnt/",
         audioUrl: "audio/unit16/U016-03.mp3",
         id: "L016-03"
       },
@@ -2602,7 +2689,7 @@
         theme: "Fill out",
         ja: "若い頃はとても痩せていましたが、高校時代に健康な体つきになりました。",
         en: "I was very skinny in my youth but filled out during my high school years.",
-        ipa: "",
+        ipa: "/aɪ wəz ˈvɛri ˈskɪni ɪn maɪ juːθ bət fɪld aʊt ˈdʊrɪŋ maɪ haɪ skul jɪrz/",
         audioUrl: "audio/unit16/U016-04.mp3",
         id: "L016-04"
       },
@@ -2612,8 +2699,8 @@
         theme: "Fill out",
         ja: "彼は病気のとき20ポンド体重が減りましたが、回復後には申し分なく体重を増やしました。",
         en: "He lost 20 pounds when he was sick but filled out nicely after recovering.",
-        ipa: "",
-        audioUrl: "audio/listening/unit016/set-05.m4a",
+        ipa: "/hi lɔst ˈtwɛnti paʊndz wɛn hi wəz sɪk bət fɪld aʊt ˈnaɪsli ˈæftɚ rɪˈkʌvɚɪŋ/",
+        audioUrl: "audio/listening/unit016/set-05.mp3",
         id: "L016-05"
       },
       {
@@ -2622,8 +2709,8 @@
         theme: "Hold up",
         ja: "デモの参加者たちは看板を高く掲げて大使館前を行進しました。",
         en: "The demonstrators held up signs and marched in front of the embassy.",
-        ipa: "",
-        audioUrl: "audio/listening/unit017/set-01.m4a",
+        ipa: "/ðə ˈdɛmənˌstreɪtɚz hɛld ʌp saɪnz ənd mɑrtʃt ɪn frʌnt əv ði ˈɛmbəsi/",
+        audioUrl: "audio/listening/unit017/set-01.mp3",
         id: "L017-01"
       },
       {
@@ -2632,7 +2719,7 @@
         theme: "Hold up",
         ja: "警備員にはっきり見えるようにパスポートを持ち上げてください。",
         en: "Hold up your passports so the security guards can see them clearly.",
-        ipa: "",
+        ipa: "/hoʊld ʌp jɚ ˈpæsˌpɔrts soʊ ðə sɪˈkjʊrəti ɡɑrdz kən si ðɛm ˈklɪrli/",
         audioUrl: "audio/unit17/U017-02.mp3",
         id: "L017-02"
       },
@@ -2642,7 +2729,7 @@
         theme: "Hold up",
         ja: "吹雪のため、電車の出発が遅れました。",
         en: "Our train's departure was held up due to a snowstorm.",
-        ipa: "",
+        ipa: "/ˈaʊɚ treɪndz dɪˈpɑrtʃɚ wəz hɛld ʌp du tu ə ˈsnoʊˌstɔrm/",
         audioUrl: "audio/unit17/U017-03.mp3",
         id: "L017-03"
       },
@@ -2652,7 +2739,7 @@
         theme: "Hold up",
         ja: "会議を遅らせてしまいほんとうにすみません。",
         en: "I am really sorry for holding up the meeting.",
-        ipa: "",
+        ipa: "/aɪm ˈrɪli ˈsɑri fɔr ˈhoʊldɪŋ ʌp ðə ˈmitɪŋ/",
         audioUrl: "audio/unit17/U017-04.mp3",
         id: "L017-04"
       },
@@ -2662,7 +2749,7 @@
         theme: "Hold up",
         ja: "4人の男が銀行強盗に入り何百万もの金を盗んで逃げました。",
         en: "The four men held up the bank and escaped with millions.",
-        ipa: "",
+        ipa: "/ðə fɔr mɛn hɛld ʌp ðə bæŋk ənd ɪˈskeɪpt wɪð ˈmɪljənz/",
         audioUrl: "audio/unit17/U017-05.mp3",
         id: "L017-05"
       },
@@ -2672,7 +2759,7 @@
         theme: "Hold out",
         ja: "ファンたちはサインをもらおうとして、あらゆる物を差し出しました。",
         en: "The fans held out all kinds of objects in attempt to get a signature.",
-        ipa: "",
+        ipa: "/ðə fænz hɛld aʊt ɔl kaɪndz əv ˈɔbdʒekts ɪn əˈtɛmpt tə gɛt ə ˈsɪɡnətʃɚ/",
         audioUrl: "audio/unit18/U018-01.mp3",
         id: "L018-01"
       },
@@ -2682,8 +2769,8 @@
         theme: "Hold out",
         ja: "ホームレスの男性は人々がお金を入れてくれるようにカップを差し延べました。",
         en: "The homeless man held out a cup for people to put money in.",
-        ipa: "",
-        audioUrl: "audio/listening/unit018/set-02.m4a",
+        ipa: "/ðə ˈhoʊmləs mæn hɛld aʊt ə kʌp fɚ ˈpipəl tə pʊt ˈmʌni ɪn/",
+        audioUrl: "audio/listening/unit018/set-02.mp3",
         id: "L018-02"
       },
       {
@@ -2692,8 +2779,8 @@
         theme: "Hold out",
         ja: "兵士たちは最後まで抵抗しましたが、ついには敗北を喫しました。",
         en: "The soldiers held out until the very end, but were eventually defeated.",
-        ipa: "",
-        audioUrl: "audio/listening/unit018/set-03.m4a",
+        ipa: "/ðə ˈsoʊldʒɚz hɛld aʊt ənˈtɪl ðə ˈvɛri ɛnd bət wɚ ɪˈvɛntʃuəli dɪˈfitəd/",
+        audioUrl: "audio/listening/unit018/set-03.mp3",
         id: "L018-03"
       },
       {
@@ -2702,7 +2789,7 @@
         theme: "Hold out",
         ja: "患者は手術しなければ、これ以上持ちこたえることはできないでしょう。",
         en: "The patient won't be able to hold out much longer without surgery.",
-        ipa: "",
+        ipa: "/ðə ˈpeɪʃənt woʊnt bi ˈeɪbəl tə hoʊld aʊt mʌtʃ ˈlɔŋɡɚ wɪˈðaʊt ˈsɝdʒəri/",
         audioUrl: "audio/unit18/U018-04.mp3",
         id: "L018-04"
       },
@@ -2712,8 +2799,8 @@
         theme: "Hold out",
         ja: "われわれの食料は、これ以上はもちません。",
         en: "Our food supply won't hold out for much longer.",
-        ipa: "",
-        audioUrl: "audio/listening/unit018/set-05.m4a",
+        ipa: "/aʊr fud səˈplaɪ woʊnt hoʊld aʊt fɚ mʌtʃ ˈlɔŋɡɚ/",
+        audioUrl: "audio/listening/unit018/set-05.mp3",
         id: "L018-05"
       },
       {
@@ -2722,7 +2809,7 @@
         theme: "Turn down",
         ja: "テレビの音量を下げないと、ご近所から苦情が来ますよ！",
         en: "Turn down your TV or the neighbors are going to complain!",
-        ipa: "",
+        ipa: "/tɝn daʊn jɚ ˌtiˈvi ɔr ðə ˈneɪbɚz ɚ ˈɡoʊɪŋ tə kəmˈpleɪn/",
         audioUrl: "audio/unit19/U019-01.mp3",
         id: "L019-01"
       },
@@ -2732,8 +2819,8 @@
         theme: "Turn down",
         ja: "さらにロマンチックな雰囲気を作ろうと、彼は明かりを暗くしました。",
         en: "He turned down the lights to create a more romantic atmosphere.",
-        ipa: "",
-        audioUrl: "audio/listening/unit019/set-02.m4a",
+        ipa: "/hi tɝnd daʊn ðə laɪts tə kriˈeɪt ə mɔr roʊˈmæntɪk ˈætməsˌfɪr/",
+        audioUrl: "audio/listening/unit019/set-02.mp3",
         id: "L019-02"
       },
       {
@@ -2742,8 +2829,8 @@
         theme: "Turn down",
         ja: "仕事を変えたくはなかったのですが、断るには先方のオファーがよすぎたのです。",
         en: "I didn't want to change jobs but their offer was too good to turn down.",
-        ipa: "",
-        audioUrl: "audio/listening/unit019/set-03.m4a",
+        ipa: "/aɪ ˈdɪdənt wɑnt tə tʃeɪndʒ dʒɑbz bət ðɛr ˈɔfɚ wəz tu ɡʊd tə tɝn daʊn/",
+        audioUrl: "audio/listening/unit019/set-03.mp3",
         id: "L019-03"
       },
       {
@@ -2752,7 +2839,7 @@
         theme: "Turn down",
         ja: "彼は彼女をデートに誘いましたが、彼女は断りました。",
         en: "He asked her out on a date but she turned him down.",
-        ipa: "",
+        ipa: "/hi æskt hɚ aʊt ɑn ə deɪt bət ʃi tɝnd hɪm daʊn/",
         audioUrl: "audio/unit19/U019-04.mp3",
         id: "L019-04"
       },
@@ -2762,7 +2849,7 @@
         theme: "Turn down",
         ja: "会社は私にニューヨークでのポジションを提供しましたが、断りました。",
         en: "The company offered me a position in New York but I turned it down.",
-        ipa: "",
+        ipa: "/ðə ˈkʌmpəni ˈɔfɚd mi ə pəˈzɪʃən ɪn nu jɔrk bət aɪ tɝnd ɪt daʊn/",
         audioUrl: "audio/unit19/U019-05.mp3",
         id: "L019-05"
       },
@@ -2772,8 +2859,8 @@
         theme: "Turn up",
         ja: "聞こえるようにテレビの音量を上げて！",
         en: "Please turn up the TV so I can hear it!",
-        ipa: "",
-        audioUrl: "audio/listening/unit020/set-01.m4a",
+        ipa: "/pliz tɝn ʌp ðə ˌtiˈvi soʊ aɪ kən hɪr ɪt/",
+        audioUrl: "audio/listening/unit020/set-01.mp3",
         id: "L020-01"
       },
       {
@@ -2782,7 +2869,7 @@
         theme: "Turn up",
         ja: "この中は凍えるほど寒いですね！ ヒーターの温度を上げてください！",
         en: "It's freezing in here! Turn up the heat(er)!",
-        ipa: "",
+        ipa: "/ɪts ˈfrizɪŋ ɪn hɪr tɝn ʌp ðə ˈhitɚ/",
         audioUrl: "audio/unit20/U020-02.mp3",
         id: "L020-02"
       },
@@ -2792,7 +2879,7 @@
         theme: "Turn up",
         ja: "なくなったお財布は心配しなくていいですよ、きっと出てきますから。",
         en: "Don't worry about your lost wallet, I am sure it will turn up.",
-        ipa: "",
+        ipa: "/doʊnt ˈwɝi əˈbaʊt jɚ lɔst ˈwɑlət aɪ æm ʃʊr ɪt wɪl tɝn ʌp/",
         audioUrl: "audio/unit20/U020-03.mp3",
         id: "L020-03"
       },
@@ -2802,7 +2889,7 @@
         theme: "Turn up",
         ja: "彼は授業に遅れて現れただけでなく、宿題も忘れてきました。",
         en: "Not only did he turn up late for class, he forgot his homework.",
-        ipa: "",
+        ipa: "/nɑt ˈoʊnli dɪd hi tɝn ʌp leɪt fɚ klæs hi fɚˈɡɑt hɪz ˈhoʊmˌwɝk/",
         audioUrl: "audio/unit20/U020-04.mp3",
         id: "L020-04"
       },
@@ -2812,7 +2899,7 @@
         theme: "Turn up",
         ja: "警察は犯行現場を捜査しましたが、手掛かりはなにひとつ見つかりませんでした。",
         en: "The police investigated the crime scene but didn't turn up any clues.",
-        ipa: "",
+        ipa: "/ðə pəˈlis ɪnˈvɛstəˌɡeɪtəd ðə kraɪm sin bət ˈdɪdənt tɝn ʌp ˈɛni kluz/",
         audioUrl: "audio/unit20/U020-05.mp3",
         id: "L020-05"
       }
@@ -2826,6 +2913,11 @@
       score: 0,
       answerNumber: null,
       activeSet: null,
+      playerDeck: [],
+      playerIndex: 0,
+      playerTimer: null,
+      audioAttempt: 0,
+      audioRate: 1,
       reviewDecks: {
         ok: [],
         review: []
@@ -2844,15 +2936,27 @@
       bottomSetNav: document.getElementById("bottomSetNav"),
       backToModeBtn: document.getElementById("backToModeBtn"),
       quizPanel: document.getElementById("quizPanel"),
+      playerPanel: document.getElementById("playerPanel"),
       listeningModeBtn: document.getElementById("listeningModeBtn"),
       paraphraseModeBtn: document.getElementById("paraphraseModeBtn"),
+      playerModeBtn: document.getElementById("playerModeBtn"),
+      playerMeter: document.getElementById("playerMeter"),
+      playerSetLabel: document.getElementById("playerSetLabel"),
+      playerTitle: document.getElementById("playerTitle"),
+      playerJa: document.getElementById("playerJa"),
+      playerAudio: document.getElementById("playerAudio"),
+      playerSeek: document.getElementById("playerSeek"),
+      playerPrevBtn: document.getElementById("playerPrevBtn"),
+      playerPlayBtn: document.getElementById("playerPlayBtn"),
+      playerNextBtn: document.getElementById("playerNextBtn"),
+      playerTopBtn: document.getElementById("playerTopBtn"),
+      playerList: document.getElementById("playerList"),
       meter: document.getElementById("meter"),
       unitTag: document.getElementById("unitTag"),
       themeTag: document.getElementById("themeTag"),
       audio: document.getElementById("audio"),
       audioBox: document.querySelector(".audioBox"),
-      audioPlayBtn: document.getElementById("audioPlayBtn"),
-      audioProgress: document.getElementById("audioProgress"),
+      audioSpeed: document.getElementById("audioSpeed"),
       blankSentence: document.getElementById("blankSentence"),
       choices: document.getElementById("choices"),
       ratings: document.getElementById("ratings"),
@@ -2922,6 +3026,23 @@
     function resolveAudio(url){
       if (/^https?:\/\//.test(url)) return url;
       return url;
+    }
+
+    function setMediaSource(audio, url){
+      audio.pause();
+      audio.removeAttribute("src");
+      audio.load();
+      if (url){
+        audio.src = resolveAudio(url);
+        audio.playbackRate = state.audioRate;
+        audio.load();
+      }
+    }
+
+    function clearPlayerTimer(){
+      if (!state.playerTimer) return;
+      clearTimeout(state.playerTimer);
+      state.playerTimer = null;
     }
 
     function escapeRegExp(text){
@@ -3091,43 +3212,129 @@
 
     function renderSetPicker(mode = "listening"){
       state.mode = mode;
-      const source = mode === "listening" ? LISTENING_SETS : PARAPHRASE_SETS;
+      const source = mode === "paraphrase" ? PARAPHRASE_SETS : LISTENING_SETS;
       const setCards = [...new Set(source.map(card => card.set))]
-        .filter(set => mode === "listening" || set <= 4)
+        .filter(set => mode !== "paraphrase" || set <= 4)
         .sort((a, b) => a - b)
         .map(set => ({
           set,
           cards: source.filter(card => card.set === set)
-        }));
+      }));
       els.modePanel.classList.add("hidden");
       els.quizPanel.classList.add("hidden");
+      els.playerPanel.classList.add("hidden");
       els.setPanel.classList.remove("hidden");
       els.pageSub.textContent = "";
+      els.setHeroThumb.classList.toggle("hidden", mode === "player");
       els.setHeroThumb.src = mode === "listening" ? "assets/thumb-listening.png" : "assets/thumb-paraphrase.png";
       els.setHeroLabel.textContent = "UNIT 1 - 20";
       els.setHeroTitle.textContent = "";
-      showBottomSetNav();
+      if (mode === "player") hideBottomSetNav();
+      else showBottomSetNav();
       els.setGrid.innerHTML = setCards.map(group => `
         <button class="setButton" type="button" data-set="${group.set}">
           <strong>Set ${group.set}</strong>
         </button>
       `).join("");
       [...els.setGrid.querySelectorAll(".setButton")].forEach(btn => {
-        btn.addEventListener("click", () => makeQuiz(mode, Number(btn.dataset.set)));
+        btn.addEventListener("click", () => {
+          const set = Number(btn.dataset.set);
+          if (mode === "player") makePlayer(set);
+          else makeQuiz(mode, set);
+        });
       });
     }
 
     function showModePicker(){
       state.mode = null;
+      clearPlayerTimer();
+      els.playerAudio.pause();
       els.modePanel.classList.remove("hidden");
       els.setPanel.classList.add("hidden");
       els.quizPanel.classList.add("hidden");
+      els.playerPanel.classList.add("hidden");
       els.pageSub.textContent = "モードを選んで挑戦してください！";
       hideBottomSetNav();
     }
 
+    function sortedListeningSet(set){
+      return LISTENING_SETS
+        .filter(card => Number(card.set) === Number(set))
+        .sort((a, b) => Number(a.unit) - Number(b.unit));
+    }
+
+    function makePlayer(selectedSet = 1){
+      state.mode = "player";
+      state.activeSet = selectedSet;
+      state.playerDeck = sortedListeningSet(selectedSet);
+      state.playerIndex = 0;
+      els.modePanel.classList.add("hidden");
+      els.setPanel.classList.add("hidden");
+      els.quizPanel.classList.add("hidden");
+      els.playerPanel.classList.remove("hidden");
+      els.pageSub.textContent = "LISTENING MODEの音声をプレイヤーで確認";
+      hideBottomSetNav();
+      renderPlayerTrack(false);
+    }
+
+    function renderPlayerList(){
+      els.playerList.innerHTML = state.playerDeck.map((card, index) => `
+        <button class="playerTrack ${index === state.playerIndex ? "active" : ""}" type="button" data-index="${index}">
+          <span class="playerTrackNum">U${Number(card.unit)}</span>
+          <span class="playerTrackText">${escapeHTML(card.en)}<span>${escapeHTML(card.ja)}</span></span>
+        </button>
+      `).join("");
+      [...els.playerList.querySelectorAll(".playerTrack")].forEach(btn => {
+        btn.addEventListener("click", () => {
+          state.playerIndex = Number(btn.dataset.index);
+          renderPlayerTrack(true);
+        });
+      });
+    }
+
+    function renderPlayerTrack(autoplay = false){
+      const card = state.playerDeck[state.playerIndex];
+      if (!card) return;
+      clearPlayerTimer();
+      els.playerMeter.textContent = `Track ${state.playerIndex + 1} / ${state.playerDeck.length}`;
+      els.playerSetLabel.textContent = `SET ${state.activeSet} · UNIT ${String(card.unit).padStart(2, "0")}`;
+      els.playerTitle.textContent = card.en;
+      els.playerJa.textContent = card.ja;
+      setMediaSource(els.playerAudio, card.audioUrl);
+      els.playerSeek.value = "0";
+      els.playerPlayBtn.textContent = "Play";
+      renderPlayerList();
+      if (autoplay) playCurrentPlayerAudio();
+    }
+
+    function playCurrentPlayerAudio(){
+      if (!els.playerAudio.src) return;
+      const playback = els.playerAudio.play();
+      if (playback?.catch) playback.catch(() => {});
+      els.playerPlayBtn.textContent = "Pause";
+    }
+
+    function pausePlayerAudio(){
+      els.playerAudio.pause();
+      els.playerPlayBtn.textContent = "Play";
+    }
+
+    function nextPlayerTrack(autoplay = false){
+      if (!state.playerDeck.length) return;
+      clearPlayerTimer();
+      state.playerIndex = (state.playerIndex + 1) % state.playerDeck.length;
+      renderPlayerTrack(autoplay);
+    }
+
+    function prevPlayerTrack(){
+      if (!state.playerDeck.length) return;
+      state.playerIndex = (state.playerIndex - 1 + state.playerDeck.length) % state.playerDeck.length;
+      renderPlayerTrack(true);
+    }
+
     function makeQuiz(mode = state.mode, selectedSet = null){
       state.mode = mode;
+      clearPlayerTimer();
       state.activeSet = selectedSet;
       state.quiz = state.mode === "listening"
         ? shuffle(LISTENING_SETS.filter(card => selectedSet ? card.set === selectedSet : true))
@@ -3138,6 +3345,8 @@
       state.log = [];
       els.modePanel.classList.add("hidden");
       els.setPanel.classList.add("hidden");
+      els.playerPanel.classList.add("hidden");
+      els.playerAudio.pause();
       els.quizPanel.classList.remove("hidden");
       els.quizPanel.classList.toggle("mode-listening", state.mode === "listening");
       els.quizPanel.classList.toggle("mode-paraphrase", state.mode === "paraphrase");
@@ -3155,6 +3364,7 @@
     function makeReviewQuiz(kind){
       const deck = state.reviewDecks[kind];
       if (!deck.length) return;
+      clearPlayerTimer();
       state.mode = "listening";
       state.activeSet = kind;
       state.quiz = shuffle(deck);
@@ -3165,6 +3375,8 @@
       els.modePanel.classList.add("hidden");
       els.setPanel.classList.add("hidden");
       els.quizPanel.classList.remove("hidden");
+      els.playerPanel.classList.add("hidden");
+      els.playerAudio.pause();
       els.quizPanel.classList.add("mode-listening");
       els.quizPanel.classList.remove("mode-paraphrase");
       els.pageSub.textContent = kind === "ok" ? "△をつけた問題を復習" : "×をつけた問題を復習";
@@ -3196,9 +3408,10 @@
       els.meter.textContent = `Question ${state.index + 1} / ${state.quiz.length}`;
       els.unitTag.classList.toggle("hidden", state.mode === "listening");
       els.unitTag.textContent = state.mode === "listening" ? "" : `Unit ${String(card.unit).padStart(2, "0")}`;
-      els.audio.src = resolveAudio(card.audioUrl);
+      state.audioAttempt++;
+      setMediaSource(els.audio, card.audioUrl);
       els.audio.parentElement.classList.toggle("hidden", !card.audioUrl);
-      els.replayBtn.classList.add("hidden");
+      els.replayBtn.classList.toggle("hidden", !card.audioUrl);
       resetAudioUI();
       els.answerEn.textContent = card.en;
       els.answerJa.textContent = card.ja;
@@ -3217,6 +3430,9 @@
           <span class="listeningNotice">音声が流れない場合、答えを確認をタップして次の問題にお進みください。それでも音声が流れない場合、お手数ですがご連絡ください。</span>
         `;
         els.nextBtn.classList.add("hidden");
+        requestAnimationFrame(() => {
+          playAudioFromStart();
+        });
       } else {
         els.nextBtn.classList.remove("hidden");
         els.themeTag.textContent = `SET ${card.set}`;
@@ -3288,7 +3504,6 @@
       if (state.mode === "listening"){
         els.ratings.classList.add("show");
         els.showBtn.classList.add("hidden");
-        playAudioFromStart();
       }
       if (options.scroll){
         requestAnimationFrame(() => {
@@ -3380,52 +3595,70 @@
       playAudioFromStart();
     });
     function resetAudioUI(){
-      els.audioProgress.style.width = "0%";
-      els.audioPlayBtn.textContent = "▶";
-      els.audioPlayBtn.classList.remove("playing");
-      els.audioBox.classList.remove("is-playing");
+      els.replayBtn.textContent = "もう一度再生";
     }
     function syncAudioUI(){
-      const duration = Number.isFinite(els.audio.duration) && els.audio.duration > 0 ? els.audio.duration : 0;
-      const progress = duration ? Math.min(100, (els.audio.currentTime / duration) * 100) : 0;
-      els.audioProgress.style.width = `${progress}%`;
-      const playing = !els.audio.paused && !els.audio.ended;
-      els.audioPlayBtn.textContent = playing ? "Ⅱ" : "▶";
-      els.audioPlayBtn.classList.toggle("playing", playing);
-      els.audioBox.classList.toggle("is-playing", playing);
+      els.replayBtn.textContent = "もう一度再生";
     }
-    function playAudioFromStart(){
-      if (!els.audio.src) return;
+    function waitForAudioReady(audio, timeout = 3000){
+      if (!audio.src || audio.readyState >= 2) return Promise.resolve();
+      return new Promise(resolve => {
+        let done = false;
+        const finish = () => {
+          if (done) return;
+          done = true;
+          audio.removeEventListener("canplay", finish);
+          audio.removeEventListener("loadeddata", finish);
+          audio.removeEventListener("error", finish);
+          clearTimeout(timer);
+          resolve();
+        };
+        const timer = setTimeout(finish, timeout);
+        audio.addEventListener("canplay", finish, { once: true });
+        audio.addEventListener("loadeddata", finish, { once: true });
+        audio.addEventListener("error", finish, { once: true });
+        audio.load();
+      });
+    }
+
+    async function playAudioFromStart(){
+      if (!els.audio.src) return false;
+      const attempt = ++state.audioAttempt;
+      els.replayBtn.textContent = "Loading...";
       try{
         els.audio.pause();
         els.audio.currentTime = 0;
       } catch (error){
         els.audio.load();
       }
-      const playback = els.audio.play();
-      if (playback?.catch){
-        playback.catch(() => {
-          syncAudioUI();
-        });
+      await waitForAudioReady(els.audio);
+      if (attempt !== state.audioAttempt) return false;
+      try{
+        const playback = els.audio.play();
+        if (playback?.catch) await playback;
+        els.replayBtn.textContent = "もう一度再生";
+        syncAudioUI();
+        return true;
+      } catch (error){
+        els.replayBtn.textContent = "もう一度再生";
+        els.audio.controls = true;
+        syncAudioUI();
+        return false;
       }
-      syncAudioUI();
     }
-    els.audioPlayBtn.addEventListener("click", () => {
-      if (els.audio.paused || els.audio.ended){
-        if (els.audio.ended) playAudioFromStart();
-        else {
-          const playback = els.audio.play();
-          if (playback?.catch) playback.catch(() => syncAudioUI());
-        }
-      } else {
-        els.audio.pause();
-      }
-      syncAudioUI();
-    });
     els.audio.addEventListener("play", syncAudioUI);
     els.audio.addEventListener("pause", syncAudioUI);
     els.audio.addEventListener("ended", syncAudioUI);
     els.audio.addEventListener("timeupdate", syncAudioUI);
+    [...els.audioSpeed.querySelectorAll(".speedBtn")].forEach(btn => {
+      btn.addEventListener("click", () => {
+        state.audioRate = Number(btn.dataset.rate);
+        els.audio.playbackRate = state.audioRate;
+        [...els.audioSpeed.querySelectorAll(".speedBtn")].forEach(item => {
+          item.classList.toggle("active", item === btn);
+        });
+      });
+    });
     els.showBtn.addEventListener("click", showAnswer);
     els.prevBtn.addEventListener("click", prev);
     els.nextBtn.addEventListener("click", next);
@@ -3445,6 +3678,36 @@
     els.backToModeBtn.addEventListener("click", showModePicker);
     els.listeningModeBtn.addEventListener("click", () => renderSetPicker("listening"));
     els.paraphraseModeBtn.addEventListener("click", () => renderSetPicker("paraphrase"));
+    els.playerModeBtn.addEventListener("click", () => renderSetPicker("player"));
+    els.playerTopBtn.addEventListener("click", showModePicker);
+    els.playerPlayBtn.addEventListener("click", () => {
+      if (els.playerAudio.paused || els.playerAudio.ended) playCurrentPlayerAudio();
+      else pausePlayerAudio();
+    });
+    els.playerPrevBtn.addEventListener("click", prevPlayerTrack);
+    els.playerNextBtn.addEventListener("click", () => nextPlayerTrack(true));
+    els.playerAudio.addEventListener("play", () => {
+      els.playerPlayBtn.textContent = "Pause";
+    });
+    els.playerAudio.addEventListener("pause", () => {
+      els.playerPlayBtn.textContent = "Play";
+    });
+    els.playerAudio.addEventListener("timeupdate", () => {
+      const duration = Number.isFinite(els.playerAudio.duration) && els.playerAudio.duration > 0 ? els.playerAudio.duration : 0;
+      els.playerSeek.value = duration ? String(Math.min(100, (els.playerAudio.currentTime / duration) * 100)) : "0";
+    });
+    els.playerAudio.addEventListener("ended", () => {
+      clearPlayerTimer();
+      els.playerPlayBtn.textContent = "Next in 3s";
+      state.playerTimer = setTimeout(() => {
+        state.playerTimer = null;
+        nextPlayerTrack(true);
+      }, 3000);
+    });
+    els.playerSeek.addEventListener("input", () => {
+      const duration = Number.isFinite(els.playerAudio.duration) && els.playerAudio.duration > 0 ? els.playerAudio.duration : 0;
+      if (duration) els.playerAudio.currentTime = (Number(els.playerSeek.value) / 100) * duration;
+    });
     [...els.ratings.children].forEach(btn => {
       btn.addEventListener("click", () => rate(btn.dataset.rating, btn));
     });
