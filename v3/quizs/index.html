@@ -903,12 +903,12 @@
     <section class="panel" id="modePanel">
       <div class="modeGrid">
         <button class="modeCard" id="listeningModeBtn" type="button">
-          <img class="modeThumb" src="../assets/thumb-listening.png" alt="">
+          <img class="modeThumb" src="../assets/thumb-listening.png?v=2" alt="">
           <strong>LISTENING MODE</strong>
           <span>リスニングをして理解度を３段階評価しよう</span>
         </button>
         <button class="modeCard" id="paraphraseModeBtn" type="button">
-          <img class="modeThumb" src="../assets/thumb-paraphrase.png" alt="">
+          <img class="modeThumb" src="../assets/thumb-paraphrase.png?v=2" alt="">
           <strong>PARAPHRASE MODE</strong>
           <span>与えられた英文をphrasal verbで言い換えよう</span>
         </button>
@@ -923,7 +923,7 @@
       <div class="setPanel">
         <button class="homeBackBtn" id="backToModeBtn" type="button">ホームに戻る</button>
         <div class="setHero">
-          <img class="setHeroThumb" id="setHeroThumb" src="../assets/thumb-listening.png" alt="">
+          <img class="setHeroThumb" id="setHeroThumb" src="../assets/thumb-listening.png?v=2" alt="">
           <span class="setHeroLabel" id="setHeroLabel">UNIT 1 - 20</span>
           <p class="setHeroTitle" id="setHeroTitle"></p>
         </div>
@@ -5098,7 +5098,7 @@
       els.setPanel.classList.remove("hidden");
       els.pageSub.textContent = "";
       els.setHeroThumb.classList.toggle("hidden", mode === "player");
-      els.setHeroThumb.src = mode === "listening" ? "../assets/thumb-listening.png" : "../assets/thumb-paraphrase.png";
+      els.setHeroThumb.src = mode === "listening" ? "../assets/thumb-listening.png?v=2" : "../assets/thumb-paraphrase.png?v=2";
       els.setHeroLabel.textContent = "";
       els.setHeroTitle.textContent = "";
       if (mode === "player") hideBottomSetNav();
