@@ -200,6 +200,30 @@
       width:calc(100% - var(--set-content-inset) - var(--set-content-right-inset));
       margin-left:var(--set-content-inset);
     }
+    .rangeBlock{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+      width:calc(100% - var(--set-content-inset) - var(--set-content-right-inset));
+      margin:0 0 28px var(--set-content-inset);
+    }
+    .rangeBlock:last-child{
+      margin-bottom:0;
+    }
+    .rangeTitle{
+      margin:0 0 4px;
+      color:var(--text);
+      font-size:24px;
+      line-height:1.2;
+      font-weight:950;
+    }
+    .rangeNote{
+      margin:-2px 0 4px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.45;
+      font-weight:800;
+    }
     .setButton{
       display:grid;
       place-items:center start;
@@ -1900,6 +1924,886 @@
         ipa: "",
         audioUrl: "",
         id: "P020-04"
+      },
+      {
+        unit: "21",
+        set: 1,
+        theme: "Turn off",
+        prompt: "Stop the engine! There is smoke coming out from under the hood!",
+        ja: "エンジンを切って！ボンネットの下から煙が出ていますよ！",
+        en: "Turn off the engine! There is smoke coming out from under the hood!",
+        ipa: "",
+        audioUrl: "",
+        id: "P021-01"
+      },
+      {
+        unit: "21",
+        set: 2,
+        theme: "Turn off",
+        prompt: "The fire started because someone forgot to switch off their gas heater.",
+        ja: "だれかがガスストーブを消し忘れたため、火事が起こりました。",
+        en: "The fire started because someone forgot to turn off their gas heater.",
+        ipa: "",
+        audioUrl: "",
+        id: "P021-02"
+      },
+      {
+        unit: "21",
+        set: 3,
+        theme: "Turn off",
+        prompt: "I think she is an attractive woman but her hard drinking disgusts me.",
+        ja: "彼女は魅力的な女性だと思いますが、大酒飲みなのにはうんざりします。",
+        en: "I think she is an attractive woman but her hard drinking turns me off.",
+        ipa: "",
+        audioUrl: "",
+        id: "P021-03"
+      },
+      {
+        unit: "21",
+        set: 4,
+        theme: "Turn off",
+        prompt: "Exit the highway at the next opportunity.",
+        ja: "次のチャンスがあったら高速を降りてください。",
+        en: "Turn off the highway at the next opportunity.",
+        ipa: "",
+        audioUrl: "",
+        id: "P021-04"
+      },
+      {
+        unit: "22",
+        set: 1,
+        theme: "Hang on",
+        prompt: "The elderly woman clutched her purse and wouldn't let go.",
+        ja: "年配の女性はハンドバッグをしっかり握って放しませんでした。",
+        en: "The elderly woman hung on to her purse and wouldn't let go.",
+        ipa: "",
+        audioUrl: "",
+        id: "P022-01"
+      },
+      {
+        unit: "22",
+        set: 2,
+        theme: "Hang on",
+        prompt: "The shipwreck survivors clung to debris to stay afloat.",
+        ja: "難破事故の生存者たちは沈まないように残骸にしがみつきました。",
+        en: "The shipwreck survivors hung on to debris to stay afloat.",
+        ipa: "",
+        audioUrl: "",
+        id: "P022-02"
+      },
+      {
+        unit: "22",
+        set: 3,
+        theme: "Hang on",
+        prompt: "The fan kept his signed baseball despite many offers to buy it.",
+        ja: "そのファンは多くの購入の申し出にもかかわらず、サインボールを手放しませんでした。",
+        en: "The fan hung on to his signed baseball despite many offers to buy it.",
+        ipa: "",
+        audioUrl: "",
+        id: "P022-03"
+      },
+      {
+        unit: "22",
+        set: 4,
+        theme: "Hang on",
+        prompt: "Wait a minute. I'll go with you to the station.",
+        ja: "ちょっと待って。駅まであなたといっしょに行きます。",
+        en: "Hang on a minute. I'll go with you to the station.",
+        ipa: "",
+        audioUrl: "",
+        id: "P022-04"
+      },
+      {
+        unit: "23",
+        set: 1,
+        theme: "Hang out",
+        prompt: "Put these towels out to dry while the weather is good.",
+        ja: "お天気がいいうちに、このタオルを外干しして乾燥させてください。",
+        en: "Hang these towels out to dry while the weather is good.",
+        ipa: "",
+        audioUrl: "",
+        id: "P023-01"
+      },
+      {
+        unit: "23",
+        set: 2,
+        theme: "Hang out",
+        prompt: "The embassy displayed flags from the visiting nations.",
+        ja: "大使館は訪問国の旗を掲げました。",
+        en: "The embassy hung out flags from the visiting nations.",
+        ipa: "",
+        audioUrl: "",
+        id: "P023-02"
+      },
+      {
+        unit: "23",
+        set: 3,
+        theme: "Hang out",
+        prompt: "High school students are always loitering in that park.",
+        ja: "高校生たちはいつもあの公園でぶらぶらしています。",
+        en: "High school students are always hanging out in that park.",
+        ipa: "",
+        audioUrl: "",
+        id: "P023-03"
+      },
+      {
+        unit: "23",
+        set: 4,
+        theme: "Hang out",
+        prompt: "Now that I work full-time, I never get to spend time with my friends.",
+        ja: "いまや常勤で働いているので、友だちと時間を過ごす機会はまったくありません。",
+        en: "Now that I work full-time, I never get to hang out with my friends.",
+        ipa: "",
+        audioUrl: "",
+        id: "P023-04"
+      },
+      {
+        unit: "24",
+        set: 1,
+        theme: "Keep up",
+        prompt: "Many elderly people are having trouble continuing their mortgage payments.",
+        ja: "多くの年配の人々が、住宅ローン返済の継続に問題を抱えています。",
+        en: "Many elderly people are having trouble keeping up with their mortgage payments.",
+        ipa: "",
+        audioUrl: "",
+        id: "P024-01"
+      },
+      {
+        unit: "24",
+        set: 2,
+        theme: "Keep up",
+        prompt: "The young child couldn't maintain pace with the older children.",
+        ja: "小さな子どもは大きな子たちについていけませんでした。",
+        en: "The young child couldn't keep up with the older children.",
+        ipa: "",
+        audioUrl: "",
+        id: "P024-02"
+      },
+      {
+        unit: "24",
+        set: 3,
+        theme: "Keep up",
+        prompt: "Our apartment building is popular because it is maintained beautifully.",
+        ja: "美しく整備されているので、うちのアパートは人気があります。",
+        en: "Our apartment building is popular because it is kept up beautifully.",
+        ipa: "",
+        audioUrl: "",
+        id: "P024-03"
+      },
+      {
+        unit: "24",
+        set: 4,
+        theme: "Keep up",
+        prompt: "As I get older, I no longer worry about staying up to date on current trends.",
+        ja: "歳を取ったので、もう最近の流行についていくことを気にしていません。",
+        en: "As I get older, I no longer worry about keeping up on current trends.",
+        ipa: "",
+        audioUrl: "",
+        id: "P024-04"
+      },
+      {
+        unit: "25",
+        set: 1,
+        theme: "Look out",
+        prompt: "The doctor was always vigilant for signs of depression.",
+        ja: "その医師は常にうつ病の兆候に目を光らせていました。",
+        en: "The doctor was always looking out for signs of depression.",
+        ipa: "",
+        audioUrl: "",
+        id: "P025-01"
+      },
+      {
+        unit: "25",
+        set: 2,
+        theme: "Look out",
+        prompt: "Watch for icy patches on the road.",
+        ja: "道路の凍ったところに注意してください。",
+        en: "Look out for icy patches on the road.",
+        ipa: "",
+        audioUrl: "",
+        id: "P025-02"
+      },
+      {
+        unit: "25",
+        set: 3,
+        theme: "Look out",
+        prompt: "The police warned people to be careful of forged bank notes.",
+        ja: "警察は偽札に注意するよう人々に警告しました。",
+        en: "The police warned people to look out for forged bank notes.",
+        ipa: "",
+        audioUrl: "",
+        id: "P025-03"
+      },
+      {
+        unit: "25",
+        set: 4,
+        theme: "Look out",
+        prompt: "Please take care of my dogs while I am on my business trip.",
+        ja: "出張中、私の犬の面倒を見てください。",
+        en: "Please look out for my dogs while I am on my business trip.",
+        ipa: "",
+        audioUrl: "",
+        id: "P025-04"
+      },
+      {
+        unit: "26",
+        set: 1,
+        theme: "Go through",
+        prompt: "She had to endure three surgeries to fix her broken leg.",
+        ja: "彼女は足の骨折の治療のために、3回の手術に耐えなければなりませんでした。",
+        en: "She had to go through three surgeries to fix her broken leg.",
+        ipa: "",
+        audioUrl: "",
+        id: "P026-01"
+      },
+      {
+        unit: "26",
+        set: 2,
+        theme: "Go through",
+        prompt: "My friend struggled with a period of alcoholism after his wife died.",
+        ja: "奥さんが亡くなったあと、友人はアルコール依存症の苦しい時期を経験しました。",
+        en: "My friend went through a period of alcoholism after his wife died.",
+        ipa: "",
+        audioUrl: "",
+        id: "P026-02"
+      },
+      {
+        unit: "26",
+        set: 3,
+        theme: "Go through",
+        prompt: "The residents combed through the wreckage of their homes after the tornado.",
+        ja: "竜巻のあと、住民は家屋の残骸をくまなく探しました。",
+        en: "The residents went through the wreckage of their homes after the tornado.",
+        ipa: "",
+        audioUrl: "",
+        id: "P026-03"
+      },
+      {
+        unit: "26",
+        set: 4,
+        theme: "Go through",
+        prompt: "It's easy to spend $100 on a single night in New York City.",
+        ja: "ニューヨーク市では、ひと晩に100ドルを使い果たすのはかんたんです。",
+        en: "It's easy to go through $100 on a single night in New York City.",
+        ipa: "",
+        audioUrl: "",
+        id: "P026-04"
+      },
+      {
+        unit: "27",
+        set: 1,
+        theme: "Get along",
+        prompt: "We used to be close friends, but we don't have a good relationship anymore.",
+        ja: "以前は親友でしたが、もう仲はうまくいっていません。",
+        en: "We used to be close friends, but we don't get along anymore.",
+        ipa: "",
+        audioUrl: "",
+        id: "P027-01"
+      },
+      {
+        unit: "27",
+        set: 2,
+        theme: "Get along",
+        prompt: "The retired couple couldn't survive on their pension, so they worked part-time.",
+        ja: "引退した夫婦は年金で生活していけなかったので、パートの仕事をしました。",
+        en: "The retired couple couldn't get along on their pension, so they worked part-time.",
+        ipa: "",
+        audioUrl: "",
+        id: "P027-02"
+      },
+      {
+        unit: "27",
+        set: 3,
+        theme: "Get along",
+        prompt: "We are trying to resolve our difference and be friends.",
+        ja: "お互いの違いを乗り越えて、仲よくやるように努力しています。",
+        en: "We are trying to resolve our difference and get along.",
+        ipa: "",
+        audioUrl: "",
+        id: "P027-03"
+      },
+      {
+        unit: "27",
+        set: 4,
+        theme: "Get along",
+        prompt: "I don't know how we will manage if this recession continues.",
+        ja: "この不景気が続けば、どうやって生き残ればいいのかわかりません。",
+        en: "I don't know how we will get along if this recession continues.",
+        ipa: "",
+        audioUrl: "",
+        id: "P027-04"
+      },
+      {
+        unit: "28",
+        set: 1,
+        theme: "Call on",
+        prompt: "Why don't you visit your parents while you are in town?",
+        ja: "町にいる間にご両親を訪問してはどうですか？",
+        en: "Why don't you call on your parents while you are in town?",
+        ipa: "",
+        audioUrl: "",
+        id: "P028-01"
+      },
+      {
+        unit: "28",
+        set: 2,
+        theme: "Call on",
+        prompt: "As soldiers, it is important to do whatever is needed when requested.",
+        ja: "兵士として、要求されれば必要なことならなんでも行うことが重要です。",
+        en: "As soldiers, it is important to do whatever is needed when called on.",
+        ipa: "",
+        audioUrl: "",
+        id: "P028-02"
+      },
+      {
+        unit: "28",
+        set: 3,
+        theme: "Call on",
+        prompt: "The surgeon paid a visit to his patient at home two weeks after the operation.",
+        ja: "外科医は手術の2週間後に患者の家を訪れました。",
+        en: "The surgeon called on his patient at home two weeks after the operation.",
+        ipa: "",
+        audioUrl: "",
+        id: "P028-03"
+      },
+      {
+        unit: "28",
+        set: 4,
+        theme: "Call on",
+        prompt: "The shareholders demanded the CEO to be fired after the scandal.",
+        ja: "スキャンダルのあと、株主たちはCEOの解雇を求めました。",
+        en: "The shareholders called on the CEO to be fired after the scandal.",
+        ipa: "",
+        audioUrl: "",
+        id: "P028-04"
+      },
+      {
+        unit: "29",
+        set: 1,
+        theme: "Count on",
+        prompt: "You can always rely on Tom to be honest.",
+        ja: "いつだってトムの正直さは信頼できます。",
+        en: "You can always count on Tom to be honest.",
+        ipa: "",
+        audioUrl: "",
+        id: "P029-01"
+      },
+      {
+        unit: "29",
+        set: 2,
+        theme: "Count on",
+        prompt: "Don't anticipate many people participating in the election.",
+        ja: "多くの人が選挙に参加するなんてことは、当てになりませんよ。",
+        en: "Don't count on many people participating in the election.",
+        ipa: "",
+        audioUrl: "",
+        id: "P029-02"
+      },
+      {
+        unit: "29",
+        set: 3,
+        theme: "Count on",
+        prompt: "You can always depend on my help if you need it.",
+        ja: "必要なら、いつでも私の手助けに頼ってください。",
+        en: "You can always count on my help if you need it.",
+        ipa: "",
+        audioUrl: "",
+        id: "P029-03"
+      },
+      {
+        unit: "29",
+        set: 4,
+        theme: "Count on",
+        prompt: "Readers trust journalists to report the news without bias.",
+        ja: "ジャーナリストが偏見なしにニュースをレポートしていることを読者は信用しています。",
+        en: "Readers count on journalists to report the news without bias.",
+        ipa: "",
+        audioUrl: "",
+        id: "P029-04"
+      },
+      {
+        unit: "30",
+        set: 1,
+        theme: "Check out",
+        prompt: "Look at the weird haircut that guy has!",
+        ja: "あの人のおかしな髪型を見て！",
+        en: "Check out the weird haircut that guy has!",
+        ipa: "",
+        audioUrl: "",
+        id: "P030-01"
+      },
+      {
+        unit: "30",
+        set: 2,
+        theme: "Check out",
+        prompt: "Electricians were called to investigate the power failure.",
+        ja: "停電を調査するために電気技師たちが呼ばれました。",
+        en: "Electricians were called to check out the power failure.",
+        ipa: "",
+        audioUrl: "",
+        id: "P030-02"
+      },
+      {
+        unit: "30",
+        set: 3,
+        theme: "Check out",
+        prompt: "The witness withdrew their testimony after their statements didn't prove true.",
+        ja: "証言が裏づけられなかったので、証人は証言を取り下げました。",
+        en: "The witness withdrew their testimony after their statements didn't check out.",
+        ipa: "",
+        audioUrl: "",
+        id: "P030-03"
+      },
+      {
+        unit: "30",
+        set: 4,
+        theme: "Check out",
+        prompt: "We paid the hotel a $20 fee so that we could leave late.",
+        ja: "遅くチェックアウトできるように、ホテルに20ドルの料金を支払いました。",
+        en: "We paid the hotel a $20 fee so that we could check out late.",
+        ipa: "",
+        audioUrl: "",
+        id: "P030-04"
+      },
+      {
+        unit: "31",
+        set: 1,
+        theme: "Put up",
+        prompt: "The developers plan to erect a 20-story hotel on the beach.",
+        ja: "宅地造成業者はビーチに20階建てのホテルの建設を計画しています。",
+        en: "The developers plan to put up a 20-story hotel on the beach.",
+        ipa: "",
+        audioUrl: "",
+        id: "P031-01"
+      },
+      {
+        unit: "31",
+        set: 2,
+        theme: "Put up",
+        prompt: "I am not going to tolerate that type of behavior!",
+        ja: "私はあの種の態度には我慢しません。",
+        en: "I am not going to put up with that type of behavior!",
+        ipa: "",
+        audioUrl: "",
+        id: "P031-02"
+      },
+      {
+        unit: "31",
+        set: 3,
+        theme: "Put up",
+        prompt: "The farmer housed the family for the night after their car broke down.",
+        ja: "自動車が壊れたあと、農家の人がその家族にひと晩宿を貸してくれました。",
+        en: "The farmer put the family up for the night after their car broke down.",
+        ipa: "",
+        audioUrl: "",
+        id: "P031-03"
+      },
+      {
+        unit: "31",
+        set: 4,
+        theme: "Put up",
+        prompt: "His wife divorced him because she wouldn't tolerate his gambling.",
+        ja: "彼のギャンブル癖に我慢できなかったので、妻は彼と別れたのです。",
+        en: "His wife divorced him because she wouldn't put up with his gambling.",
+        ipa: "",
+        audioUrl: "",
+        id: "P031-04"
+      },
+      {
+        unit: "32",
+        set: 1,
+        theme: "Come in",
+        prompt: "No one showed up to work because of the hurricane.",
+        ja: "ハリケーンのため、だれもオフィスに来ませんでした。",
+        en: "No one came in to work because of the hurricane.",
+        ipa: "",
+        audioUrl: "",
+        id: "P032-01"
+      },
+      {
+        unit: "32",
+        set: 2,
+        theme: "Come in",
+        prompt: "These sofas are available in several different styles and sizes.",
+        ja: "このソファーはいくつかのスタイルとサイズで売られています。",
+        en: "These sofas come in several different styles and sizes.",
+        ipa: "",
+        audioUrl: "",
+        id: "P032-02"
+      },
+      {
+        unit: "32",
+        set: 3,
+        theme: "Come in",
+        prompt: "The plane from Tokyo arrived three hours behind schedule.",
+        ja: "東京からの飛行機はスケジュールに3時間遅れて到着しました。",
+        en: "The plane from Tokyo came in three hours behind schedule.",
+        ipa: "",
+        audioUrl: "",
+        id: "P032-03"
+      },
+      {
+        unit: "32",
+        set: 4,
+        theme: "Come in",
+        prompt: "The least-favorite horse finished in 2nd place in the Grand Prix race.",
+        ja: "もっとも人気の低い馬が、グランプリレースで2位になりました。",
+        en: "The least-favorite horse came in 2nd place in the Grand Prix race.",
+        ipa: "",
+        audioUrl: "",
+        id: "P032-04"
+      },
+      {
+        unit: "33",
+        set: 1,
+        theme: "Come back",
+        prompt: "He begged his girlfriend to return to him, but she wasn't interested.",
+        ja: "彼は彼女に戻ってきてくれと頼みましたが、彼女には興味がありませんでした。",
+        en: "He begged his girlfriend to come back to him, but she wasn't interested.",
+        ipa: "",
+        audioUrl: "",
+        id: "P033-01"
+      },
+      {
+        unit: "33",
+        set: 2,
+        theme: "Come back",
+        prompt: "It took years for the economy to recover after the pandemic.",
+        ja: "パンデミック後に経済が回復するのには何年もかかりました。",
+        en: "It took years for the economy to come back after the pandemic.",
+        ipa: "",
+        audioUrl: "",
+        id: "P033-02"
+      },
+      {
+        unit: "33",
+        set: 3,
+        theme: "Come back",
+        prompt: "The Japanese national soccer team was down 4-0 but somehow rallied to win.",
+        ja: "日本サッカー代表は4-0で負けていましたが、なんとか盛り返して勝ちました。",
+        en: "The Japanese national soccer team was down 4-0 but somehow came back to win.",
+        ipa: "",
+        audioUrl: "",
+        id: "P033-03"
+      },
+      {
+        unit: "33",
+        set: 4,
+        theme: "Come back",
+        prompt: "The disgraced politician returned the next year and won the election.",
+        ja: "失脚した政治家は翌年再起して選挙に勝利しました。",
+        en: "The disgraced politician came back the next year and won the election.",
+        ipa: "",
+        audioUrl: "",
+        id: "P033-04"
+      },
+      {
+        unit: "34",
+        set: 1,
+        theme: "Bring up",
+        prompt: "I've just joined the company, so it's too early to ask for a raise.",
+        ja: "私は入社したばかりで、昇給を申し出るのは早すぎます。",
+        en: "I've just joined the company, so it's too early to bring up a raise.",
+        ipa: "",
+        audioUrl: "",
+        id: "P034-01"
+      },
+      {
+        unit: "34",
+        set: 2,
+        theme: "Bring up",
+        prompt: "I was raised in a very small town.",
+        ja: "私は非常に小さな町で育てられました。",
+        en: "I was brought up in a very small town.",
+        ipa: "",
+        audioUrl: "",
+        id: "P034-02"
+      },
+      {
+        unit: "34",
+        set: 3,
+        theme: "Bring up",
+        prompt: "After his wife died, he never mentioned her name.",
+        ja: "妻が亡くなったあと、彼は二度と彼女の名前を口にしませんでした。",
+        en: "After his wife died, he never brought up her name.",
+        ipa: "",
+        audioUrl: "",
+        id: "P034-03"
+      },
+      {
+        unit: "34",
+        set: 4,
+        theme: "Bring up",
+        prompt: "My parents taught me to respect elderly people.",
+        ja: "私は両親によってお年寄りを敬うように育てられました。",
+        en: "My parents brought me up to respect elderly people.",
+        ipa: "",
+        audioUrl: "",
+        id: "P034-04"
+      },
+      {
+        unit: "35",
+        set: 1,
+        theme: "Wait on",
+        prompt: "The pilot delayed the plane's takeoff to accommodate the connecting passenger.",
+        ja: "パイロットは乗り継ぎ客を待つために飛行機の離陸を遅らせました。",
+        en: "The pilot delayed the plane's takeoff to wait on the connecting passenger.",
+        ipa: "",
+        audioUrl: "",
+        id: "P035-01"
+      },
+      {
+        unit: "35",
+        set: 2,
+        theme: "Wait on",
+        prompt: "The waiter wouldn't serve me because I was underage.",
+        ja: "私が未成年だったので、ウェイターは私に給仕しようとしませんでした。",
+        en: "The waiter wouldn't wait on me because I was underage.",
+        ipa: "",
+        audioUrl: "",
+        id: "P035-02"
+      },
+      {
+        unit: "35",
+        set: 3,
+        theme: "Wait on",
+        prompt: "The astronauts postponed the spacewalk as they awaited further instructions.",
+        ja: "さらなる指示を待ちながら、宇宙飛行士たちは宇宙遊泳を延期しました。",
+        en: "The astronauts postponed the spacewalk as they waited on further instructions.",
+        ipa: "",
+        audioUrl: "",
+        id: "P035-03"
+      },
+      {
+        unit: "35",
+        set: 4,
+        theme: "Wait on",
+        prompt: "The hikers had to wait for the weather to clear before starting to climb.",
+        ja: "ハイカーたちは、登り始める前に天気の回復を待たなければなりませんでした。",
+        en: "The hikers had to wait on the weather to clear before starting to climb.",
+        ipa: "",
+        audioUrl: "",
+        id: "P035-04"
+      },
+      {
+        unit: "36",
+        set: 1,
+        theme: "Make out",
+        prompt: "We could barely see the Sky Tree Tower because of all the smog.",
+        ja: "スモッグだらけだったのでスカイツリーはほとんど見えませんでした。",
+        en: "We could barely make out the Sky Tree Tower because of all the smog.",
+        ipa: "",
+        audioUrl: "",
+        id: "P036-01"
+      },
+      {
+        unit: "36",
+        set: 2,
+        theme: "Make out",
+        prompt: "I couldn't comprehend the meaning of the letter because it was in French.",
+        ja: "フランス語だったので、その手紙の意味がわかりませんでした。",
+        en: "I couldn't make out the meaning of the letter because it was in French.",
+        ipa: "",
+        audioUrl: "",
+        id: "P036-02"
+      },
+      {
+        unit: "36",
+        set: 3,
+        theme: "Make out",
+        prompt: "How did our lawyers do in the negotiations?",
+        ja: "うちの弁護士は交渉ではうまくやりましたか？",
+        en: "How did our lawyers make out in the negotiations?",
+        ipa: "",
+        audioUrl: "",
+        id: "P036-03"
+      },
+      {
+        unit: "36",
+        set: 4,
+        theme: "Make out",
+        prompt: "The old man wrote a will leaving all his money to charity.",
+        ja: "その老人は全財産をチャリティーに残す旨の遺言を書きました。",
+        en: "The old man made out a will leaving all his money to charity.",
+        ipa: "",
+        audioUrl: "",
+        id: "P036-04"
+      },
+      {
+        unit: "37",
+        set: 1,
+        theme: "Cut off",
+        prompt: "The gardener carefully sliced off several roses from the bush.",
+        ja: "庭師は茂みから何本かのバラを注意深く切り取りました。",
+        en: "The gardener carefully cut off several roses from the bush.",
+        ipa: "",
+        audioUrl: "",
+        id: "P037-01"
+      },
+      {
+        unit: "37",
+        set: 2,
+        theme: "Cut off",
+        prompt: "The kidnappers suddenly stopped all communication with the police.",
+        ja: "誘拐犯たちは突然警察とのすべての連絡を中断しました。",
+        en: "The kidnappers suddenly cut off all communication with the police.",
+        ipa: "",
+        audioUrl: "",
+        id: "P037-02"
+      },
+      {
+        unit: "37",
+        set: 3,
+        theme: "Cut off",
+        prompt: "The famous actor shaved off all of his hair because of a bet.",
+        ja: "賭けのせいでその有名俳優は髪を全部切り落としました。",
+        en: "The famous actor cut off all of his hair because of a bet.",
+        ipa: "",
+        audioUrl: "",
+        id: "P037-03"
+      },
+      {
+        unit: "37",
+        set: 4,
+        theme: "Cut off",
+        prompt: "The manager was demoted for interrupting the CEO during the meeting.",
+        ja: "会議中にCEOの話を遮ったため、そのマネージャーは降格になりました。",
+        en: "The manager was demoted for cutting off the CEO during the meeting.",
+        ipa: "",
+        audioUrl: "",
+        id: "P037-04"
+      },
+      {
+        unit: "38",
+        set: 1,
+        theme: "Run into",
+        prompt: "The traffic light malfunctioned, and two cars crashed into each other.",
+        ja: "信号が誤作動して、2台の車が衝突しました。",
+        en: "The traffic light malfunctioned, and two cars ran into each other.",
+        ipa: "",
+        audioUrl: "",
+        id: "P038-01"
+      },
+      {
+        unit: "38",
+        set: 2,
+        theme: "Run into",
+        prompt: "The bus driver had a heart attack and struck a group of pedestrians.",
+        ja: "バスの運転手が心臓発作を起こし、歩行者のグループに衝突しました。",
+        en: "The bus driver had a heart attack and ran into a group of pedestrians.",
+        ipa: "",
+        audioUrl: "",
+        id: "P038-02"
+      },
+      {
+        unit: "38",
+        set: 3,
+        theme: "Run into",
+        prompt: "The programmers encountered problems with the new operating system.",
+        ja: "プログラマーは新しいOSでトラブルに陥りました。",
+        en: "The programmers ran into problems with the new operating system.",
+        ipa: "",
+        audioUrl: "",
+        id: "P038-03"
+      },
+      {
+        unit: "38",
+        set: 4,
+        theme: "Run into",
+        prompt: "I unexpectedly met my old college professor I hadn't seen in decades.",
+        ja: "何十年も会っていなかった昔の大学教授に偶然出くわしました。",
+        en: "I ran into my old college professor I hadn't seen in decades.",
+        ipa: "",
+        audioUrl: "",
+        id: "P038-04"
+      },
+      {
+        unit: "39",
+        set: 1,
+        theme: "Drop out",
+        prompt: "Teenage pregnancy is a huge reason many girls quit high school.",
+        ja: "ティーンの妊娠は、多くの少女が高校を中退する大きな原因となっています。",
+        en: "Teenage pregnancy is a huge reason many girls drop out of high school.",
+        ipa: "",
+        audioUrl: "",
+        id: "P039-01"
+      },
+      {
+        unit: "39",
+        set: 2,
+        theme: "Drop out",
+        prompt: "The swimmer started to cramp and gave up in the middle of the race.",
+        ja: "その水泳選手は痙攣を起こし、レースの途中で棄権しました。",
+        en: "The swimmer started to cramp and dropped out in the middle of the race.",
+        ipa: "",
+        audioUrl: "",
+        id: "P039-02"
+      },
+      {
+        unit: "39",
+        set: 3,
+        theme: "Drop out",
+        prompt: "The presidential candidate threw in the towel after the scandal was reported.",
+        ja: "スキャンダルが報道されたあと、その大統領候補は選挙戦を降りました。",
+        en: "The presidential candidate dropped out after the scandal was reported.",
+        ipa: "",
+        audioUrl: "",
+        id: "P039-03"
+      },
+      {
+        unit: "39",
+        set: 4,
+        theme: "Drop out",
+        prompt: "I canceled my life insurance policy because I couldn't afford it.",
+        ja: "お金が支払えなかったので、私は生命保険をやめました。",
+        en: "I dropped out of my life insurance policy because I couldn't afford it.",
+        ipa: "",
+        audioUrl: "",
+        id: "P039-04"
+      },
+      {
+        unit: "40",
+        set: 1,
+        theme: "Come up with",
+        prompt: "The new board member did not have the same background as the others.",
+        ja: "新たな取締役は、ほかの取締役とは異なる経歴をもっています。",
+        en: "The new board member did not come up with the others.",
+        ipa: "",
+        audioUrl: "",
+        id: "P040-01"
+      },
+      {
+        unit: "40",
+        set: 2,
+        theme: "Come up with",
+        prompt: "The doctors rushed to think of a diagnosis.",
+        ja: "医師たちは急いで診断を考えようとしました。",
+        en: "The doctors rushed to come up with a diagnosis.",
+        ipa: "",
+        audioUrl: "",
+        id: "P040-02"
+      },
+      {
+        unit: "40",
+        set: 3,
+        theme: "Come up with",
+        prompt: "The quiz show contestant couldn't provide the correct answer.",
+        ja: "クイズ番組の出場者は正解を思いつくことができませんでした。",
+        en: "The quiz show contestant couldn't come up with the correct answer.",
+        ipa: "",
+        audioUrl: "",
+        id: "P040-03"
+      },
+      {
+        unit: "40",
+        set: 4,
+        theme: "Come up with",
+        prompt: "The bank foreclosed on my house because I couldn't pay the mortgage.",
+        ja: "住宅ローンを工面できなかったので、銀行が私の家を差し押さえました。",
+        en: "The bank foreclosed on my house because I couldn't come up with the mortgage.",
+        ipa: "",
+        audioUrl: "",
+        id: "P040-04"
       }
     ];
     const LISTENING_SETS = [
@@ -2902,8 +3806,967 @@
         ipa: "/ðə pəˈlis ɪnˈvɛstəˌɡeɪtəd ðə kraɪm sin bət ˈdɪdənt tɝn ʌp ˈɛni kluz/",
         audioUrl: "audio/unit20/U020-05.mp3",
         id: "L020-05"
+      },
+      {
+        unit: "21",
+        set: 1,
+        theme: "Turn off",
+        ja: "眠くなったので、テレビを消してベッドに入りました。",
+        en: "I got sleepy so I turned off the TV and went to bed.",
+        ipa: "/aɪ ɡɑt ˈslipi soʊ aɪ tɝnd ɔf ðə ˌtiˈvi ənd wɛnt tə bɛd/",
+        audioUrl: "audio/unit21/U021-01.mp3",
+        id: "L021-01"
+      },
+      {
+        unit: "21",
+        set: 2,
+        theme: "Turn off",
+        ja: "グリルの火を消して！ ステーキが焦げているよ！",
+        en: "Turn off the grill! The steaks are burning!",
+        ipa: "/tɝn ɔf ðə ɡrɪl ðə steɪks ɚ ˈbɝnɪŋ/",
+        audioUrl: "audio/unit21/U021-02.mp3",
+        id: "L021-02"
+      },
+      {
+        unit: "21",
+        set: 3,
+        theme: "Turn off",
+        ja: "ここで曲がって、西に10キロ進みます。",
+        en: "Turn off here and travel west for ten kilometers.",
+        ipa: "/tɝn ɔf hɪr ənd ˈtrævəl wɛst fɚ tɛn kəˈlɑmɪtɚz/",
+        audioUrl: "audio/unit21/U021-03.mp3",
+        id: "L021-03"
+      },
+      {
+        unit: "21",
+        set: 4,
+        theme: "Turn off",
+        ja: "そのレストランの食事は気に入りましたが、汚いトイレにがっかりしました。",
+        en: "I liked the food at the restaurant, but the dirty bathrooms turned me off.",
+        ipa: "/aɪ laɪkt ðə fud ət ðə ˈrɛstəˌrɑnt bət ðə ˈdɝti ˈbæθˌrumz tɝnd mi ɔf/",
+        audioUrl: "audio/unit21/U021-04.mp3",
+        id: "L021-04"
+      },
+      {
+        unit: "21",
+        set: 5,
+        theme: "Turn off",
+        ja: "彼はとてもハンサムですが、歯が悪いので多くの女性を興ざめさせてしまいます。",
+        en: "He is really handsome, but his bad teeth turn off a lot of women.",
+        ipa: "/hi ɪz ˈrɪli ˈhænsəm bət hɪz bæd tiθ tɝn ɔf ə lɑt əv ˈwɪmɪn/",
+        audioUrl: "audio/unit21/U021-05.mp3",
+        id: "L021-05"
+      },
+      {
+        unit: "22",
+        set: 1,
+        theme: "Hang on",
+        ja: "そのロープにしがみついて放さないで！",
+        en: "Hang on to that rope and don't let go!",
+        ipa: "/hæŋ ɑn tə ðæt roʊp ənd doʊnt lɛt ɡoʊ/",
+        audioUrl: "audio/unit22/U022-01.mp3",
+        id: "L022-01"
+      },
+      {
+        unit: "22",
+        set: 2,
+        theme: "Hang on",
+        ja: "バスが動いているときは手すりにつかまってください。",
+        en: "Please hang on to the handrail when the bus is in motion.",
+        ipa: "/pliz hæŋ ɑn tə ðə ˈhændˌreɪl wɛn ðə bʌs ɪz ɪn ˈmoʊʃən/",
+        audioUrl: "audio/unit22/U022-02.mp3",
+        id: "L022-02"
+      },
+      {
+        unit: "22",
+        set: 3,
+        theme: "Hang on",
+        ja: "その写真をまだ持っていたなんて信じられません！",
+        en: "I can't believe you've hung on to those photos!",
+        ipa: "/aɪ kænt bəˈliv juv hʌŋ ɑn tə ðoʊz ˈfoʊtoʊz/",
+        audioUrl: "audio/unit22/U022-03.mp3",
+        id: "L022-03"
+      },
+      {
+        unit: "22",
+        set: 4,
+        theme: "Hang on",
+        ja: "彼はそれまでに買ったコミックスを全部取っていました。",
+        en: "He hung on to every comic book he ever bought.",
+        ipa: "/hi hʌŋ ɑn tə ˈɛvri ˈkɑmɪk bʊk hi ˈɛvɚ bɔt/",
+        audioUrl: "audio/unit22/U022-04.mp3",
+        id: "L022-04"
+      },
+      {
+        unit: "22",
+        set: 5,
+        theme: "Hang on",
+        ja: "ちょっと待ってくれたら、すぐにそっちに行きますよ。",
+        en: "Hang on a second and I'll be right with you.",
+        ipa: "/hæŋ ɑn ə ˈsɛkənd ænd aɪl bi raɪt wɪð ju/",
+        audioUrl: "audio/unit22/U022-05.mp3",
+        id: "L022-05"
+      },
+      {
+        unit: "23",
+        set: 1,
+        theme: "Hang out",
+        ja: "今日は晴れるはずだから、洗濯物を外に干せます。",
+        en: "Today should be sunny so we can hang out the laundry.",
+        ipa: "/təˈdeɪ ʃʊd bi ˈsʌni soʊ wi kæn hæŋ aʊt ðə ˈlɔndri/",
+        audioUrl: "audio/unit23/U023-01.mp3",
+        id: "L023-01"
+      },
+      {
+        unit: "23",
+        set: 2,
+        theme: "Hang out",
+        ja: "私の犬は車の窓から頭を出すのが大好きです。",
+        en: "My dog loves to hang his head out the car window.",
+        ipa: "/maɪ dɔɡ lʌvz tə hæŋ hɪz hɛd aʊt ðə kɑr ˈwɪndoʊ/",
+        audioUrl: "audio/unit23/U023-02.mp3",
+        id: "L023-02"
+      },
+      {
+        unit: "23",
+        set: 3,
+        theme: "Hang out",
+        ja: "クラスメートと私は、よくこのゲームセンターでぶらぶらしたものです。",
+        en: "My classmates and I used to hang out in this arcade.",
+        ipa: "/maɪ ˈklæsˌmeɪts ənd aɪ juzd tə hæŋ aʊt ɪn ðɪs ɑrˈkeɪd/",
+        audioUrl: "audio/unit23/U023-03.mp3",
+        id: "L023-03"
+      },
+      {
+        unit: "23",
+        set: 4,
+        theme: "Hang out",
+        ja: "日本のビジネスマンは同僚とぶらぶらする傾向があります。",
+        en: "Japanese businessmen tend to hang out with their coworkers.",
+        ipa: "/ˌdʒæpəˈniz ˈbɪznəsˌmɛn tɛnd tə hæŋ aʊt wɪð ðɛr ˈkoʊˌwɝkɚz/",
+        audioUrl: "audio/unit23/U023-04.mp3",
+        id: "L023-04"
+      },
+      {
+        unit: "23",
+        set: 5,
+        theme: "Hang out",
+        ja: "もし空いているなら、今度の土曜日いっしょに過ごしましょう。",
+        en: "Let's hang out this Saturday if you are free.",
+        ipa: "/lɛts hæŋ aʊt ðɪs ˈsætɚˌdeɪ ɪf ju ɚ fri/",
+        audioUrl: "audio/unit23/U023-05.mp3",
+        id: "L023-05"
+      },
+      {
+        unit: "24",
+        set: 1,
+        theme: "Keep up",
+        ja: "急がないと彼らについていけませんよ！",
+        en: "Hurry up or you won't be able to keep up with them!",
+        ipa: "/ˈhɝi ʌp ɔr ju woʊnt bi ˈeɪbəl tə kip ʌp wɪð ðɛm/",
+        audioUrl: "audio/unit24/U024-01.mp3",
+        id: "L024-01"
+      },
+      {
+        unit: "24",
+        set: 2,
+        theme: "Keep up",
+        ja: "学期の半ばでついていけなくなり、最終的に授業を落としてしまいました。",
+        en: "Halfway through the semester I couldn't keep up and ultimately failed the class.",
+        ipa: "/ˈhæfˌweɪ θru ðə səˈmɛstɚ aɪ ˈkʊdənt kip ʌp ənd ˈʌltəmətli feɪld ðə klæs/",
+        audioUrl: "audio/unit24/U024-02.mp3",
+        id: "L024-02"
+      },
+      {
+        unit: "24",
+        set: 3,
+        theme: "Keep up",
+        ja: "この機器がしっかり整備されていなければ、修理に高額がかかりますよ。",
+        en: "If this equipment is not kept up properly, it will be expensive to repair.",
+        ipa: "/ɪf ðɪs ɪˈkwɪpmənt ɪz nɑt kɛpt ʌp ˈprɑpɚli ɪt wɪl bi ɪkˈspɛnsɪv tə rɪˈpɛr/",
+        audioUrl: "audio/unit24/U024-03.mp3",
+        id: "L024-03"
+      },
+      {
+        unit: "24",
+        set: 4,
+        theme: "Keep up",
+        ja: "うちの近所の人は、庭の手入れにたくさんの時間とお金をかけています。",
+        en: "Our neighbors spend a lot of time and money keeping up their garden.",
+        ipa: "/aʊr ˈneɪbɚz spɛnd ə lɑt əv taɪm ənd ˈmʌni ˈkipɪŋ ʌp ðɛr ˈɡɑrdən/",
+        audioUrl: "audio/unit24/U024-04.mp3",
+        id: "L024-04"
+      },
+      {
+        unit: "24",
+        set: 5,
+        theme: "Keep up",
+        ja: "日本語の勉強は続けていますか？",
+        en: "Are you keeping up on your Japanese?",
+        ipa: "/ɚ ju ˈkipɪŋ ʌp ɑn jɚ ˌdʒæpəˈniz/",
+        audioUrl: "audio/unit24/U024-05.mp3",
+        id: "L024-05"
+      },
+      {
+        unit: "25",
+        set: 1,
+        theme: "Look out",
+        ja: "なにかの音を聞いて、女性は振り返り窓の外を見ました。",
+        en: "Hearing a sound, the woman turned and looked out the window.",
+        ipa: "/ˈhɪrɪŋ ə saʊnd ðə ˈwʊmən tɝnd ənd lʊkt aʊt ðə ˈwɪndoʊ/",
+        audioUrl: "audio/unit25/U025-01.mp3",
+        id: "L025-01"
+      },
+      {
+        unit: "25",
+        set: 2,
+        theme: "Look out",
+        ja: "気をつけて！あの人はナイフを持っています！",
+        en: "Look out! He has a knife!",
+        ipa: "/lʊk aʊt hi hæz ə naɪf/",
+        audioUrl: "audio/unit25/U025-02.mp3",
+        id: "L025-02"
+      },
+      {
+        unit: "25",
+        set: 3,
+        theme: "Look out",
+        ja: "海外旅行するときは、スリに警戒してください。",
+        en: "When you are traveling abroad, look out for pickpockets.",
+        ipa: "/wɛn ju ɚ ˈtrævəlɪŋ əˈbrɑd lʊk aʊt fɚ ˈpɪkˌpɑkəts/",
+        audioUrl: "audio/unit25/U025-03-v2.mp3",
+        id: "L025-03"
+      },
+      {
+        unit: "25",
+        set: 4,
+        theme: "Look out",
+        ja: "私の妻はいつも注意してセール品を探しています。",
+        en: "My wife is always looking out for products on sale.",
+        ipa: "/maɪ waɪf ɪz ˈɔlweɪz ˈlʊkɪŋ aʊt fɚ ˈprɑdʌkts ɑn seɪl/",
+        audioUrl: "audio/unit25/U025-04.mp3",
+        id: "L025-04"
+      },
+      {
+        unit: "25",
+        set: 5,
+        theme: "Look out",
+        ja: "よい教師はいつも生徒に気を配っているものです。",
+        en: "Good teachers are always looking out for their students.",
+        ipa: "/ɡʊd ˈtitʃɚz ɚ ˈɔlweɪz ˈlʊkɪŋ aʊt fɚ ðɛr ˈstudənts/",
+        audioUrl: "audio/unit25/U025-05-v3.mp3",
+        id: "L025-05"
+      },
+      {
+        unit: "26",
+        set: 1,
+        theme: "Get along",
+        ja: "姉とはうまくやれていないんです。",
+        en: "I don't get along with my sisters.",
+        ipa: "/aɪ doʊnt ɡɛt əˈlɔŋ wɪð maɪ ˈsɪstɚz/",
+        audioUrl: "audio/unit26/U026-01.mp3",
+        id: "L026-01"
+      },
+      {
+        unit: "26",
+        set: 2,
+        theme: "Get along",
+        ja: "新しい同僚と私はうまくいっていません。",
+        en: "My new coworker and I don't get along.",
+        ipa: "/maɪ nu ˈkoʊˌwɝkɚ ənd aɪ doʊnt ɡɛt əˈlɔŋ/",
+        audioUrl: "audio/unit26/U026-02.mp3",
+        id: "L026-02"
+      },
+      {
+        unit: "26",
+        set: 3,
+        theme: "Get along",
+        ja: "同い年なので、ご近所とはうまくやっています。",
+        en: "I get along well with my neighbors, because we are the same age.",
+        ipa: "/aɪ ɡɛt əˈlɔŋ wɛl wɪð maɪ ˈneɪbɚz bɪˈkɔz wi ɚ ðə seɪm eɪdʒ/",
+        audioUrl: "audio/unit26/U026-03.mp3",
+        id: "L026-03"
+      },
+      {
+        unit: "26",
+        set: 4,
+        theme: "Get along",
+        ja: "秘書がいなければやっていけません。",
+        en: "I can't get along without a secretary.",
+        ipa: "/aɪ kænt ɡɛt əˈlɔŋ wɪˈðaʊt ə ˈsɛkrəˌtɛri/",
+        audioUrl: "audio/unit26/U026-04.mp3",
+        id: "L026-04"
+      },
+      {
+        unit: "26",
+        set: 5,
+        theme: "Get along",
+        ja: "人は食べ物がなくても数日は生きていけますが、水なしには無理です。",
+        en: "People can get along for days without food, but not without water.",
+        ipa: "/ˈpipəl kæn ɡɛt əˈlɔŋ fɚ deɪz wɪˈðaʊt fud bət nɑt wɪˈðaʊt ˈwɔtɚ/",
+        audioUrl: "audio/unit26/U026-05.mp3",
+        id: "L026-05"
+      },
+      {
+        unit: "28",
+        set: 1,
+        theme: "Call on",
+        ja: "数人の生徒が挙手して、先生はジョニーに発言を求めました。",
+        en: "Several students raised their hands, and the teacher called on Johnny.",
+        ipa: "/ˈsɛvɚəl ˈstudənts reɪzd ðɛr hændz ənd ðə ˈtitʃɚ kɔld ɑn ˈdʒɑni/",
+        audioUrl: "audio/unit28/U028-01.mp3",
+        id: "L028-01"
+      },
+      {
+        unit: "28",
+        set: 2,
+        theme: "Call on",
+        ja: "会社のロサンゼルス支社を指揮するように、社長が私に依頼しました。",
+        en: "The president called on me to head the LA branch of our company.",
+        ipa: "/ðə ˈprɛzədənt kɔld ɑn mi tə hɛd ði ɛl eɪ bræntʃ əv aʊɚ ˈkʌmpəni/",
+        audioUrl: "audio/unit28/U028-02.mp3",
+        id: "L028-02"
+      },
+      {
+        unit: "28",
+        set: 3,
+        theme: "Call on",
+        ja: "病気だと聞いて、お隣さんを訪問することにしました。",
+        en: "We decided to call on our neighbors when we heard they were sick.",
+        ipa: "/wi dɪˈsaɪdəd tə kɔl ɑn aʊɚ ˈneɪbɚz wɛn wi hɝd ðeɪ wɚ sɪk/",
+        audioUrl: "audio/unit28/U028-03.mp3",
+        id: "L028-03"
+      },
+      {
+        unit: "28",
+        set: 4,
+        theme: "Call on",
+        ja: "事前連絡なしに、だれかを訪問するのは不躾です。",
+        en: "It is not polite to call on someone unannounced.",
+        ipa: "/ɪt ɪz nɑt pəˈlaɪt tə kɔl ɑn ˈsʌmwʌn ˌʌnəˈnaʊnst/",
+        audioUrl: "audio/unit28/U028-04.mp3",
+        id: "L028-04"
+      },
+      {
+        unit: "28",
+        set: 5,
+        theme: "Call on",
+        ja: "攻撃のあと、その国は同盟国に助けを求めました。",
+        en: "After the attack, the country called on their allies for help.",
+        ipa: "/ˈæftɚ ði əˈtæk ðə ˈkʌntri kɔld ɑn ðɛr ˈælaɪz fɚ hɛlp/",
+        audioUrl: "audio/unit28/U028-05.mp3",
+        id: "L028-05"
+      },
+      {
+        unit: "29",
+        set: 1,
+        theme: "Count on",
+        ja: "私は時間どおりに仕事に来ると約束します。",
+        en: "You can count on me to be at work on time.",
+        ipa: "/ju kən kaʊnt ɑn mi tə bi ət wɝk ɑn taɪm/",
+        audioUrl: "audio/unit29/U029-01.mp3",
+        id: "L029-01"
+      },
+      {
+        unit: "29",
+        set: 2,
+        theme: "Count on",
+        ja: "あなたがこれを手伝ってくれるのを当てにしていますよ。",
+        en: "I'm counting on you to help me with this.",
+        ipa: "/aɪm ˈkaʊntɪŋ ɑn ju tə hɛlp mi wɪð ðɪs/",
+        audioUrl: "audio/unit29/U029-02.mp3",
+        id: "L029-02"
+      },
+      {
+        unit: "29",
+        set: 3,
+        theme: "Count on",
+        ja: "パーティーにとても多くの人が来るとは予想していませんでした。",
+        en: "We didn't count on so many people showing up to the party.",
+        ipa: "/wi ˈdɪdənt kaʊnt ɑn soʊ ˈmɛni ˈpipəl ˈʃoʊɪŋ ʌp tə ðə ˈpɑrti/",
+        audioUrl: "audio/unit29/U029-03.mp3",
+        id: "L029-03"
+      },
+      {
+        unit: "29",
+        set: 4,
+        theme: "Count on",
+        ja: "交通渋滞に巻き込まれるとは予想していませんでした。",
+        en: "I didn't count on being stuck in a traffic jam.",
+        ipa: "/aɪ ˈdɪdənt kaʊnt ɑn ˈbiɪŋ stʌk ɪn ə ˈtræfɪk dʒæm/",
+        audioUrl: "audio/unit29/U029-04.mp3",
+        id: "L029-04"
+      },
+      {
+        unit: "29",
+        set: 5,
+        theme: "Count on",
+        ja: "必ず行きますよ。間違いなく。",
+        en: "I'll be there, you can count on it.",
+        ipa: "/aɪl bi ðɛr ju kən kaʊnt ɑn ɪt/",
+        audioUrl: "audio/unit29/U029-05.mp3",
+        id: "L029-05"
+      },
+      {
+        unit: "30",
+        set: 1,
+        theme: "Check out",
+        ja: "あのすごいメルセデスを見て！",
+        en: "Check out that awesome Mercedes!",
+        ipa: "/tʃɛk aʊt ðæt ˈɔsəm mərˈsɛdiz/",
+        audioUrl: "audio/unit30/U030-01.mp3",
+        id: "L030-01"
+      },
+      {
+        unit: "30",
+        set: 2,
+        theme: "Check out",
+        ja: "この低価格をご覧ください！",
+        en: "Check out these low prices!",
+        ipa: "/tʃɛk aʊt ðiz loʊ ˈpraɪsɪz/",
+        audioUrl: "audio/unit30/U030-02.mp3",
+        id: "L030-02"
+      },
+      {
+        unit: "30",
+        set: 3,
+        theme: "Check out",
+        ja: "警察は彼の話を精査しました。",
+        en: "The police checked out his story.",
+        ipa: "/ðə pəˈlis tʃɛkt aʊt hɪz ˈstɔri/",
+        audioUrl: "audio/unit30/U030-03.mp3",
+        id: "L030-03"
+      },
+      {
+        unit: "30",
+        set: 4,
+        theme: "Check out",
+        ja: "その会社は彼の履歴書を詳しく調査し、彼が嘘をついていたことがわかりました。",
+        en: "The company checked out his resume and found he had lied.",
+        ipa: "/ðə ˈkʌmpəni tʃɛkt aʊt hɪz rɪˈzumeɪ ənd faʊnd hi hæd laɪd/",
+        audioUrl: "audio/unit30/U030-04.mp3",
+        id: "L030-04"
+      },
+      {
+        unit: "30",
+        set: 5,
+        theme: "Check out",
+        ja: "午前10時までにはホテルをチェックアウトしなければなりません。",
+        en: "We have to check out of the hotel by 10:00 a.m.",
+        ipa: "/wi hæv tə tʃɛk aʊt əv ðə hoʊˈtɛl baɪ tɛn eɪ ɛm/",
+        audioUrl: "audio/unit30/U030-05.mp3",
+        id: "L030-05"
+      },
+      {
+        unit: "31",
+        set: 1,
+        theme: "Put up",
+        ja: "ちょうどクリスマスのライトを飾り終えたところです。",
+        en: "We just finished putting up our Christmas lights.",
+        ipa: "/wi dʒʌst ˈfɪnɪʃt ˈpʊtɪŋ ʌp aʊɚ ˈkrɪsməs laɪts/",
+        audioUrl: "audio/unit31/U031-01.mp3",
+        id: "L031-01"
+      },
+      {
+        unit: "31",
+        set: 2,
+        theme: "Put up",
+        ja: "ちょうど暗くなる前にテントを設置しました。",
+        en: "We put up our tent just before dark.",
+        ipa: "/wi pʊt ʌp aʊɚ tɛnt dʒʌst bɪˈfɔr dɑrk/",
+        audioUrl: "audio/unit31/U031-02.mp3",
+        id: "L031-02"
+      },
+      {
+        unit: "31",
+        set: 3,
+        theme: "Put up",
+        ja: "吹雪の間、旅行者にひと晩宿を貸しました。",
+        en: "We put the travelers up for the night during the snowstorm.",
+        ipa: "/wi pʊt ðə ˈtrævəlɚz ʌp fɚ ðə naɪt ˈdʊrɪŋ ðə ˈsnoʊˌstɔrm/",
+        audioUrl: "audio/unit31/U031-03.mp3",
+        id: "L031-03"
+      },
+      {
+        unit: "31",
+        set: 4,
+        theme: "Put up",
+        ja: "赤ちゃんの泣き声に我慢ができないんです。",
+        en: "I can't put up with the sound of crying babies.",
+        ipa: "/aɪ kænt pʊt ʌp wɪð ðə saʊnd əv ˈkraɪɪŋ ˈbeɪbiz/",
+        audioUrl: "audio/unit31/U031-04.mp3",
+        id: "L031-04"
+      },
+      {
+        unit: "31",
+        set: 5,
+        theme: "Put up",
+        ja: "うちの上司は遅刻には寛容ではありません。",
+        en: "My boss doesn't put up with tardiness.",
+        ipa: "/maɪ bɔs ˈdʌzənt pʊt ʌp wɪð ˈtɑrdinəs/",
+        audioUrl: "audio/unit31/U031-05.mp3",
+        id: "L031-05"
+      },
+      {
+        unit: "32",
+        set: 1,
+        theme: "Come in",
+        ja: "お入りください、ティム。",
+        en: "Please come in, Tim.",
+        ipa: "/pliz kʌm ɪn tɪm/",
+        audioUrl: "audio/unit32/U032-01.mp3",
+        id: "L032-01"
+      },
+      {
+        unit: "32",
+        set: 2,
+        theme: "Come in",
+        ja: "昨晩、あなたが帰ってきた音は聞こえませんでした。",
+        en: "I didn't hear you come in last night.",
+        ipa: "/aɪ ˈdɪdənt hɪr ju kʌm ɪn læst naɪt/",
+        audioUrl: "audio/unit32/U032-02.mp3",
+        id: "L032-02"
+      },
+      {
+        unit: "32",
+        set: 3,
+        theme: "Come in",
+        ja: "このコートはXLサイズで売っていますか？",
+        en: "Does this coat come in extra-large?",
+        ipa: "/dʌz ðɪs koʊt kʌm ɪn ˌɛkstrə ˈlɑrdʒ/",
+        audioUrl: "audio/unit32/U032-03.mp3",
+        id: "L032-03"
+      },
+      {
+        unit: "32",
+        set: 4,
+        theme: "Come in",
+        ja: "新しいPS11のゲームコンソールが昨晩入荷しました。",
+        en: "The new PS11 game consoles came in last night.",
+        ipa: "/ðə nu ˌpi ˈɛs ɪˈlɛvən ɡeɪm ˈkɑnˌsoʊlz keɪm ɪn læst naɪt/",
+        audioUrl: "audio/unit32/U032-04.mp3",
+        id: "L032-04"
+      },
+      {
+        unit: "32",
+        set: 5,
+        theme: "Come in",
+        ja: "会社のゴルフコンペでビリになりました。",
+        en: "I came in last at the company golf outing.",
+        ipa: "/aɪ keɪm ɪn læst ət ðə ˈkʌmpəni ɡɑlf ˈaʊtɪŋ/",
+        audioUrl: "audio/unit32/U032-05.mp3",
+        id: "L032-05"
+      },
+      {
+        unit: "33",
+        set: 1,
+        theme: "Come back",
+        ja: "息子は家を出て、二度と戻ってきませんでした。",
+        en: "My son left home and never came back.",
+        ipa: "/maɪ sʌn lɛft hoʊm ənd ˈnɛvɚ keɪm bæk/",
+        audioUrl: "audio/unit33/U033-01.mp3",
+        id: "L033-01"
+      },
+      {
+        unit: "33",
+        set: 2,
+        theme: "Come back",
+        ja: "戻ってくるまでこのカバンを持っていてください。",
+        en: "Hold this bag for me until I come back.",
+        ipa: "/hoʊld ðɪs bæɡ fɚ mi ənˈtɪl aɪ kʌm bæk/",
+        audioUrl: "audio/unit33/U033-02.mp3",
+        id: "L033-02"
+      },
+      {
+        unit: "33",
+        set: 3,
+        theme: "Come back",
+        ja: "その島の経済は地震のあと二度と復活しませんでした。",
+        en: "The island's economy never came back after the earthquake.",
+        ipa: "/ði ˈaɪləndz ɪˈkɑnəmi ˈnɛvɚ keɪm bæk ˈæftɚ ði ˈɝθˌkweɪk/",
+        audioUrl: "audio/unit33/U033-03.mp3",
+        id: "L033-03"
+      },
+      {
+        unit: "33",
+        set: 4,
+        theme: "Come back",
+        ja: "あの有名歌手は咽喉ガンから再起しました。",
+        en: "That famous singer came back from throat cancer.",
+        ipa: "/ðæt ˈfeɪməs ˈsɪŋɚ keɪm bæk frəm θroʊt ˈkænsɚ/",
+        audioUrl: "audio/unit33/U033-04.mp3",
+        id: "L033-04"
+      },
+      {
+        unit: "33",
+        set: 5,
+        theme: "Come back",
+        ja: "ジャイアンツは3点差の劣勢から逆転しました。",
+        en: "The Giants came back from a 3-run deficit.",
+        ipa: "/ðə ˈdʒaɪənts keɪm bæk frəm ə θri rʌn ˈdɛfəsɪt/",
+        audioUrl: "audio/unit33/U033-05.mp3",
+        id: "L033-05"
+      },
+      {
+        unit: "34",
+        set: 1,
+        theme: "Bring up",
+        ja: "次のマネージャー会議で残業の問題をもち出すつもりです。",
+        en: "At the next managers' meeting, I'm going to bring up the matter of overtime.",
+        ipa: "/ət ðə nɛkst ˈmænɪdʒɚz ˈmitɪŋ aɪm ˈɡoʊɪŋ tə brɪŋ ʌp ðə ˈmætɚ əv ˈoʊvɚˌtaɪm/",
+        audioUrl: "audio/unit34/U034-01.mp3",
+        id: "L034-01"
+      },
+      {
+        unit: "34",
+        set: 2,
+        theme: "Bring up",
+        ja: "年次考課で、上司は私の遅刻傾向の話題をもち出しました。",
+        en: "During my annual review, the boss brought up the matter of my tendency to be late to work.",
+        ipa: "/ˈdʊrɪŋ maɪ ˈænjuəl rɪˈvju ðə bɔs brɔt ʌp ðə ˈmætɚ əv maɪ ˈtɛndənsi tə bi leɪt tə wɝk/",
+        audioUrl: "audio/unit34/U034-02.mp3",
+        id: "L034-02"
+      },
+      {
+        unit: "34",
+        set: 3,
+        theme: "Bring up",
+        ja: "大阪で育てられましたが、大学に入学するときに東京に引っ越しました。",
+        en: "I was brought up in Osaka but moved to Tokyo when I entered college.",
+        ipa: "/aɪ wəz brɔt ʌp ɪn oʊˈsɑkə bət muvd tə ˈtoʊkioʊ wɛn aɪ ˈɛntɚd ˈkɑlɪdʒ/",
+        audioUrl: "audio/unit34/U034-03.mp3",
+        id: "L034-03"
+      },
+      {
+        unit: "34",
+        set: 4,
+        theme: "Bring up",
+        ja: "人は肌の色の違いで判断されるべきではないと考えるように育てられました。",
+        en: "I was brought up to believe that people shouldn't be judged by their color.",
+        ipa: "/aɪ wəz brɔt ʌp tə bɪˈliv ðət ˈpipəl ˈʃʊdənt bi dʒʌdʒd baɪ ðɛr ˈkʌlɚ/",
+        audioUrl: "audio/unit34/U034-04.mp3",
+        id: "L034-04"
+      },
+      {
+        unit: "34",
+        set: 5,
+        theme: "Bring up",
+        ja: "最近の若い子どもたちは私の世代とは非常に異なった育てられ方をされています。",
+        en: "Young children today are brought up very differently than my generation.",
+        ipa: "/jʌŋ ˈtʃɪldrən təˈdeɪ ɚ brɔt ʌp ˈvɛri ˈdɪfrəntli ðən maɪ ˌdʒɛnɚˈeɪʃən/",
+        audioUrl: "audio/unit34/U034-05.mp3",
+        id: "L034-05"
+      },
+      {
+        unit: "35",
+        set: 1,
+        theme: "Wait on",
+        ja: "もうこれ以上あなたを待っていられません！",
+        en: "I can't wait on you any longer!",
+        ipa: "/aɪ kænt weɪt ɑn ju ˈɛni ˈlɔŋɡɚ/",
+        audioUrl: "audio/unit35/U035-01.mp3",
+        id: "L035-01"
+      },
+      {
+        unit: "35",
+        set: 2,
+        theme: "Wait on",
+        ja: "老人はバス停でバスを待っていました。",
+        en: "The old man waited on the bus at the bus stop.",
+        ipa: "/ði oʊld mæn ˈweɪtəd ɑn ðə bʌs ət ðə bʌs stɑp/",
+        audioUrl: "audio/unit35/U035-02.mp3",
+        id: "L035-02"
+      },
+      {
+        unit: "35",
+        set: 3,
+        theme: "Wait on",
+        ja: "私たちはまだクライアントからの指示を待っています。",
+        en: "We are still waiting on instructions from our client.",
+        ipa: "/wi ɚ stɪl ˈweɪtɪŋ ɑn ɪnˈstrʌkʃənz frəm aʊɚ ˈklaɪənt/",
+        audioUrl: "audio/unit35/U035-03.mp3",
+        id: "L035-03"
+      },
+      {
+        unit: "35",
+        set: 4,
+        theme: "Wait on",
+        ja: "私たちを接客してくれたウェイトレスは明るく親切でした。",
+        en: "The waitress who waited on us was cheerful and polite.",
+        ipa: "/ðə ˈweɪtrəs hu ˈweɪtəd ɑn ʌs wəz ˈtʃɪrfəl ənd pəˈlaɪt/",
+        audioUrl: "audio/unit35/U035-04.mp3",
+        id: "L035-04"
+      },
+      {
+        unit: "35",
+        set: 5,
+        theme: "Wait on",
+        ja: "給仕係は忙しく一度に4つのテーブルに対応していました。",
+        en: "The server was busy waiting on four tables at once.",
+        ipa: "/ðə ˈsɝvɚ wəz ˈbɪzi ˈweɪtɪŋ ɑn fɔr ˈteɪbəlz ət wʌns/",
+        audioUrl: "audio/unit35/U035-05.mp3",
+        id: "L035-05"
+      },
+      {
+        unit: "36",
+        set: 1,
+        theme: "Make out",
+        ja: "音楽がうるさかったので、彼が言ったことが聞こえませんでした。",
+        en: "I couldn't make out what he said due to the loud music.",
+        ipa: "/aɪ ˈkʊdənt meɪk aʊt wʌt hi sɛd du tə ðə laʊd ˈmjuzɪk/",
+        audioUrl: "audio/unit36/U036-01.mp3",
+        id: "L036-01"
+      },
+      {
+        unit: "36",
+        set: 2,
+        theme: "Make out",
+        ja: "霧の間からかろうじて富士山を見分けられました。",
+        en: "I could just make out Mt. Fuji through the fog.",
+        ipa: "/aɪ kʊd dʒʌst meɪk aʊt maʊnt ˈfudʒi θru ðə fɔɡ/",
+        audioUrl: "audio/unit36/U036-02.mp3",
+        id: "L036-02"
+      },
+      {
+        unit: "36",
+        set: 3,
+        theme: "Make out",
+        ja: "1回目のコンペはまあまあうまくいきました。",
+        en: "We made out okay in our first round of competition.",
+        ipa: "/wi meɪd aʊt oʊˈkeɪ ɪn aʊɚ fɝst raʊnd əv ˌkɑmpəˈtɪʃən/",
+        audioUrl: "audio/unit36/U036-03.mp3",
+        id: "L036-03"
+      },
+      {
+        unit: "36",
+        set: 4,
+        theme: "Make out",
+        ja: "息子さんの入試はうまくいきましたか？",
+        en: "How did your son make out on his entrance exams?",
+        ipa: "/haʊ dɪd jʊr sʌn meɪk aʊt ɑn hɪz ˈɛntrəns ɪɡˈzæmz/",
+        audioUrl: "audio/unit36/U036-04.mp3",
+        id: "L036-04"
+      },
+      {
+        unit: "36",
+        set: 5,
+        theme: "Make out",
+        ja: "タナカ株式会社の名前で領収書を作ってください。",
+        en: "Please make out a receipt in the name of \"Tanaka Inc.\"",
+        ipa: "/pliz meɪk aʊt ə rɪˈsit ɪn ðə neɪm əv təˈnɑkə ɪŋk/",
+        audioUrl: "audio/unit36/U036-05.mp3",
+        id: "L036-05"
+      },
+      {
+        unit: "37",
+        set: 1,
+        theme: "Cut off",
+        ja: "その魚は調理する前に皮を切り取るべきです。",
+        en: "You should cut off the skin before cooking that fish.",
+        ipa: "/ju ʃʊd kʌt ɔf ðə skɪn bɪˈfɔr ˈkʊkɪŋ ðæt fɪʃ/",
+        audioUrl: "audio/unit37/U037-01.mp3",
+        id: "L037-01"
+      },
+      {
+        unit: "37",
+        set: 2,
+        theme: "Cut off",
+        ja: "オーバーヒートする前にエンジンを切ってください！",
+        en: "Cut off the engine before it overheats!",
+        ipa: "/kʌt ɔf ði ˈɛndʒən bəˈfɔr ɪt ˌoʊvɚˈhits/",
+        audioUrl: "audio/unit37/U037-02.mp3",
+        id: "L037-02"
+      },
+      {
+        unit: "37",
+        set: 3,
+        theme: "Cut off",
+        ja: "ウイルスが広がる前に、彼らはコンピューターを切りました。",
+        en: "They cut off the computer before the virus could spread.",
+        ipa: "/ðeɪ kʌt ɔf ðə kəmˈpjutɚ bəˈfɔr ðə ˈvaɪrəs kʊd sprɛd/",
+        audioUrl: "audio/unit37/U037-03.mp3",
+        id: "L037-03"
+      },
+      {
+        unit: "37",
+        set: 4,
+        theme: "Cut off",
+        ja: "嵐によって停電が起きました。",
+        en: "The storm cut off our power.",
+        ipa: "/ðə stɔrm kʌt ɔf aʊɚ ˈpaʊɚ/",
+        audioUrl: "audio/unit37/U037-04.mp3",
+        id: "L037-04"
+      },
+      {
+        unit: "37",
+        set: 5,
+        theme: "Cut off",
+        ja: "レポーターは発言の途中で政治家の言葉を遮りました。",
+        en: "The reporter cut the politician off in mid-sentence.",
+        ipa: "/ðə rɪˈpɔrtɚ kʌt ðə ˌpɑləˈtɪʃən ɔf ɪn mɪd ˈsɛntəns/",
+        audioUrl: "audio/unit37/U037-05.mp3",
+        id: "L037-05"
+      },
+      {
+        unit: "38",
+        set: 1,
+        theme: "Run into",
+        ja: "自転車に乗っていた人が携帯電話を見ていて壁にぶつかりました。",
+        en: "The bicyclist was looking at his phone and ran into a wall.",
+        ipa: "/ðə ˈbaɪsɪklɪst wəz ˈlʊkɪŋ ət hɪz foʊn ənd ræn ˈɪntu ə wɔl/",
+        audioUrl: "audio/unit38/U038-01.mp3",
+        id: "L038-01"
+      },
+      {
+        unit: "38",
+        set: 2,
+        theme: "Run into",
+        ja: "年老いた女性が自動車で電柱に追突しました。",
+        en: "The old woman ran into a telephone pole with her car.",
+        ipa: "/ði oʊld ˈwʊmən ræn ˈɪntu ə ˈtɛləˌfoʊn poʊl wɪð hɚ kɑr/",
+        audioUrl: "audio/unit38/U038-02.mp3",
+        id: "L038-02"
+      },
+      {
+        unit: "38",
+        set: 3,
+        theme: "Run into",
+        ja: "道路が凍結していたので、私は前にいた車にぶつかりました。",
+        en: "I ran into the car in front of me because of the icy roads.",
+        ipa: "/aɪ ræn ˈɪntu ðə kɑr ɪn frʌnt əv mi bɪˈkɔz əv ði ˈaɪsi roʊdz/",
+        audioUrl: "audio/unit38/U038-03.mp3",
+        id: "L038-03"
+      },
+      {
+        unit: "38",
+        set: 4,
+        theme: "Run into",
+        ja: "今日偶然スーパーであなたのお母さんに会いました。",
+        en: "I ran into your mother at the supermarket today.",
+        ipa: "/aɪ ræn ˈɪntu jʊr ˈmʌðɚ ət ðə ˈsupɚˌmɑrkɪt təˈdeɪ/",
+        audioUrl: "audio/unit38/U038-04.mp3",
+        id: "L038-04"
+      },
+      {
+        unit: "38",
+        set: 5,
+        theme: "Run into",
+        ja: "パイロットは嵐の中で着陸しようとしてトラブルに陥りました。",
+        en: "The pilot ran into trouble trying to land in the storm.",
+        ipa: "/ðə ˈpaɪlət ræn ˈɪntu ˈtrʌbəl ˈtraɪɪŋ tə lænd ɪn ðə stɔrm/",
+        audioUrl: "audio/unit38/U038-05.mp3",
+        id: "L038-05"
+      },
+      {
+        unit: "39",
+        set: 1,
+        theme: "Drop out",
+        ja: "息子は1年目を終えたところで大学を中退しました。",
+        en: "My son dropped out of college after the first year.",
+        ipa: "/maɪ sʌn drɑpt aʊt əv ˈkɑlɪdʒ ˈæftɚ ðə fɝst jɪr/",
+        audioUrl: "audio/unit39/U039-01.mp3",
+        id: "L039-01"
+      },
+      {
+        unit: "39",
+        set: 2,
+        theme: "Drop out",
+        ja: "これまで以上に多くの高校生たちが中途退学しています。",
+        en: "More high-school students are dropping out of school than ever before.",
+        ipa: "/mɔr ˈhaɪˌskul ˈstudənts ɚ ˈdrɑpɪŋ aʊt əv skul ðən ˈɛvɚ bɪˈfɔr/",
+        audioUrl: "audio/unit39/U039-02.mp3",
+        id: "L039-02"
+      },
+      {
+        unit: "39",
+        set: 3,
+        theme: "Drop out",
+        ja: "市長は選挙戦を放棄しました。",
+        en: "The mayor dropped out of the political race.",
+        ipa: "/ðə ˈmeɪɚ drɑpt aʊt əv ðə pəˈlɪtɪkəl reɪs/",
+        audioUrl: "audio/unit39/U039-03.mp3",
+        id: "L039-03"
+      },
+      {
+        unit: "39",
+        set: 4,
+        theme: "Drop out",
+        ja: "そのスター選手は足にケガを負い、競技から離れなければなりませんでした。",
+        en: "The star athlete injured his foot and had to drop out of the competition.",
+        ipa: "/ðə stɑr ˈæθˌlit ˈɪndʒɚd hɪz fʊt ənd hæd tə drɑp aʊt əv ðə ˌkɑmpəˈtɪʃən/",
+        audioUrl: "audio/unit39/U039-04.mp3",
+        id: "L039-04"
+      },
+      {
+        unit: "39",
+        set: 5,
+        theme: "Drop out",
+        ja: "いま抜けたら、あとでチームに再び参加することはできません。",
+        en: "If you drop out now, you can't rejoin the team later.",
+        ipa: "/ɪf ju drɑp aʊt naʊ ju kænt riˈdʒɔɪn ðə tim ˈleɪtɚ/",
+        audioUrl: "audio/unit39/U039-05.mp3",
+        id: "L039-05"
+      },
+      {
+        unit: "40",
+        set: 1,
+        theme: "Come up with",
+        ja: "彼女の兄弟と私は軍隊で同じ釜の飯を食べた仲です。",
+        en: "Her brother and I came up with each other in the Army.",
+        ipa: "/hɚ ˈbrʌðɚ ənd aɪ keɪm ʌp wɪð itʃ ˈʌðɚ ɪn ði ˈɑrmi/",
+        audioUrl: "audio/unit40/U040-01.mp3",
+        id: "L040-01"
+      },
+      {
+        unit: "40",
+        set: 2,
+        theme: "Come up with",
+        ja: "その生徒はすばらしいアイデアを思いつきました。",
+        en: "The student came up with a brilliant idea.",
+        ipa: "/ðə ˈstudənt keɪm ʌp wɪð ə ˈbrɪljənt aɪˈdiə/",
+        audioUrl: "audio/unit40/U040-02.mp3",
+        id: "L040-02"
+      },
+      {
+        unit: "40",
+        set: 3,
+        theme: "Come up with",
+        ja: "その問題の答えを出せますか？",
+        en: "Can you come up with an answer to the problem?",
+        ipa: "/kæn ju kʌm ʌp wɪð ən ˈænsɚ tə ðə ˈprɑbləm/",
+        audioUrl: "audio/unit40/U040-03.mp3",
+        id: "L040-03"
+      },
+      {
+        unit: "40",
+        set: 4,
+        theme: "Come up with",
+        ja: "自動車を買いたかったのですが、お金を工面できませんでした。",
+        en: "I wanted to buy a car but couldn't come up with the money.",
+        ipa: "/aɪ ˈwɑntəd tə baɪ ə kɑr bət ˈkʊdənt kʌm ʌp wɪð ðə ˈmʌni/",
+        audioUrl: "audio/unit40/U040-04.mp3",
+        id: "L040-04"
+      },
+      {
+        unit: "40",
+        set: 5,
+        theme: "Come up with",
+        ja: "科学者たちはひとつの理論を思いつきました。",
+        en: "The scientists came up with a theory.",
+        ipa: "/ðə ˈsaɪəntɪsts keɪm ʌp wɪð ə ˈθiəri/",
+        audioUrl: "audio/unit40/U040-05.mp3",
+        id: "L040-05"
       }
     ];
+    const TEST_RANGES = [
+      { key: "u1-20", label: "UNIT 1 - 20", min: 1, max: 20, note: "" },
+      { key: "u21-40", label: "UNIT 21 - 40", min: 21, max: 40, note: "UNIT 21 - 40を収録しています。" }
+    ];
+    const PARAPHRASE_RANGES = [
+      TEST_RANGES[0],
+      { key: "u21-40", label: "UNIT 21 - 40", min: 21, max: 40, note: "" }
+    ];
+    const DEFAULT_RANGE = TEST_RANGES[0];
     const state = {
       cards: [],
       quiz: [],
@@ -2913,6 +4776,7 @@
       score: 0,
       answerNumber: null,
       activeSet: null,
+      activeRange: DEFAULT_RANGE,
       playerDeck: [],
       playerIndex: 0,
       playerTimer: null,
@@ -3062,6 +4926,7 @@
         fill: ["fill", "fills", "filled", "filled", "filling"],
         give: ["give", "gives", "gave", "given", "giving"],
         go: ["go", "goes", "went", "gone", "going"],
+        hang: ["hang", "hangs", "hung", "hung", "hanging"],
         hold: ["hold", "holds", "held", "held", "holding"],
         keep: ["keep", "keeps", "kept", "kept", "keeping"],
         look: ["look", "looks", "looked", "looked", "looking"],
@@ -3108,7 +4973,7 @@
       const isPassive = /\b(?:am|are|is|was|were|be|been|being)\s+$/.test(before);
       const sourceForms = Object.values({
         break: verbForms("break"), bring: verbForms("bring"), call: verbForms("call"), check: verbForms("check"),
-        come: verbForms("come"), do: verbForms("do"), drop: verbForms("drop"), fill: verbForms("fill"),
+        come: verbForms("come"), do: verbForms("do"), drop: verbForms("drop"), fill: verbForms("fill"), hang: verbForms("hang"),
         give: verbForms("give"), go: verbForms("go"), hold: verbForms("hold"), keep: verbForms("keep"),
         look: verbForms("look"), pass: verbForms("pass"), put: verbForms("put"), run: verbForms("run"),
         take: verbForms("take"), turn: verbForms("turn"), wait: verbForms("wait"), wear: verbForms("wear"),
@@ -3178,6 +5043,20 @@
       deck.push(card);
     }
 
+    function inRange(card, range = state.activeRange){
+      const unit = Number(card.unit);
+      return unit >= range.min && unit <= range.max;
+    }
+
+    function rangeForKey(key){
+      return TEST_RANGES.find(range => range.key === key) || DEFAULT_RANGE;
+    }
+
+    function sourceForMode(mode, range = state.activeRange){
+      const source = mode === "paraphrase" ? PARAPHRASE_SETS : LISTENING_SETS;
+      return source.filter(card => inRange(card, range));
+    }
+
     function renderBottomSetNav(activeSet = null){
       const isListening = state.mode === "listening";
       els.bottomSetNav.classList.toggle("paraphraseNav", !isListening);
@@ -3195,7 +5074,7 @@
         <button class="bottomSetBtn" type="button" data-top="true">TOP</button>
       `;
       [...els.bottomSetNav.querySelectorAll(".bottomSetBtn")].forEach(btn => {
-        if (btn.dataset.set) btn.addEventListener("click", () => makeQuiz(state.mode, Number(btn.dataset.set)));
+        if (btn.dataset.set) btn.addEventListener("click", () => makeQuiz(state.mode, Number(btn.dataset.set), state.activeRange));
         if (btn.dataset.review) btn.addEventListener("click", () => makeReviewQuiz(btn.dataset.review));
         if (btn.dataset.top) btn.addEventListener("click", showModePicker);
       });
@@ -3212,14 +5091,8 @@
 
     function renderSetPicker(mode = "listening"){
       state.mode = mode;
-      const source = mode === "paraphrase" ? PARAPHRASE_SETS : LISTENING_SETS;
-      const setCards = [...new Set(source.map(card => card.set))]
-        .filter(set => mode !== "paraphrase" || set <= 4)
-        .sort((a, b) => a - b)
-        .map(set => ({
-          set,
-          cards: source.filter(card => card.set === set)
-      }));
+      state.activeRange = DEFAULT_RANGE;
+      const ranges = mode === "paraphrase" ? PARAPHRASE_RANGES : TEST_RANGES;
       els.modePanel.classList.add("hidden");
       els.quizPanel.classList.add("hidden");
       els.playerPanel.classList.add("hidden");
@@ -3227,20 +5100,34 @@
       els.pageSub.textContent = "";
       els.setHeroThumb.classList.toggle("hidden", mode === "player");
       els.setHeroThumb.src = mode === "listening" ? "assets/thumb-listening.png" : "assets/thumb-paraphrase.png";
-      els.setHeroLabel.textContent = "UNIT 1 - 20";
+      els.setHeroLabel.textContent = "";
       els.setHeroTitle.textContent = "";
       if (mode === "player") hideBottomSetNav();
       else showBottomSetNav();
-      els.setGrid.innerHTML = setCards.map(group => `
-        <button class="setButton" type="button" data-set="${group.set}">
-          <strong>Set ${group.set}</strong>
-        </button>
-      `).join("");
+      els.setGrid.innerHTML = ranges.map(range => {
+        const source = sourceForMode(mode, range);
+        const setCards = [...new Set(source.map(card => card.set))]
+          .filter(set => mode !== "paraphrase" || set <= 4)
+          .sort((a, b) => a - b);
+        if (!setCards.length) return "";
+        return `
+          <div class="rangeBlock">
+            <h2 class="rangeTitle">${range.label}</h2>
+            ${range.note ? `<p class="rangeNote">${range.note}</p>` : ""}
+            ${setCards.map(set => `
+              <button class="setButton" type="button" data-set="${set}" data-range="${range.key}">
+                <strong>Set ${set}</strong>
+              </button>
+            `).join("")}
+          </div>
+        `;
+      }).join("");
       [...els.setGrid.querySelectorAll(".setButton")].forEach(btn => {
         btn.addEventListener("click", () => {
           const set = Number(btn.dataset.set);
-          if (mode === "player") makePlayer(set);
-          else makeQuiz(mode, set);
+          const range = rangeForKey(btn.dataset.range);
+          if (mode === "player") makePlayer(set, range);
+          else makeQuiz(mode, set, range);
         });
       });
     }
@@ -3257,16 +5144,17 @@
       hideBottomSetNav();
     }
 
-    function sortedListeningSet(set){
+    function sortedListeningSet(set, range = state.activeRange){
       return LISTENING_SETS
-        .filter(card => Number(card.set) === Number(set))
+        .filter(card => Number(card.set) === Number(set) && inRange(card, range))
         .sort((a, b) => Number(a.unit) - Number(b.unit));
     }
 
-    function makePlayer(selectedSet = 1){
+    function makePlayer(selectedSet = 1, range = state.activeRange){
       state.mode = "player";
       state.activeSet = selectedSet;
-      state.playerDeck = sortedListeningSet(selectedSet);
+      state.activeRange = range;
+      state.playerDeck = sortedListeningSet(selectedSet, range);
       state.playerIndex = 0;
       els.modePanel.classList.add("hidden");
       els.setPanel.classList.add("hidden");
@@ -3332,13 +5220,14 @@
       renderPlayerTrack(true);
     }
 
-    function makeQuiz(mode = state.mode, selectedSet = null){
+    function makeQuiz(mode = state.mode, selectedSet = null, range = state.activeRange){
       state.mode = mode;
       clearPlayerTimer();
       state.activeSet = selectedSet;
+      state.activeRange = range;
       state.quiz = state.mode === "listening"
-        ? shuffle(LISTENING_SETS.filter(card => selectedSet ? card.set === selectedSet : true))
-        : shuffle(PARAPHRASE_SETS.filter(card => selectedSet ? card.set === selectedSet : true));
+        ? shuffle(LISTENING_SETS.filter(card => inRange(card, range) && (selectedSet ? card.set === selectedSet : true)))
+        : shuffle(PARAPHRASE_SETS.filter(card => inRange(card, range) && (selectedSet ? card.set === selectedSet : true)));
       state.index = 0;
       state.selected = null;
       state.score = 0;
