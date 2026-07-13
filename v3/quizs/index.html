@@ -256,6 +256,190 @@
       line-height:1.35;
       margin-top:3px;
     }
+    .overviewButton{
+      margin-top:4px;
+      background:#f3edff;
+      border-color:#d7c8f5;
+    }
+    .overviewButton strong{
+      color:#52358c;
+    }
+    .overviewList{
+      padding:18px;
+      display:grid;
+      gap:18px;
+    }
+    .overviewUnit{
+      border:1px solid var(--line);
+      border-radius:14px;
+      overflow:hidden;
+      background:#fff;
+    }
+    .overviewUnitTitle{
+      margin:0;
+      padding:12px 14px;
+      color:#fff;
+      background:#34234e;
+      font-size:17px;
+      line-height:1.3;
+    }
+    .overviewItem{
+      padding:14px;
+      border-top:1px solid var(--line);
+    }
+    .overviewItem:first-of-type{
+      border-top:0;
+    }
+    .overviewSet{
+      display:inline-block;
+      margin-bottom:7px;
+      color:var(--primary);
+      font-size:12px;
+      font-weight:900;
+    }
+    .overviewUnitHead{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:12px 14px;
+      background:#34234e;
+    }
+    .overviewUnitHead .overviewUnitTitle{
+      padding:0;
+      background:transparent;
+    }
+    .overviewUnitToggle,
+    .overviewHintToggle{
+      border:1px solid #d7c8f5;
+      border-radius:9px;
+      padding:7px 10px;
+      background:#f3edff;
+      color:#52358c;
+      font-size:12px;
+      font-weight:850;
+      white-space:nowrap;
+    }
+    .overviewUnitToggle:hover,
+    .overviewHintToggle:hover{
+      background:#fff;
+    }
+    .overviewItemTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .overviewAudio{
+      width:min(100%, 420px);
+      height:34px;
+    }
+    .overviewAudioGroup{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      width:min(100%, 470px);
+    }
+    .overviewColumnLabel{
+      color:var(--muted);
+      font-size:12px;
+      font-weight:900;
+      white-space:nowrap;
+    }
+    .overviewHintToggle{
+      margin-top:10px;
+    }
+    .overviewHintPieces{
+      display:grid;
+      gap:8px;
+      margin-top:10px;
+    }
+    .overviewHintButtons{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:8px;
+    }
+    .overviewHintStack{
+      display:grid;
+      gap:8px;
+      margin-top:8px;
+    }
+    .overviewHintToggle{
+      justify-self:start;
+      width:100%;
+      margin-top:0;
+      padding:8px 5px;
+      overflow-wrap:anywhere;
+    }
+    .overviewHintButtons .overviewHintToggle:nth-child(1){
+      background:linear-gradient(135deg, #e7f1ff, #cfe0ff);
+      border-color:#a8c6f5;
+      color:#285b9c;
+    }
+    .overviewHintButtons .overviewHintToggle:nth-child(2){
+      background:linear-gradient(135deg, #e8faef, #c9efd8);
+      border-color:#a6d9b8;
+      color:#287246;
+    }
+    .overviewHintButtons .overviewHintToggle:nth-child(3){
+      background:linear-gradient(135deg, #fff1df, #ffd8ae);
+      border-color:#f2bd7d;
+      color:#9a5b16;
+    }
+    .overviewHint{
+      display:none;
+      margin-top:12px;
+      padding:12px;
+      border-left:3px solid #d7c8f5;
+      background:#faf8ff;
+    }
+    .overviewChoiceList{
+      display:grid;
+      gap:8px;
+    }
+    .overviewChoice{
+      margin:0;
+      padding:9px 10px;
+      border-radius:9px;
+      background:#fff;
+      border:1px solid #e7e0ec;
+      line-height:1.5;
+    }
+    .overviewHint.show{
+      display:block;
+    }
+    .overviewPrompt,
+    .overviewAnswer,
+    .overviewJa,
+    .overviewIpa{
+      margin:5px 0 0;
+      line-height:1.55;
+    }
+    .overviewPrompt{ color:var(--muted); }
+    .overviewAnswer{ color:var(--text); font-weight:800; }
+    .overviewJa,
+    .overviewIpa{ color:var(--muted); font-size:14px; }
+    .scrollTopBtn{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:20;
+      width:46px;
+      height:46px;
+      display:grid;
+      place-items:center;
+      border:1px solid #cdbbea;
+      border-radius:50%;
+      background:linear-gradient(135deg, #f1e9ff, #d8c4ff);
+      color:#52358c;
+      font-size:24px;
+      font-weight:900;
+      line-height:1;
+      box-shadow:0 6px 16px rgba(64,42,105,.2);
+    }
+    .scrollTopBtn:hover{
+      background:linear-gradient(135deg, #fff7ff, #cdb5ff);
+    }
     .modeCard{
       width:100%;
       min-height:160px;
@@ -912,10 +1096,6 @@
           <strong>PARAPHRASE MODE</strong>
           <span>与えられた英文をphrasal verbで言い換えよう</span>
         </button>
-        <button class="modeCard textMode" id="playerModeBtn" type="button">
-          <strong>PLAYER MODE</strong>
-          <span>LISTENING MODEの音声をSETごとに20個ずつ再生しよう</span>
-        </button>
       </div>
     </section>
 
@@ -930,6 +1110,14 @@
         <p class="setIntro">練習するセットを選んでください。</p>
         <div class="setGrid" id="setGrid"></div>
       </div>
+    </section>
+
+    <section class="panel hidden" id="overviewPanel">
+      <div class="top">
+        <div class="meter" id="overviewTitle">一覧確認</div>
+        <button class="secondary" id="overviewBackBtn" type="button">戻る</button>
+      </div>
+      <div class="overviewList" id="overviewList"></div>
     </section>
 
     <section class="panel hidden" id="playerPanel">
@@ -1008,6 +1196,7 @@
     </section>
     <nav class="bottomSetNav hidden" id="bottomSetNav" aria-label="Set selector"></nav>
   </main>
+  <button class="scrollTopBtn" id="scrollTopBtn" type="button" aria-label="ページ上部へ戻る" title="ページ上部へ戻る">↑</button>
 
   <script>
     const CSV_URL = "../cards.csv";
@@ -4799,10 +4988,14 @@
       bottomSetNav: document.getElementById("bottomSetNav"),
       backToModeBtn: document.getElementById("backToModeBtn"),
       quizPanel: document.getElementById("quizPanel"),
+      overviewPanel: document.getElementById("overviewPanel"),
+      overviewTitle: document.getElementById("overviewTitle"),
+      overviewList: document.getElementById("overviewList"),
+      overviewBackBtn: document.getElementById("overviewBackBtn"),
+      scrollTopBtn: document.getElementById("scrollTopBtn"),
       playerPanel: document.getElementById("playerPanel"),
       listeningModeBtn: document.getElementById("listeningModeBtn"),
       paraphraseModeBtn: document.getElementById("paraphraseModeBtn"),
-      playerModeBtn: document.getElementById("playerModeBtn"),
       playerMeter: document.getElementById("playerMeter"),
       playerSetLabel: document.getElementById("playerSetLabel"),
       playerTitle: document.getElementById("playerTitle"),
@@ -5094,6 +5287,7 @@
       const ranges = mode === "paraphrase" ? PARAPHRASE_RANGES : TEST_RANGES;
       els.modePanel.classList.add("hidden");
       els.quizPanel.classList.add("hidden");
+      els.overviewPanel.classList.add("hidden");
       els.playerPanel.classList.add("hidden");
       els.setPanel.classList.remove("hidden");
       els.pageSub.textContent = "";
@@ -5118,17 +5312,117 @@
                 <strong>Set ${set}</strong>
               </button>
             `).join("")}
+            <button class="setButton overviewButton" type="button" data-overview="true" data-range="${range.key}">
+              <strong>一覧確認</strong>
+            </button>
           </div>
         `;
       }).join("");
-      [...els.setGrid.querySelectorAll(".setButton")].forEach(btn => {
+      [...els.setGrid.querySelectorAll(".setButton[data-set]")].forEach(btn => {
         btn.addEventListener("click", () => {
           const set = Number(btn.dataset.set);
           const range = rangeForKey(btn.dataset.range);
-          if (mode === "player") makePlayer(set, range);
-          else makeQuiz(mode, set, range);
+          makeQuiz(mode, set, range);
         });
       });
+      [...els.setGrid.querySelectorAll(".overviewButton")].forEach(btn => {
+        btn.addEventListener("click", () => showOverview(mode, rangeForKey(btn.dataset.range)));
+      });
+    }
+
+    function showOverview(mode, range){
+      state.mode = mode;
+      state.activeRange = range;
+      const cards = sourceForMode(mode, range)
+        .slice()
+        .sort((a, b) => Number(a.unit) - Number(b.unit) || Number(a.set) - Number(b.set));
+      const units = new Map();
+      cards.forEach(card => {
+        if (!units.has(card.unit)) units.set(card.unit, []);
+        units.get(card.unit).push(card);
+      });
+      els.modePanel.classList.add("hidden");
+      els.setPanel.classList.add("hidden");
+      els.quizPanel.classList.add("hidden");
+      els.playerPanel.classList.add("hidden");
+      els.overviewPanel.classList.remove("hidden");
+      els.overviewTitle.textContent = `${mode === "listening" ? "LISTENING" : "PARAPHRASE"} · ${range.label}`;
+      els.overviewList.innerHTML = [...units.entries()].map(([unit, unitCards]) => `
+        <section class="overviewUnit" data-overview-unit="${escapeHTML(unit)}">
+          <div class="overviewUnitHead">
+            <h2 class="overviewUnitTitle">UNIT ${String(unit).padStart(2, "0")} · ${escapeHTML(unitCards[0].theme)}</h2>
+            <button class="overviewUnitToggle" type="button" data-hint-all="false">ヒントをすべて表示</button>
+          </div>
+          ${unitCards.map(card => `
+            <article class="overviewItem">
+              <div class="overviewItemTop">
+                <span class="overviewSet">SET ${card.set}</span>
+                ${mode === "listening" && card.audioUrl ? `<span class="overviewAudioGroup"><audio class="overviewAudio" controls preload="none" src="${escapeHTML(card.audioUrl)}"></audio></span>` : ""}
+              </div>
+              ${mode === "paraphrase" ? `<p class="overviewPrompt"><strong>問題：</strong>${escapeHTML(card.prompt)}</p>` : ""}
+              ${mode === "paraphrase" ? `
+                <div class="overviewHintPieces">
+                  <div class="overviewHintButtons">
+                    <button class="overviewHintToggle" type="button" data-hint-index="0" data-hint-label="選択肢">選択肢を表示</button>
+                    <button class="overviewHintToggle" type="button" data-hint-index="1" data-hint-label="答え">答えを表示</button>
+                    <button class="overviewHintToggle" type="button" data-hint-index="2" data-hint-label="日本語">日本語を表示</button>
+                  </div>
+                  <div class="overviewHintStack">
+                    <div class="overviewHint overviewChoices" data-hint-index="0">
+                      <div class="overviewChoiceList">
+                        ${makeParaphraseChoices(card).map(choice => `<p class="overviewChoice">${escapeHTML(choice.label)}</p>`).join("")}
+                      </div>
+                    </div>
+                    <p class="overviewHint overviewAnswer" data-hint-index="1"><strong>${escapeHTML(card.en)}</strong></p>
+                    <p class="overviewHint overviewJa" data-hint-index="2">${escapeHTML(card.ja)}</p>
+                  </div>
+                </div>
+              ` : `
+                <div class="overviewHintPieces">
+                  <div class="overviewHintButtons">
+                    <button class="overviewHintToggle" type="button" data-hint-index="0" data-hint-label="英文">英文を表示</button>
+                    <button class="overviewHintToggle" type="button" data-hint-index="1" data-hint-label="日本語">日本語を表示</button>
+                    <button class="overviewHintToggle" type="button" data-hint-index="2" data-hint-label="発音記号">発音記号を表示</button>
+                  </div>
+                  <div class="overviewHintStack">
+                    <p class="overviewHint overviewAnswer" data-hint-index="0"><strong>${escapeHTML(card.en)}</strong></p>
+                    <p class="overviewHint overviewJa" data-hint-index="1">${escapeHTML(card.ja)}</p>
+                    <p class="overviewHint overviewIpa" data-hint-index="2">${escapeHTML(card.ipa || "")}</p>
+                  </div>
+                </div>
+              `}
+            </article>
+          `).join("")}
+        </section>
+      `).join("");
+      [...els.overviewList.querySelectorAll(".overviewHintToggle")].forEach(button => {
+        button.addEventListener("click", () => {
+          const item = button.closest(".overviewItem");
+          const hint = item.querySelector(`.overviewHint[data-hint-index="${button.dataset.hintIndex}"]`);
+          const show = !hint.classList.contains("show");
+          hint.classList.toggle("show", show);
+          button.textContent = `${button.dataset.hintLabel}${show ? "を隠す" : "を表示"}`;
+        });
+      });
+      [...els.overviewList.querySelectorAll(".overviewUnitToggle")].forEach(button => {
+        button.addEventListener("click", () => {
+          const unit = button.closest(".overviewUnit");
+          const hints = [...unit.querySelectorAll(".overviewHint")];
+          const show = button.dataset.hintAll !== "true";
+          hints.forEach(hint => hint.classList.toggle("show", show));
+          unit.querySelectorAll(".overviewHintToggle").forEach(item => {
+            const card = item.closest(".overviewItem");
+            const hint = card.querySelector(`.overviewHint[data-hint-index="${item.dataset.hintIndex}"]`);
+            hint.classList.toggle("show", show);
+            item.textContent = `${item.dataset.hintLabel}${show ? "を隠す" : "を表示"}`;
+          });
+          button.dataset.hintAll = String(show);
+          button.textContent = show ? "ヒントをすべて隠す" : "ヒントをすべて表示";
+        });
+      });
+      els.pageSub.textContent = "一覧確認";
+      hideBottomSetNav();
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     function showModePicker(){
@@ -5138,6 +5432,7 @@
       els.modePanel.classList.remove("hidden");
       els.setPanel.classList.add("hidden");
       els.quizPanel.classList.add("hidden");
+      els.overviewPanel.classList.add("hidden");
       els.playerPanel.classList.add("hidden");
       els.pageSub.textContent = "モードを選んで挑戦してください！";
       hideBottomSetNav();
@@ -5233,6 +5528,7 @@
       state.log = [];
       els.modePanel.classList.add("hidden");
       els.setPanel.classList.add("hidden");
+      els.overviewPanel.classList.add("hidden");
       els.playerPanel.classList.add("hidden");
       els.playerAudio.pause();
       els.quizPanel.classList.remove("hidden");
@@ -5262,6 +5558,7 @@
       state.log = [];
       els.modePanel.classList.add("hidden");
       els.setPanel.classList.add("hidden");
+      els.overviewPanel.classList.add("hidden");
       els.quizPanel.classList.remove("hidden");
       els.playerPanel.classList.add("hidden");
       els.playerAudio.pause();
@@ -5303,6 +5600,7 @@
       resetAudioUI();
       els.answerEn.textContent = card.en;
       els.answerJa.textContent = card.ja;
+      els.answerIpa.classList.toggle("hidden", state.mode === "paraphrase");
       els.answerIpa.textContent = card.ipa;
       els.answerUnit.textContent = `UNIT ${String(card.unit).padStart(2, "0")}`;
       els.choices.innerHTML = "";
@@ -5564,9 +5862,12 @@
       }
     });
     els.backToModeBtn.addEventListener("click", showModePicker);
+    els.scrollTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    els.overviewBackBtn.addEventListener("click", () => renderSetPicker(state.mode));
     els.listeningModeBtn.addEventListener("click", () => renderSetPicker("listening"));
     els.paraphraseModeBtn.addEventListener("click", () => renderSetPicker("paraphrase"));
-    els.playerModeBtn.addEventListener("click", () => renderSetPicker("player"));
     els.playerTopBtn.addEventListener("click", showModePicker);
     els.playerPlayBtn.addEventListener("click", () => {
       if (els.playerAudio.paused || els.playerAudio.ended) playCurrentPlayerAudio();
