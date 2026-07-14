@@ -993,6 +993,7 @@
           <button class="secondary" id="showBtn" type="button">答えを確認</button>
           <button id="nextBtn" type="button">Next</button>
         </div>
+        <p class="listeningNotice hidden" id="listeningNotice">音声が流れない場合、答えを確認をタップして次の問題にお進みください。それでも音声が流れない場合、お手数ですがご連絡ください。</p>
       </div>
       <div class="result" id="result">
         <p class="score" id="score"></p>
@@ -4822,6 +4823,7 @@
       audioSpeed: document.getElementById("audioSpeed"),
       blankSentence: document.getElementById("blankSentence"),
       choices: document.getElementById("choices"),
+      listeningNotice: document.getElementById("listeningNotice"),
       ratings: document.getElementById("ratings"),
       answer: document.getElementById("answer"),
       answerUnit: document.getElementById("answerUnit"),
@@ -5315,13 +5317,14 @@
         els.themeTag.textContent = `SET ${card.set}`;
         els.blankSentence.innerHTML = `
           <span class="answerSentence">音声を聞いて、内容をイメージしてください。</span>
-          <span class="listeningNotice">音声が流れない場合、答えを確認をタップして次の問題にお進みください。それでも音声が流れない場合、お手数ですがご連絡ください。</span>
         `;
+        els.listeningNotice.classList.remove("hidden");
         els.nextBtn.classList.add("hidden");
         requestAnimationFrame(() => {
           playAudioFromStart();
         });
       } else {
+        els.listeningNotice.classList.add("hidden");
         els.nextBtn.classList.remove("hidden");
         els.themeTag.textContent = `SET ${card.set}`;
         els.blankSentence.innerHTML = card.prompt
@@ -5392,6 +5395,7 @@
       if (state.mode === "listening"){
         els.ratings.classList.add("show");
         els.showBtn.classList.add("hidden");
+        els.listeningNotice.classList.add("hidden");
       }
       if (options.scroll){
         requestAnimationFrame(() => {
