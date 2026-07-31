@@ -1069,17 +1069,6 @@
         id: "P001-04"
       },
       {
-        unit: "1",
-        set: 5,
-        theme: "Wear out",
-        prompt: "Working two weeks straight without a day off exhausted me.",
-        ja: "休みなしで2週間続けて働いて、私は疲れ果てました。",
-        en: "Working two weeks straight without a day off wore me out.",
-        ipa: "/ˈwɝkɪŋ tu wiks streɪt wɪˈðaʊt ə deɪ ɔf wɔr mi aʊt/",
-        audioUrl: "",
-        id: "P001-05"
-      },
-      {
         unit: "2",
         set: 1,
         theme: "Wear off",
@@ -1122,17 +1111,6 @@
         ipa: "",
         audioUrl: "",
         id: "P002-04"
-      },
-      {
-        unit: "2",
-        set: 5,
-        theme: "Wear off",
-        prompt: "At first he was shy but then her bubbly attitude spread to him.",
-        ja: "最初、彼は内気でしたが、彼女の陽気な態度が彼に伝染しました。",
-        en: "At first he was shy but then her bubbly attitude wore off on him.",
-        ipa: "/ət fɝst hi wəz ʃaɪ bət ðɛn hɚ ˈbʌbli ˈætəˌtud wɔr ɔf ɑn hɪm/",
-        audioUrl: "",
-        id: "P002-05"
       },
       {
         unit: "3",
@@ -5241,8 +5219,10 @@
         break: ["break", "breaks", "broke", "broken", "breaking"],
         bring: ["bring", "brings", "brought", "brought", "bringing"],
         call: ["call", "calls", "called", "called", "calling"],
+        catch: ["catch", "catches", "caught", "caught", "catching"],
         check: ["check", "checks", "checked", "checked", "checking"],
         come: ["come", "comes", "came", "come", "coming"],
+        cut: ["cut", "cuts", "cut", "cut", "cutting"],
         do: ["do", "does", "did", "done", "doing"],
         drop: ["drop", "drops", "dropped", "dropped", "dropping"],
         fill: ["fill", "fills", "filled", "filled", "filling"],
@@ -5252,12 +5232,15 @@
         hold: ["hold", "holds", "held", "held", "holding"],
         keep: ["keep", "keeps", "kept", "kept", "keeping"],
         look: ["look", "looks", "looked", "looked", "looking"],
+        make: ["make", "makes", "made", "made", "making"],
         pass: ["pass", "passes", "passed", "passed", "passing"],
         put: ["put", "puts", "put", "put", "putting"],
         run: ["run", "runs", "ran", "run", "running"],
         take: ["take", "takes", "took", "taken", "taking"],
+        try: ["try", "tries", "tried", "tried", "trying"],
         turn: ["turn", "turns", "turned", "turned", "turning"],
         wait: ["wait", "waits", "waited", "waited", "waiting"],
+        wake: ["wake", "wakes", "woke", "woken", "waking"],
         wear: ["wear", "wears", "wore", "worn", "wearing"],
         work: ["work", "works", "worked", "worked", "working"],
         wrap: ["wrap", "wraps", "wrapped", "wrapped", "wrapping"]
@@ -5294,12 +5277,14 @@
       const before = sentence.slice(Math.max(0, offset - 18), offset).toLowerCase();
       const isPassive = /\b(?:am|are|is|was|were|be|been|being)\s+$/.test(before);
       const sourceForms = Object.values({
-        break: verbForms("break"), bring: verbForms("bring"), call: verbForms("call"), check: verbForms("check"),
-        come: verbForms("come"), do: verbForms("do"), drop: verbForms("drop"), fill: verbForms("fill"), hang: verbForms("hang"),
+        break: verbForms("break"), bring: verbForms("bring"), call: verbForms("call"), catch: verbForms("catch"),
+        check: verbForms("check"), come: verbForms("come"), cut: verbForms("cut"), do: verbForms("do"),
+        drop: verbForms("drop"), fill: verbForms("fill"), hang: verbForms("hang"),
         give: verbForms("give"), go: verbForms("go"), hold: verbForms("hold"), keep: verbForms("keep"),
-        look: verbForms("look"), pass: verbForms("pass"), put: verbForms("put"), run: verbForms("run"),
-        take: verbForms("take"), turn: verbForms("turn"), wait: verbForms("wait"), wear: verbForms("wear"),
-        work: verbForms("work"), wrap: verbForms("wrap")
+        look: verbForms("look"), make: verbForms("make"), pass: verbForms("pass"), put: verbForms("put"),
+        run: verbForms("run"), take: verbForms("take"), try: verbForms("try"), turn: verbForms("turn"),
+        wait: verbForms("wait"), wake: verbForms("wake"), wear: verbForms("wear"), work: verbForms("work"),
+        wrap: verbForms("wrap")
       });
       let formIndex = 0;
       for (const forms of sourceForms){
