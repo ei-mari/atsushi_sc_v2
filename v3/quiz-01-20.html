@@ -4909,8 +4909,9 @@
         id: "L042-05"
       },
       { unit: "43", set: 1, theme: "Take on", ja: "忙しすぎて、これ以上の仕事は引き受けられません。", en: "I am too busy to take on any more work.", ipa: "/aɪ əm tu ˈbɪzi tə teɪk ɑn ˈɛni mɔr wɝk/", audioUrl: "audio/unit43/U043-01.mp3", id: "L043-01" },
+      { unit: "43", set: 2, theme: "Take on", ja: "バスはさらに多くの乗客を乗せるために停車しました。", en: "The bus stopped to take on more passengers.", ipa: "/ðə bʌs stɑpt tə teɪk ɑn mɔr ˈpæsəndʒɚz/", audioUrl: "audio/unit43/U043-02.mp3", id: "L043-02" },
       { unit: "43", set: 3, theme: "Take on", ja: "レストランは彼を副料理長として採用しました。", en: "The restaurant took him on as a sous-chef.", ipa: "/ðə ˈrɛstəˌrɑnt tʊk hɪm ɑn əz ə ˈsuˌʃɛf/", audioUrl: "audio/unit43/U043-03.mp3", id: "L043-03" },
-      { unit: "43", set: 4, theme: "Take on", ja: "スワローズは日本シリーズでジャイアンツと対戦します。", en: "The Swallows will take on the Giants in the Japan series.", ipa: "/ðə ˈswɑloʊz wɪl teɪk ɑn ðə ˈdʒaɪənts ɪn ðə dʒəˈpæn ˈsɪriz/", audioUrl: "audio/unit43/U043-04.mp3", id: "L043-04" },
+      { unit: "43", set: 4, theme: "Take on", ja: "スワローズは日本シリーズでジャイアンツと対戦します。", en: "The Swallows will take on the Giants in the Japan Series.", ipa: "/ðə ˈswɑloʊz wɪl teɪk ɑn ðə ˈdʒaɪənts ɪn ðə dʒəˈpæn ˈsɪriz/", audioUrl: "audio/unit43/U043-04.mp3", id: "L043-04" },
       { unit: "43", set: 5, theme: "Take on", ja: "その若い弁護士たちは、難しい案件を引き受けることに熱心でした。", en: "The young attorneys were eager to take on a difficult case.", ipa: "/ðə jʌŋ əˈtɝniz wɚ ˈiɡɚ tə teɪk ɑn ə ˈdɪfəkəlt keɪs/", audioUrl: "audio/unit43/U043-05.mp3", id: "L043-05" },
       {
         unit: "44", set: 1, theme: "Catch on",
@@ -5042,9 +5043,10 @@
       { key: "u1-10", label: "UNIT 1 - 10", min: 1, max: 10, note: "" },
       { key: "u11-20", label: "UNIT 11 - 20", min: 11, max: 20, note: "" },
       { key: "u21-30", label: "UNIT 21 - 30", min: 21, max: 30, note: "" },
-      { key: "u31-40", label: "UNIT 31 - 40", min: 31, max: 40, note: "" }
+      { key: "u31-40", label: "UNIT 31 - 40", min: 31, max: 40, note: "" },
+      { key: "u41-50", label: "UNIT 41 - 50", min: 41, max: 50, note: "" }
     ];
-    const PARAPHRASE_RANGES = TEST_RANGES;
+    const PARAPHRASE_RANGES = TEST_RANGES.filter(range => range.max <= 40);
     const DEFAULT_RANGE = TEST_RANGES[0];
     const state = {
       cards: [],
