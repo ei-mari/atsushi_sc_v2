@@ -359,6 +359,9 @@
       grid-template-columns:repeat(3, minmax(0, 1fr));
       gap:8px;
     }
+    .overviewHintButtons.paraphraseHintButtons{
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+    }
     .overviewHintStack{
       display:grid;
       gap:8px;
@@ -5852,19 +5855,13 @@
               ${mode === "paraphrase" ? `<p class="overviewPrompt"><strong>問題：</strong>${escapeHTML(card.prompt)}</p>` : ""}
               ${mode === "paraphrase" ? `
                 <div class="overviewHintPieces">
-                  <div class="overviewHintButtons">
-                    <button class="overviewHintToggle" type="button" data-hint-index="0" data-hint-label="選択肢">選択肢を表示</button>
-                    <button class="overviewHintToggle" type="button" data-hint-index="1" data-hint-label="答え">答えを表示</button>
-                    <button class="overviewHintToggle" type="button" data-hint-index="2" data-hint-label="日本語">日本語を表示</button>
+                  <div class="overviewHintButtons paraphraseHintButtons">
+                    <button class="overviewHintToggle" type="button" data-hint-index="0" data-hint-label="答え">答えを表示</button>
+                    <button class="overviewHintToggle" type="button" data-hint-index="1" data-hint-label="日本語">日本語を表示</button>
                   </div>
                   <div class="overviewHintStack">
-                    <div class="overviewHint overviewChoices" data-hint-index="0">
-                      <div class="overviewChoiceList">
-                        ${makeParaphraseChoices(card).map(choice => `<p class="overviewChoice">${escapeHTML(choice.label)}</p>`).join("")}
-                      </div>
-                    </div>
-                    <p class="overviewHint overviewAnswer" data-hint-index="1"><strong>${escapeHTML(card.en)}</strong></p>
-                    <p class="overviewHint overviewJa" data-hint-index="2">${escapeHTML(card.ja)}</p>
+                    <p class="overviewHint overviewAnswer" data-hint-index="0"><strong>${escapeHTML(card.en)}</strong></p>
+                    <p class="overviewHint overviewJa" data-hint-index="1">${escapeHTML(card.ja)}</p>
                   </div>
                 </div>
               ` : `
