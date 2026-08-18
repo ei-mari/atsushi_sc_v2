@@ -3078,7 +3078,7 @@
       { unit: "65", set: 4, theme: "Get to", prompt: "I don't like camping because the mosquitoes really bother me.", ja: "蚊にイライラさせられるので、キャンプするのが嫌いなんです。", en: "I don't like camping because the mosquitoes really get to me.", ipa: "", audioUrl: "", id: "P065-04" },
       { unit: "66", set: 1, theme: "Get out of", prompt: "All of the guests escaped the hotel before the tsunami hit.", ja: "津波が襲う前にすべての客がホテルを逃れました。", en: "All of the guests got out of the hotel before the tsunami hit.", ipa: "", audioUrl: "", id: "P066-01" },
       { unit: "66", set: 2, theme: "Get out of", prompt: "I couldn't leave the office until after midnight.", ja: "深夜0時過ぎまでオフィスを出られませんでした。", en: "I couldn't get out of the office until after midnight.", ipa: "", audioUrl: "", id: "P066-02" },
-      { unit: "66", set: 3, theme: "Get out of", prompt: "If you want to remove that stain, you will have to take it to the cleaners.", ja: "その染みを抜きたいのなら、クリーニング店に持っていく必要があるでしょう。", en: "If you want to get that stain out, you will have to take it to the cleaners.", ipa: "", audioUrl: "", id: "P066-03" },
+      { unit: "66", set: 3, theme: "Get out of", choiceTheme: "Get out", prompt: "If you want to remove that stain, you will have to take it to the cleaners.", ja: "その染みを抜きたいのなら、クリーニング店に持っていく必要があるでしょう。", en: "If you want to get that stain out, you will have to take it to the cleaners.", ipa: "", audioUrl: "", id: "P066-03" },
       { unit: "66", set: 4, theme: "Get out of", prompt: "If you study English using this method, you will learn a lot.", ja: "この方法で英語を学べば、多くの利益があるでしょう。", en: "If you study English using this method, you will get a lot out of it.", ipa: "", audioUrl: "", id: "P066-04" },
       { unit: "67", set: 1, theme: "Get through", prompt: "We couldn't contact anyone during the blizzard.", ja: "猛吹雪の間、だれとも連絡が取れませんでした。", en: "We couldn't get through to anyone during the blizzard.", ipa: "", audioUrl: "", id: "P067-01" },
       { unit: "67", set: 2, theme: "Get through", prompt: "After three hours I finally got in touch with my sister in New York.", ja: "3時間後にやっと、ニューヨークの姉と連絡が取れました。", en: "After three hours I finally got through to my sister in New York.", ipa: "", audioUrl: "", id: "P067-02" },
@@ -3090,7 +3090,7 @@
       { unit: "68", set: 4, theme: "Get over", prompt: "After months of treatment, he finally recovered from his injuries.", ja: "数カ月の治療の末、彼はとうとうケガから回復しました。", en: "After months of treatment, he finally got over his injuries.", ipa: "", audioUrl: "", id: "P068-04" },
       { unit: "69", set: 1, theme: "Get back", prompt: "When is the manager going to return from the meeting?", ja: "マネージャーはいつ会議から戻りますか？", en: "When is the manager going to get back from the meeting?", ipa: "", audioUrl: "", id: "P069-01" },
       { unit: "69", set: 2, theme: "Get back", prompt: "When I returned to Japan ten years later, a lot had changed.", ja: "10年後日本に戻ると、いろいろなものが変わっていました。", en: "When I got back to Japan ten years later, a lot had changed.", ipa: "", audioUrl: "", id: "P069-02" },
-      { unit: "69", set: 3, theme: "Get back", prompt: "I received $200 as in-store credit after buying a $1,000 TV.", ja: "千ドルのテレビを買ったあと、200ドルが店で使える金券として戻ってきました。", en: "I got $200 back as in-store credit after buying a $1,000 TV.", ipa: "", audioUrl: "", id: "P069-03" },
+      { unit: "69", set: 3, theme: "Get back", choiceTheme: "got $200 back", prompt: "I received $200 as in-store credit after buying a $1,000 TV.", ja: "千ドルのテレビを買ったあと、200ドルが店で使える金券として戻ってきました。", en: "I got $200 back as in-store credit after buying a $1,000 TV.", ipa: "", audioUrl: "", id: "P069-03" },
       { unit: "69", set: 4, theme: "Get back", prompt: "After 2 years of injuries the world-class skier finally returned to competition.", ja: "2年のケガの後、世界でも一流のスキー選手が競技に戻ってきました。", en: "After 2 years of injuries the world-class skier finally got back to competition.", ipa: "", audioUrl: "", id: "P069-04" },
       { unit: "70", set: 1, theme: "Go away", prompt: "Why don't we travel somewhere this weekend?", ja: "今週末どこかに出かけませんか？", en: "Why don't we go away somewhere this weekend?", ipa: "", audioUrl: "", id: "P070-01" },
       { unit: "70", set: 2, theme: "Go away", prompt: "Leave me alone! I'm trying to study!", ja: "あっちへ行って！勉強しようとしているんだよ！", en: "Go away! I'm trying to study!", ipa: "", audioUrl: "", id: "P070-02" },
@@ -5593,17 +5593,23 @@
 
     function verbForms(verb){
       const forms = {
+        back: ["back", "backs", "backed", "backed", "backing"],
         be: ["be", "is", "was", "been", "being"],
         break: ["break", "breaks", "broke", "broken", "breaking"],
         bring: ["bring", "brings", "brought", "brought", "bringing"],
+        burn: ["burn", "burns", "burnt", "burnt", "burning"],
         call: ["call", "calls", "called", "called", "calling"],
         catch: ["catch", "catches", "caught", "caught", "catching"],
         check: ["check", "checks", "checked", "checked", "checking"],
+        clean: ["clean", "cleans", "cleaned", "cleaned", "cleaning"],
         come: ["come", "comes", "came", "come", "coming"],
+        count: ["count", "counts", "counted", "counted", "counting"],
         cut: ["cut", "cuts", "cut", "cut", "cutting"],
         do: ["do", "does", "did", "done", "doing"],
         drop: ["drop", "drops", "dropped", "dropped", "dropping"],
+        fall: ["fall", "falls", "fell", "fallen", "falling"],
         fill: ["fill", "fills", "filled", "filled", "filling"],
+        get: ["get", "gets", "got", "gotten", "getting"],
         give: ["give", "gives", "gave", "given", "giving"],
         go: ["go", "goes", "went", "gone", "going"],
         hang: ["hang", "hangs", "hung", "hung", "hanging"],
@@ -5614,6 +5620,7 @@
         pass: ["pass", "passes", "passed", "passed", "passing"],
         put: ["put", "puts", "put", "put", "putting"],
         run: ["run", "runs", "ran", "run", "running"],
+        sell: ["sell", "sells", "sold", "sold", "selling"],
         take: ["take", "takes", "took", "taken", "taking"],
         try: ["try", "tries", "tried", "tried", "trying"],
         turn: ["turn", "turns", "turned", "turned", "turning"],
@@ -5655,12 +5662,13 @@
       const before = sentence.slice(Math.max(0, offset - 18), offset).toLowerCase();
       const isPassive = /\b(?:am|are|is|was|were|be|been|being)\s+$/.test(before);
       const sourceForms = Object.values({
-        break: verbForms("break"), bring: verbForms("bring"), call: verbForms("call"), catch: verbForms("catch"),
-        check: verbForms("check"), come: verbForms("come"), cut: verbForms("cut"), do: verbForms("do"),
-        drop: verbForms("drop"), fill: verbForms("fill"), hang: verbForms("hang"),
-        give: verbForms("give"), go: verbForms("go"), hold: verbForms("hold"), keep: verbForms("keep"),
+        back: verbForms("back"), break: verbForms("break"), bring: verbForms("bring"), burn: verbForms("burn"),
+        call: verbForms("call"), catch: verbForms("catch"), check: verbForms("check"), clean: verbForms("clean"),
+        come: verbForms("come"), count: verbForms("count"), cut: verbForms("cut"), do: verbForms("do"),
+        drop: verbForms("drop"), fall: verbForms("fall"), fill: verbForms("fill"), get: verbForms("get"),
+        give: verbForms("give"), go: verbForms("go"), hang: verbForms("hang"), hold: verbForms("hold"), keep: verbForms("keep"),
         look: verbForms("look"), make: verbForms("make"), pass: verbForms("pass"), put: verbForms("put"),
-        run: verbForms("run"), take: verbForms("take"), try: verbForms("try"), turn: verbForms("turn"),
+        run: verbForms("run"), sell: verbForms("sell"), take: verbForms("take"), try: verbForms("try"), turn: verbForms("turn"),
         wait: verbForms("wait"), wake: verbForms("wake"), wear: verbForms("wear"), work: verbForms("work"),
         wrap: verbForms("wrap")
       });
@@ -5709,9 +5717,10 @@
       const seen = new Set([card.en]);
       const choices = [{ label: card.en, ja: card.ja, value: card.en, correct: true }];
       const themes = shuffle([...new Set([...PARAPHRASE_SETS.map(c => c.theme).filter(Boolean), ...DISTRACTOR_THEMES])]);
+      const sourceTheme = card.choiceTheme || card.theme;
       for (const theme of themes){
         if (theme === card.theme) continue;
-        const label = replaceTheme(card.en, card.theme, theme.toLowerCase());
+        const label = replaceTheme(card.en, sourceTheme, theme.toLowerCase());
         if (!label || seen.has(label)) continue;
         seen.add(label);
         choices.push({ label, value: label, correct: false });
