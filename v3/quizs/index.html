@@ -5686,6 +5686,7 @@
       const forms = {
         back: ["back", "backs", "backed", "backed", "backing"],
         be: ["be", "is", "was", "been", "being"],
+        blow: ["blow", "blows", "blew", "blown", "blowing"],
         break: ["break", "breaks", "broke", "broken", "breaking"],
         bring: ["bring", "brings", "brought", "brought", "bringing"],
         burn: ["burn", "burns", "burnt", "burnt", "burning"],
@@ -5753,7 +5754,7 @@
       const before = sentence.slice(Math.max(0, offset - 18), offset).toLowerCase();
       const isPassive = /\b(?:am|are|is|was|were|be|been|being)\s+$/.test(before);
       const sourceForms = Object.values({
-        back: verbForms("back"), break: verbForms("break"), bring: verbForms("bring"), burn: verbForms("burn"),
+        back: verbForms("back"), blow: verbForms("blow"), break: verbForms("break"), bring: verbForms("bring"), burn: verbForms("burn"),
         call: verbForms("call"), catch: verbForms("catch"), check: verbForms("check"), clean: verbForms("clean"),
         come: verbForms("come"), count: verbForms("count"), cut: verbForms("cut"), do: verbForms("do"),
         drop: verbForms("drop"), fall: verbForms("fall"), fill: verbForms("fill"), get: verbForms("get"),
